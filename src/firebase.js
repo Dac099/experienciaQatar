@@ -12,4 +12,5 @@ const auth = getAuth();
 
 module.exports = {
   db,
+  auth
 }

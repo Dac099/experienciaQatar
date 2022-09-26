@@ -1,7 +1,6 @@
 const { Router } = require('express');
 const { Timestamp } = require('firebase-admin/firestore');
-const { route } = require('../app.js');
-const { db } = require('../firebase.js');
+const { db, auth } = require('../firebase.js');
 
 const router = Router();
 
@@ -20,12 +19,22 @@ router.post('/signup', async (req, res) => {
   const { nickname, email, password } = req.body;
   const register = Timestamp.now();
 
+  // Guardar usuario en DB
   await db.collection('usuarios').add({
     nickname,
     email,
     password,
     register
   });
+
+  //Crear una cuenta nueva conn Auth
+  const user = await auth.createUser({
+    email : email,
+    displayName: nickname,
+    password: password
+  });
+  console.log(user);
+
   res.send(`<h1>${nickname} registrado</h1>`);
 })
 
