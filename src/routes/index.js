@@ -17,15 +17,6 @@ router.get('/', async (req, res) => {
 
 router.post('/signup', async (req, res) => {
   const { nickname, email, password } = req.body;
-  const register = Timestamp.now();
-
-  // Guardar usuario en DB
-  await db.collection('usuarios').add({
-    nickname,
-    email,
-    password,
-    register
-  });
 
   //Crear una cuenta nueva conn Auth
   const user = await auth.createUser({
@@ -38,9 +29,12 @@ router.post('/signup', async (req, res) => {
   res.send(`<h1>${nickname} registrado</h1>`);
 })
 
+
 router.get('/get-user/:userID', async (req, res) => {
-  const user = await db.collection('usuarios').doc(req.params.userID).get();
-  console.log(user.data());
+  // const user = await db.collection('usuarios').doc(req.params.userID).get();
+  // console.log(user.data());
+  const user = await auth.getUser(req.params.userID);
+  console.log(user);
 
   res.send('Usuario obtenido');
 })
@@ -48,6 +42,8 @@ router.get('/get-user/:userID', async (req, res) => {
 router.get('/delete-user/:userID', async (req, res) => {
   await db.collection('usuarios').doc(req.params.userID).delete();
   console.log('Usuario eliminado');
+
+  auth.deleteUser()
 
   res.send('Usuario eliminado');
 });
