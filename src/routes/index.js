@@ -1,34 +1,25 @@
 const { Router } = require('express');
-const { Timestamp } = require('firebase-admin/firestore');
 const { db, auth } = require('../firebase.js');
+const { signin, signup, getUser, getAllUsers, deleteUser} = require('./users.router.js');
 
 const router = Router();
 
 router.get('/', async (req, res) => {
-  const querySnapshot = await db.collection('usuarios').get();
-  const users = querySnapshot.docs.map(doc => ({
-    id: doc.id,
-    ...doc.data()
-  }));
+  // const querySnapshot = await db.collection('usuarios').get();
+  // const users = querySnapshot.docs.map(doc => ({
+  //   id: doc.id,
+  //   ...doc.data()
+  // }));
 
-  console.log(users);
-  res.send('Hola');
+  // console.log(users);
+  // res.send('Hola');
+  console.log('Landing page');
 });
 
-router.post('/signup', async (req, res) => {
-  const { nickname, email, password } = req.body;
-
-  //Crear una cuenta nueva conn Auth
-  const user = await auth.createUser({
-    email : email,
-    displayName: nickname,
-    password: password
-  });
-  console.log(user);
-
-  res.send(`<h1>${nickname} registrado</h1>`);
-})
-
+router.get('/signin', signin);
+router.post('/signup', signup);
+router.get('/get-user/:userID', getUser);
+router.get('/delete-user/:userID', deleteUser);
 
 router.get('/get-user/:userID', async (req, res) => {
   // const user = await db.collection('usuarios').doc(req.params.userID).get();
