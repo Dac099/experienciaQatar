@@ -1,0 +1,16 @@
+doctype html
+header
+  if logged
+    nav.navbar 
+      a(href="http://localhost:3000/") 
+        img(src="#", alt="farmacia logo")
+      a(href="/partidos") Malla de partidos
+      a(href="/pronosticos") Registra tus pronosticos
+      a(href="/ranking") Ranking de participantes
+      a(href="/ayuda") Ayuda
+  else
+    a(href="http://localhost:3000/") 
+      img(src="#", alt="farmacia logo")
+    .btn-account
+      button(id="signin") Iniciar sesion
+      button(id="signup") Registrarse

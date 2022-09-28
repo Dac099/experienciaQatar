@@ -1,0 +1,76 @@
+include includes/mixins.pug
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href="/css/style.css")
+    title= title
+  body 
+    include includes/header.pug
+    include includes/account-modal.pug
+    main 
+      img.banner(src="#", alt="Imagen premio")
+      section.info-premios
+        h3.info-premios--title ¿Cómo funciona?
+        .info-premios--text
+          .text-card
+            h5 Registra tus pronosticos para cada etapa
+            p
+              |Lorem, ipsum dolor sit amet consectetur adipisicing elit. Earum quos sunt corporis error ducimus tempore! Magni aut quo exercitationem nobis ipsam, maiores non deleniti tempora incidunt repellat, inventore necessitatibus perferendis.
+            button(type="button") Leer mas
+          .text-card
+            h5 Gana puntos por acertar al equipo ganador
+            p
+              |Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita accusantium nisi, sunt officiis dignissimos numquam? Voluptatum fugit distinctio nam totam itaque dolor a ipsum, et quae expedita! Architecto, quibusdam! Autem.
+            button(type="button") Leer mas            
+          .text-card 
+            h5 Gana puntos por acertar el marcador
+            p   
+              |Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum distinctio obcaecati veritatis id ducimus. Culpa, nihil nulla esse quam veniam ipsa voluptates! Quaerat, cumque ipsum? Ut dolorem accusantium aliquid saepe?
+            button(type="button") Leer mas            
+          .text-card 
+            h5 Gana premios en cada etapa del mundial
+            p
+              |Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident architecto nemo tempora cupiditate consequatur quae odit commodi repudiandae! Officia natus necessitatibus quis officiis autem consectetur dolorem voluptatem pariatur libero rem.
+            button(type="button") Leer mas            
+        a(href="/pronosticos") Registra tus pronosticos ahora
+      section.premios
+        h3.premios--title ¿Cuáles son los premios?
+        section.premios-cards
+          +cardPremio(
+            true, 
+            "#", 
+            "Premios de la etapa de grupos",
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo debitis expedita quis exercitationem, beatae fugit quae, illo asperiores, quas inventore libero iusto rerum ducimus architecto? Distinctio dignissimos fuga alias consectetur"  
+          )
+          +cardPremio(
+            false, 
+            "#", 
+            "Premios de la octavos de final",
+            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium, maxime? Repellendus officiis mollitia soluta corrupti Saepe assumenda facilis distinctio atque aliquid a exercitationem, hic iusto, aliquam id porro nobis ad"
+          )
+          +cardPremio(
+            true, 
+            "#", 
+            "Premios de la cuartos de final",
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam quibusdam porro et molestiae culpa ratione vitae excepturi distinctio sunt asperiores totam consectetur quod reiciendis quos, quia dicta amet. Molestias, ullam."
+          )
+          +cardPremio(
+            false, 
+            "#", 
+            "Premios de la semifinal",
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus cupiditate ipsam molestiae assumenda nemo. Corrupti exercitationem perspiciatis odio alias quia ut quas consequuntur commodi itaque, tenetur unde aperiam sit. Tempora?"
+          )
+          +cardPremio(
+            alse, 
+            "#", 
+            "Premios de la Gran final",
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione hic, consequatur beatae magnam omnis ex amet soluta quaerat, praesentium optio possimus qui similique illum iusto! Iure officia cum natus rerum."
+          )
+        a(href="/pronosticos") Registra tus pronosticos ahora
+      include includes/about.pug
+    include includes/footer.pug
+    script(src="/js/index.js" type="module")
+

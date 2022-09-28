@@ -5,15 +5,11 @@ const { signin, signup, getUser, getAllUsers, deleteUser} = require('./users.rou
 const router = Router();
 
 router.get('/', async (req, res) => {
-  // const querySnapshot = await db.collection('usuarios').get();
-  // const users = querySnapshot.docs.map(doc => ({
-  //   id: doc.id,
-  //   ...doc.data()
-  // }));
-
-  // console.log(users);
-  // res.send('Hola');
-  console.log('Landing page');
+  res.render('landing', {
+    title: 'Experiencia Qatar',
+    message: 'Landing page',
+    logged: false
+  });
 });
 
 router.get('/signin', signin);

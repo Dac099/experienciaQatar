@@ -5,8 +5,9 @@ const app = express();
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended:false }));
-app.set('views', './views');
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+app.use('/assets', express.static(path.join(__dirname, './public')));
 
 app.use(require('./routes/index.js'));
 module.exports = app;

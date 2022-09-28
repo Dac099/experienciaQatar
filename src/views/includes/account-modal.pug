@@ -1,0 +1,19 @@
+article(id="account-modal" class="modal")
+  span.close &times;
+  section.modal-content
+    .banner-account
+      p Participa en la experiencia Qatar 2022 de Farmacias económicas
+    .credential-account 
+      h2 Registra tus datos y participa por fabulosos premios
+      p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur vel consectetur voluptas magnam modi maiores numquam facere iste quam deserunt mollitia quasi excepturi veritatis rerum debitis doloremque enim, soluta ab?
+      .credential-card
+        p Ingresa tus datos
+        form(action="/signup" method="post" autocomplete) 
+          input(type="text" placeholder="Nickname" required autofocus)
+          input(type="text" placeholder="Correo" required)
+          input(type="password" placeholder="Contraseña" required)
+          button(type="submit")
+    .signin-option
+      p Si ya estas registrado inicia sesion
+      button(type="button", id="signin")
+    include ./about.pug

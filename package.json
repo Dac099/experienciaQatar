@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon node ./src/index.js"
+    "dev": "nodemon node ./src/index.js & npm run scss",
+    "scss": "sass --watch ./src/scss/index.scss ./src/public/css/style.css"
   },
   "keywords": [],
-  "author": "",
+  "author": "Dac099",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.0.2",
@@ -17,6 +18,7 @@
     "pug": "^3.0.2"
   },
   "devDependencies": {
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "sass": "^1.55.0"
   }
 }
