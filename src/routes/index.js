@@ -4,6 +4,7 @@ const { signin, signup, getUser, getAllUsers, deleteUser} = require('./users.rou
 const { getUrlImages } = require('../storage.js');
 
 const router = Router();
+const logged = true;
 
 router.get('/', async (req, res) => {
   const urlImgs = await getUrlImages();
@@ -11,7 +12,7 @@ router.get('/', async (req, res) => {
   res.render('landing', {
     title: 'Experiencia Qatar',
     message: 'Landing page',
-    logged: false,
+    logged: !logged,
     banner: urlImgs.banner,
     icon: urlImgs.logo
   });

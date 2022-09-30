@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon node ./src/index.js & npm run scss",
-    "scss": "sass --watch ./src/scss/index.scss ./src/public/css/style.css"
+    "scss": "sass --watch ./src/scss/index.scss ./public/css/style.css"
   },
   "keywords": [],
   "author": "Dac099",
