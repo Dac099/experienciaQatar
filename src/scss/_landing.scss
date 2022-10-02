@@ -2,7 +2,8 @@ main{
   width: 100%;
   display: grid;
   padding: 10px;
-  grid-template-rows: 650px 100vh 3000px 200px;
+  grid-template-rows: min-content 100vh 3000px 200px;
+  gap: 10px;
 
   .banner{
     width: 100%;
@@ -20,15 +21,11 @@ main{
 
   .info-premios--text{
     display: grid;
-    grid-auto-rows: 40vh;
-    grid-template-columns: repeat(auto-fill, 50%);
+    grid-template-columns: repeat(auto-fit, minmax(425px, 50%));
     gap: 10px;
   }
 
   .text-card{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
+    background-color: coral;
   }
 }
