@@ -1,12 +1,20 @@
-mixin cardPremio(left, urlImg, titleCard, text)
+mixin cardPremio(left, urlImg, titleCard, text, bottom)
   if left
-    img(src=urlImg, alt="Imagen de premio")
-    div.premio-cart--text
-      h5=titleCard
-      p=text
-  else 
-    div.premio-cart--text
-      h5=titleCard
-      p=text
-    img(src=urlImg, alt="Imagen de premio")
+    section.card-premio
+      img(src=urlImg, alt="Imagen de premio")
+      div.premio-cart--text
+        h5=titleCard
+        p=text
+  else if bottom
+    section.card-premio__final
+      div.premio-cart--text__final
+        h5=titleCard
+        p=text
+      img(src=urlImg, alt="Imagen de premio")
+  else
+    section.card-premio
+      div.premio-cart--text
+        h5=titleCard
+        p=text
+      img(src=urlImg, alt="Imagen de premio")
       

@@ -8,9 +8,10 @@
   font-size: 62.5%;
 }
 
+@import './landing';
 @import './window-modal';
 @import './header';
-@import './landing';
+@import './about';
 
 a{
   text-decoration: none;

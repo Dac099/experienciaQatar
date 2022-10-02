@@ -2,7 +2,7 @@
 main{
   width: 100%;
   display: grid;
-  grid-template-rows: min-content 948px 3000px 200px;
+  grid-template-rows: min-content 948px min-content 340px;
   gap: 10px;
 
   .banner{
@@ -33,6 +33,7 @@ main{
   .text-card{
     display: grid;
     grid-template-rows: 1fr 2fr 1fr;
+    padding: 20px;
   }
 
   .text-card h5{
@@ -56,5 +57,90 @@ main{
     align-self: center;
     justify-self: center;
     @include button;
+  }
+
+  .premios{
+    width: 100%;
+    padding: 20px;
+  }
+
+  .premios--title{
+    font-size: 4.8rem;
+    font-weight: 400;
+    margin-top: 20px;
+  }
+
+  .premios-cards{
+    display: grid;
+    grid-template-rows: repeat(5, 450px);
+    grid-template-columns: minmax(435px, 100%);
+    margin: 0 auto;
+  }
+
+  .card-premio{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .card-premio img {
+    flex-grow: 1;
+    width: 50%;
+    max-width: 500px;
+    flex-basis: 430px;
+    padding: 15px;
+  }
+
+  .premio-cart--text{
+    flex-grow: 1;
+    max-width: 500px;
+    flex-basis: 430px;
+    padding: 15px;
+
+    h5{
+      font-size: 2.4rem;
+      margin-bottom: 30px;
+    }
+
+    p{
+      font-size: 1.8rem;
+      text-align: justify;
+    }
+  }
+
+  .card-premio__final{
+    display: flex;
+    flex-direction: column;
+
+    img{
+      max-width: 800px;
+      justify-self: center;
+      align-self: center;
+    }
+    
+
+    .premio-cart--text__final{
+      display: flex;
+      justify-content: space-evenly;  
+
+      h5{
+        font-size: 2.4rem;
+        max-width: 50%;
+      }
+
+      p{
+        font-size: 1.8rem;
+        max-width: 50%;
+      }
+    }
+  }
+
+  .premios button{
+    display: inherit;
+    width: 417px;
+    height: 40px;
+    margin: 20px auto;
+    @include button();
   }
 }

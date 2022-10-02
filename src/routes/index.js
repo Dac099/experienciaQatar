@@ -14,7 +14,8 @@ router.get('/', async (req, res) => {
     message: 'Landing page',
     logged: !logged,
     banner: urlImgs.banner,
-    icon: urlImgs.logo
+    icon: urlImgs.logo,
+    home: 'http://localhost:3001'
   });
 });
 
