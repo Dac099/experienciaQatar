@@ -1,13 +1,12 @@
 header{
   width: 100%;
-  padding: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   
   .home{
-    width: 160px;
-    height: 60px;
+    width: 195px;
+    height: 65px;
     
     .logo-img{
       width: 100%;
@@ -19,17 +18,7 @@ header{
     margin-right: 10px;
     width: 100px;
     height: 40px;
-    border-radius: 5px;
-    border: 2px solid $red_color;
-    background-color: $white_color;
-    font-size: 1.3rem;
-    color: $red_color;
-  }
-  
-  .btn-account button:hover{
-    background-color: $red_color;
-    color: $white_color;
-    font-weight: 600;
+    @include button;
   }
 
   .nav--options{

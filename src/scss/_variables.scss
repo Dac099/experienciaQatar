@@ -1,4 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
 $red_color: rgb(237, 28, 46);
 $white_color: rgb(255,255,255);
-$font-family: 'Montserrat', sans-serif;
+$font-family: 'Montserrat', sans-serif; 
+
+@mixin button() {
+  background-color: $white_color;
+  color: $red_color;
+  border: 2px solid $red_color;
+  font-size: 1.3rem;
+  border-radius: 5px;
+
+  &:hover{
+    background-color: $red_color;
+    color: $white_color;
+    font-weight: 600;
+  }
+}

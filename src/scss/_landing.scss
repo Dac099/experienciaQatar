@@ -1,31 +1,60 @@
+@use "sass:math";
 main{
   width: 100%;
   display: grid;
-  padding: 10px;
-  grid-template-rows: min-content 100vh 3000px 200px;
+  grid-template-rows: min-content 948px 3000px 200px;
   gap: 10px;
 
   .banner{
     width: 100%;
+    margin-bottom: 60px;
   }
 
   .info-premios{
     display: grid;
-    grid-template-rows: 5% 95%;
+    grid-template-rows: min-content 800px 90px;
+    padding: 20px;
   }
 
   .info-premios--title{
-    font-size: 3rem;
+    font-size: 4.8rem;
     font-weight: 400;
   }
 
   .info-premios--text{
+    align-self: center;
+    width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(425px, 50%));
-    gap: 10px;
+    grid-template-rows: repeat(2, 300px);
+    grid-template-columns: repeat(2, minmax(430px, 750px));
+    justify-content: space-between;
   }
 
   .text-card{
-    background-color: coral;
+    display: grid;
+    grid-template-rows: 1fr 2fr 1fr;
+  }
+
+  .text-card h5{
+    font-size: 2.4rem;
+  } 
+
+  .text-card p{
+    font-size: 1.8rem;
+    text-align: justify;
+  }
+
+  .text-card button{
+    width: 130px;
+    height: 40px;
+    @include button;
+  }
+
+  .info-premios > button{
+    width: 314px;
+    height: 40px;
+    align-self: center;
+    justify-self: center;
+    @include button;
   }
 }

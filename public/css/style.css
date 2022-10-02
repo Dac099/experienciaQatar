@@ -1,4 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  font-size: 62.5%;
+}
+
 .modal {
   display: none;
   position: fixed;
@@ -31,14 +39,13 @@
 
 header {
   width: 100%;
-  padding: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 header .home {
-  width: 160px;
-  height: 60px;
+  width: 195px;
+  height: 65px;
 }
 header .home .logo-img {
   width: 100%;
@@ -48,11 +55,11 @@ header .btn-account button {
   margin-right: 10px;
   width: 100px;
   height: 40px;
-  border-radius: 5px;
-  border: 2px solid rgb(237, 28, 46);
   background-color: rgb(255, 255, 255);
-  font-size: 1.3rem;
   color: rgb(237, 28, 46);
+  border: 2px solid rgb(237, 28, 46);
+  font-size: 1.3rem;
+  border-radius: 5px;
 }
 header .btn-account button:hover {
   background-color: rgb(237, 28, 46);
@@ -78,36 +85,70 @@ header .nav--options a:hover {
 main {
   width: 100%;
   display: grid;
-  padding: 10px;
-  grid-template-rows: min-content 100vh 3000px 200px;
+  grid-template-rows: min-content 948px 3000px 200px;
   gap: 10px;
 }
 main .banner {
   width: 100%;
+  margin-bottom: 60px;
 }
 main .info-premios {
   display: grid;
-  grid-template-rows: 5% 95%;
+  grid-template-rows: min-content 800px 90px;
+  padding: 20px;
 }
 main .info-premios--title {
-  font-size: 3rem;
+  font-size: 4.8rem;
   font-weight: 400;
 }
 main .info-premios--text {
+  align-self: center;
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(425px, 50%));
-  gap: 10px;
+  grid-template-rows: repeat(2, 300px);
+  grid-template-columns: repeat(2, minmax(430px, 750px));
+  justify-content: space-between;
 }
 main .text-card {
-  background-color: coral;
+  display: grid;
+  grid-template-rows: 1fr 2fr 1fr;
 }
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Montserrat", sans-serif;
-  font-size: 62.5%;
+main .text-card h5 {
+  font-size: 2.4rem;
+}
+main .text-card p {
+  font-size: 1.8rem;
+  text-align: justify;
+}
+main .text-card button {
+  width: 130px;
+  height: 40px;
+  background-color: rgb(255, 255, 255);
+  color: rgb(237, 28, 46);
+  border: 2px solid rgb(237, 28, 46);
+  font-size: 1.3rem;
+  border-radius: 5px;
+}
+main .text-card button:hover {
+  background-color: rgb(237, 28, 46);
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+}
+main .info-premios > button {
+  width: 314px;
+  height: 40px;
+  align-self: center;
+  justify-self: center;
+  background-color: rgb(255, 255, 255);
+  color: rgb(237, 28, 46);
+  border: 2px solid rgb(237, 28, 46);
+  font-size: 1.3rem;
+  border-radius: 5px;
+}
+main .info-premios > button:hover {
+  background-color: rgb(237, 28, 46);
+  color: rgb(255, 255, 255);
+  font-weight: 600;
 }
 
 a {

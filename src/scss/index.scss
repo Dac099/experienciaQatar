@@ -1,7 +1,4 @@
 @import './variables';
-@import './window-modal';
-@import './header';
-@import './landing';
 
 *{
   margin: 0;
@@ -10,6 +7,10 @@
   font-family: $font-family;
   font-size: 62.5%;
 }
+
+@import './window-modal';
+@import './header';
+@import './landing';
 
 a{
   text-decoration: none;
