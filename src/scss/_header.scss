@@ -14,7 +14,11 @@ header{
     }
   }
 
-  .btn-account button{
+  .btn-account{
+    display: flex;
+  }
+
+  .btn-account a{
     margin-right: 10px;
     width: 100px;
     height: 40px;

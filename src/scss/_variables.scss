@@ -9,6 +9,8 @@ $font-family: 'Montserrat', sans-serif;
   border: 2px solid $red_color;
   font-size: 1.3rem;
   border-radius: 5px;
+  display: grid;
+  place-content: center;
 
   &:hover{
     background-color: $red_color;
