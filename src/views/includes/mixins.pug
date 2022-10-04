@@ -17,4 +17,9 @@ mixin cardPremio(left, urlImg, titleCard, text, bottom)
         h5=titleCard
         p=text
       img(src=urlImg, alt="Imagen de premio")
-      
+
+mixin cardMondalInfo(text)
+  article(class="modal-card", id="modal")
+    section(class="modal-content", id="content")
+      span.close &times;
+      p=text   

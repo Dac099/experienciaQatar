@@ -6,7 +6,7 @@ html(lang="en")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     link(rel="stylesheet", href="/css/style.css")
     title=title
-  body 
+  body.container-account
     img(src="https://storage.googleapis.com/polla-mundialista-75eb4.appspot.com/banner1.PNG", alt="Banner informativo: por cada $13 de compras participas para ganar una moto")
     .credential-account 
       .credential-text
@@ -27,7 +27,7 @@ html(lang="en")
             input(type="password" placeholder="Constraseña" required autofocus name="password")
             button(type="submit") Iniciar
     .signin-option
-      if action="signup"
+      if action=="signup"
         p Si ya estas registrado inicia sesion
         a(href="/signin") Iniciar 
       else 

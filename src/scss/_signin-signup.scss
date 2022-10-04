@@ -1,7 +1,7 @@
-body{
+.container-account{
   padding: 20px;
   display: grid;
-  grid-template-rows: min-content 670px 150px 375px;
+  grid-template-rows: min-content 670px 100px 340px;
   gap: 20px;
 
   img{
@@ -30,11 +30,45 @@ body{
   }
 
   .credential-card{
-    border: 1px solid $red_color;
+    border: 2px solid $red_color;
     justify-self: center;
     width: 600px;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: space-around;
+    align-items: center;
+    p{
+      width: 80%;
+      font-size: 2rem;
+      font-weight: 600;
+      margin: 10px auto;
+    }
+
+    form{
+      width: 80%;
+      height: 70%;
+      display: flex;
+      flex-direction: column;
+      margin: 0 auto;
+      gap: 20px;
+    }
+
+    form > input{
+      height: 40px;
+      font-size: 1.5rem;
+    }
+
+    form button{
+      width: 130px;
+      height: 40px;
+      align-self: flex-start;
+      @include button;
+    }
   }
+
+
 
   .signin-option{
     display: flex;

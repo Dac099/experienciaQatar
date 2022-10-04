@@ -279,46 +279,119 @@ footer .e6 {
   width: 15%;
 }
 
-body {
+.modal-card {
+  display: none;
+  position: relative;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.modal-card .modal-content {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: rgba(237, 28, 46, 0.9);
+  padding: 20px;
+  width: 500px;
+  height: min-content;
+}
+.modal-card .close {
+  color: rgb(255, 255, 255);
+  font-size: 3rem;
+  float: right;
+  font-weight: 600;
+}
+.modal-card .close:hover,
+.modal-card .close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.container-account {
   padding: 20px;
   display: grid;
-  grid-template-rows: min-content 670px 150px 375px;
+  grid-template-rows: min-content 670px 100px 340px;
   gap: 20px;
 }
-body img {
+.container-account img {
   width: 100%;
 }
-body .credential-account {
+.container-account .credential-account {
   display: grid;
   grid-template-rows: 150px 430px;
   gap: 10px;
   padding: 20px;
 }
-body .credential-text h2 {
+.container-account .credential-text h2 {
   font-size: 3.8rem;
   font-weight: 400;
   text-align: center;
   margin-bottom: 20px;
 }
-body .credential-text p {
+.container-account .credential-text p {
   font-size: 2.6rem;
   text-align: center;
 }
-body .credential-card {
-  border: 1px solid rgb(237, 28, 46);
+.container-account .credential-card {
+  border: 2px solid rgb(237, 28, 46);
   justify-self: center;
   width: 600px;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  justify-content: space-around;
+  align-items: center;
 }
-body .signin-option {
+.container-account .credential-card p {
+  width: 80%;
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 10px auto;
+}
+.container-account .credential-card form {
+  width: 80%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  gap: 20px;
+}
+.container-account .credential-card form > input {
+  height: 40px;
+  font-size: 1.5rem;
+}
+.container-account .credential-card form button {
+  width: 130px;
+  height: 40px;
+  align-self: flex-start;
+  background-color: rgb(255, 255, 255);
+  color: rgb(237, 28, 46);
+  border: 2px solid rgb(237, 28, 46);
+  font-size: 1.3rem;
+  border-radius: 5px;
+  display: grid;
+  place-content: center;
+}
+.container-account .credential-card form button:hover {
+  background-color: rgb(237, 28, 46);
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+}
+.container-account .signin-option {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 }
-body .signin-option p {
+.container-account .signin-option p {
   font-size: 2.6rem;
 }
-body .signin-option a {
+.container-account .signin-option a {
   background-color: rgb(255, 255, 255);
   color: rgb(237, 28, 46);
   border: 2px solid rgb(237, 28, 46);
@@ -329,7 +402,7 @@ body .signin-option a {
   width: 192px;
   height: 52px;
 }
-body .signin-option a:hover {
+.container-account .signin-option a:hover {
   background-color: rgb(237, 28, 46);
   color: rgb(255, 255, 255);
   font-weight: 600;
