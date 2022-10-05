@@ -30,7 +30,7 @@
   }
 
   .credential-card{
-    border: 2px solid $red_color;
+    box-shadow: 3px 7px 7px rgba(237, 28, 46, 0.5);
     justify-self: center;
     width: 600px;
     height: 100%;
@@ -58,6 +58,18 @@
     form > input{
       height: 40px;
       font-size: 1.5rem;
+      border: none;
+      border-bottom: 2px solid $red_color;
+    }
+
+    input:focus-visible{
+      outline: none;
+    }
+
+    input:focus-visible::placeholder{
+      color: rgba(237, 28, 46, 0.5);
+      font-weight: 600;
+      padding-left: 30px;
     }
 
     form button{

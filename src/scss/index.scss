@@ -9,6 +9,11 @@
   text-decoration: none;
 }
 
+body{
+  width: 100%;
+  border: 1px solid blue;
+}
+
 // Styles for landign page
 @import './landing';
 @import './header';
