@@ -8,11 +8,6 @@
   text-decoration: none;
 }
 
-body {
-  width: 100%;
-  border: 1px solid blue;
-}
-
 main {
   width: 100%;
   gap: 10px;
@@ -70,8 +65,7 @@ main .text-card button:hover {
 main .info-premios > button {
   width: 314px;
   height: 40px;
-  align-self: center;
-  justify-self: center;
+  margin: 0 auto;
   background-color: rgb(255, 255, 255);
   color: rgb(237, 28, 46);
   border: 2px solid rgb(237, 28, 46);
@@ -87,17 +81,18 @@ main .info-premios > button:hover {
 }
 main .premios {
   width: 100%;
-  padding: 20px;
+  margin-top: 20px;
 }
 main .premios--title {
-  font-size: 4.8rem;
+  font-size: 3.5rem;
   font-weight: 400;
-  margin-top: 20px;
+  margin-top: 100px;
+  text-align: center;
 }
 main .premios-cards {
   display: grid;
   grid-template-rows: repeat(5, 450px);
-  grid-template-columns: minmax(435px, 100%);
+  grid-template-columns: minmax(375px, 100%);
   margin: 0 auto;
 }
 main .card-premio {
@@ -112,45 +107,53 @@ main .card-premio img {
   max-width: 500px;
   flex-basis: 430px;
   padding: 15px;
+  order: 1;
 }
 main .premio-cart--text {
+  order: 2;
   flex-grow: 1;
   max-width: 500px;
   flex-basis: 430px;
   padding: 15px;
 }
 main .premio-cart--text h5 {
-  font-size: 2.4rem;
+  font-size: 1.8rem;
   margin-bottom: 30px;
+  text-align: center;
 }
 main .premio-cart--text p {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   text-align: justify;
 }
 main .card-premio__final {
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
+  padding: 15px;
 }
 main .card-premio__final img {
-  max-width: 800px;
+  order: 1;
+  width: 100%;
   justify-self: center;
   align-self: center;
 }
 main .card-premio__final .premio-cart--text__final {
+  order: 2;
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+  text-align: justify;
 }
 main .card-premio__final .premio-cart--text__final h5 {
-  font-size: 2.4rem;
-  max-width: 50%;
+  font-size: 1.8rem;
+  margin-bottom: 30px;
 }
 main .card-premio__final .premio-cart--text__final p {
-  font-size: 1.8rem;
-  max-width: 50%;
+  font-size: 1.5rem;
 }
 main .premios button {
   display: inherit;
-  width: 417px;
+  width: 80%;
   height: 40px;
   margin: 20px auto;
   background-color: rgb(255, 255, 255);
@@ -202,9 +205,20 @@ header .btn-account a:hover {
   font-weight: 600;
 }
 header .nav--options {
-  justify-self: flex-start;
   display: flex;
+  justify-self: flex-start;
+  align-items: center;
   gap: 15px;
+  height: 100%;
+  padding: 0px 10px;
+}
+header .nav--options .icon {
+  display: none;
+  font-size: 3rem;
+}
+header .nav--options .icon:focus, header .nav--options .icon:hover {
+  text-decoration: none;
+  border: none;
 }
 header .nav--options a {
   color: rgb(237, 28, 46);
@@ -217,6 +231,33 @@ header .nav--options a:hover {
   border-bottom: 4px solid rgb(237, 28, 46);
 }
 
+@media screen and (max-width: 770px) {
+  .nav--options a:not(:last-child) {
+    display: none;
+  }
+  .nav--options a.icon {
+    float: right;
+    display: block;
+  }
+  .nav--responsive {
+    width: 350px;
+    height: min-content;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 2px solid rgba(237, 28, 46, 0.5);
+    top: 80px;
+    left: calc(50% - 175px);
+    padding: 10px;
+    display: none;
+  }
+  .nav--responsive a {
+    display: block;
+    font-size: 2rem;
+    color: black;
+    text-decoration: none;
+    margin-bottom: 10px;
+  }
+}
 .acerca {
   width: 100%;
   display: flex;
@@ -224,11 +265,13 @@ header .nav--options a:hover {
   align-items: center;
   justify-content: space-evenly;
   padding: 20px;
+  gap: 15px;
 }
 .acerca h3 {
-  font-size: 3.6rem;
+  font-size: 3.5rem;
   font-weight: 400;
-  width: 70%;
+  flex-basis: content;
+  text-align: center;
 }
 .acerca .acerca--enlaces {
   flex-grow: 1;
@@ -238,6 +281,7 @@ header .nav--options a:hover {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  gap: 20px;
 }
 .acerca .acerca--enlaces a {
   background-color: rgb(255, 255, 255);
@@ -263,24 +307,19 @@ footer {
   height: 100px;
   font-size: 1.5rem;
   font-weight: 600;
-  display: flex;
-  align-items: center;
-  padding: 20px;
+  padding: 10px 20px;
+  margin-top: 100px;
+  background-color: rgba(237, 28, 46, 0.4);
 }
 footer img {
   width: 40%;
   justify-self: center;
+  float: right;
 }
-footer .e1,
-footer .e2,
-footer .e3 {
-  justify-self: flex-start;
-  width: 10%;
-}
-footer .e5,
-footer .e6 {
-  justify-self: flex-end;
-  width: 15%;
+footer a {
+  color: black;
+  display: block;
+  margin-bottom: 2px;
 }
 
 .modal-card {

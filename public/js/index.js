@@ -33,3 +33,20 @@ function modalControl(btn, modal){
     modal.style.display = 'none';
   });
 }
+
+// Respondive header
+const menuIcon = document.querySelector('.icon');
+const nav_bar = document.querySelector('.nav--responsive');
+
+menuIcon.addEventListener('click', () => {
+
+  if(nav_bar.style.display === "block"){
+    nav_bar.style.display = "none";
+  }else{
+    nav_bar.style.display = "block";
+  }
+});
+
+nav_bar.addEventListener('click', () => {
+  nav_bar.style.display = "none";
+});

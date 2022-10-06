@@ -13,7 +13,7 @@ header{
       height: 100%;
     }
   }
-
+  //Styles when loggin false
   .btn-account{
     display: flex;
   }
@@ -24,11 +24,24 @@ header{
     height: 40px;
     @include button;
   }
-
+  //Styles when loggin false
   .nav--options{
-    justify-self: flex-start;
     display: flex;
+    justify-self: flex-start;
+    align-items: center;
     gap: 15px;
+    height: 100%;
+    padding: 0px 10px;
+  }
+
+  .nav--options .icon{
+    display: none;
+    font-size: 3rem;
+
+    &:focus, &:hover{
+      text-decoration: none;
+      border: none;
+    }
   }
   
   .nav--options a{
@@ -43,3 +56,38 @@ header{
     border-bottom: 4px solid $red_color;
   }
 }
+
+// Styles for responsive header
+@media screen and (max-width: 770px){
+  .nav--options a:not(:last-child){
+    display: none;
+  }
+
+  .nav--options a.icon{
+    float: right;
+    display: block;
+  }
+
+  .nav--responsive{
+    width: 350px;
+    height: min-content;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 2px solid rgba(237, 28, 46, 0.5);
+    top: 80px;
+    left: calc(50% - 175px);
+    padding: 10px;
+    display: none;
+
+  }
+
+  .nav--responsive a{
+    display: block;
+    font-size: 2rem;
+    color: black;
+    text-decoration: none;
+    margin-bottom: 10px;
+  }
+
+}
+

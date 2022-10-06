@@ -3,25 +3,19 @@ footer{
   height: 100px;
   font-size: 1.5rem;
   font-weight: 600;
-  display: flex;
-  // justify-content: space-between;
-  align-items: center;
-  padding: 20px;
+  padding: 10px 20px;
+  margin-top: 100px;
+  background-color: rgba(237, 28, 46, 0.4);
 
   img{
     width: 40%;
     justify-self: center;
-  }
-  .e1,
-  .e2,
-  .e3{
-    justify-self: flex-start;
-    width: 10%;
+    float: right;
   }
 
-  .e5,
-  .e6{
-    justify-self: flex-end;
-    width: 15%;
+  a{
+    color: black;
+    display: block;
+    margin-bottom: 2px;
   }
 }
