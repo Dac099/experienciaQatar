@@ -19,10 +19,7 @@ mixin cardPremio(left, urlImg, titleCard, text, bottom)
       img(src=urlImg, alt="Imagen de premio")
 
 mixin cardMondalInfo(text)
-  //- article(class="modal-card", id="modal")
-  //-   section(class="modal-content", id="content")
-  //-     span.close &times;
-  //-     p=text  
-  section(class="modal-content", id="content")
-    span.close &times;
-    p=text    
+  article.modal
+    section(class="modal-content")
+      span.close &times;
+      p=text    

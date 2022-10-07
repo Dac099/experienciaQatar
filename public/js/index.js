@@ -1,4 +1,5 @@
-const modals = document.getElementsByClassName('modal-card');
+
+const modals = document.getElementsByClassName('modal');
 const btn1 = document.getElementById('modal-btn1');
 const btn2 = document.getElementById('modal-btn2');
 const btn3 = document.getElementById('modal-btn3');
@@ -13,17 +14,9 @@ modalControl(btn4, modal4);
 
 function modalControl(btn, modal){
   const close = modal.querySelector('.close');
-  const btn_position = btn.getBoundingClientRect();
-
-  const modal_top = btn_position.top;
-  const modal_left = btn_position.left;
-
-  console.log(modal_top, modal_left);
 
   btn.addEventListener('click', () => {
-    modal.style.display = 'block';
-    modal.style.top = modal_top;
-    modal.style.left = modal_left;
+    modal.style.display = 'flex';
   })
 
 
@@ -37,9 +30,9 @@ function modalControl(btn, modal){
     }
   })
 
-  // window.addEventListener('scroll', () => {
-  //   modal.style.display = 'none';
-  // });
+  window.addEventListener('scroll', () => {
+    modal.style.display = 'none';
+  });
 }
 
 // Respondive header

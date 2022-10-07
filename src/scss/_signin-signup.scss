@@ -1,38 +1,39 @@
 .container-account{
-  padding: 20px;
-  display: grid;
-  grid-template-rows: min-content 670px 100px 340px;
-  gap: 20px;
+  width: 100%;
+  border: 1px solid blue;
 
   img{
     width: 100%;
+    margin-bottom: 20px;
   }
 
   .credential-account{
     display: grid;
     grid-template-rows: 150px 430px;
+    grid-template-columns: 375px;
     gap: 10px;
-    padding: 20px;
   }
 
   .credential-text{
+    margin-bottom: 10px;
+    
     h2{
-      font-size: 3.8rem;
+      font-size: 2.5rem;
       font-weight: 400;
       text-align: center;
       margin-bottom: 20px;
     }
 
     p{
-      font-size: 2.6rem;
+      font-size: 2rem;
       text-align: center;
     }
   }
 
   .credential-card{
-    box-shadow: 3px 7px 7px rgba(237, 28, 46, 0.5);
+    margin-top: 20px;
     justify-self: center;
-    width: 600px;
+    width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -86,9 +87,14 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
 
     p{
-      font-size: 2.6rem;
+      font-size: 2.5rem;
+      flex-basis: 350px;
+      text-align: center;
+      margin-bottom: 20px;
     }
 
     a{
