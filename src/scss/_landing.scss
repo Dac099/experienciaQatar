@@ -150,3 +150,49 @@ main{
     @include button;
   }
 }
+
+
+// Styles for min width 768px
+@media screen and (min-width:768px){
+  main{
+    .info-premios--text{
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 400px);
+    }
+
+    .card-premio img{
+      order: unset;
+    }
+
+    .premio-cart--text{
+      order: unset;
+    }
+
+    .card-premio__final{
+      img{
+        order: unset;
+        max-width: 800px;
+      }
+
+      .premio-cart--text__final{
+        order: unset;
+        flex-wrap: wrap;
+        flex-direction: row;
+        gap: 20px;
+        justify-content: space-evenly;
+      }
+
+      .premio-cart--text__final h5{
+        flex-basis: 230px;
+      }
+
+      .premio-cart--text__final p{
+        flex-basis: 538px;
+      }
+    }
+    
+    .premios button{
+      max-width: 417px;
+    }
+  }
+}

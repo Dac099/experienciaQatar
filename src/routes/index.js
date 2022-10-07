@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
   res.render('landing', {
     title: 'Experiencia Qatar',
     message: 'Landing page',
-    logged: logged,
+    logged: !logged,
     banner: urlImgs.banner,
     icon: urlImgs.logo,
     home: 'http://localhost:3001'

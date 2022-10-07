@@ -8,7 +8,8 @@ footer{
   background-color: rgba(237, 28, 46, 0.4);
 
   img{
-    width: 40%;
+    width: 30%;
+    max-width: 140px;
     justify-self: center;
     float: right;
   }
@@ -17,5 +18,33 @@ footer{
     color: black;
     display: block;
     margin-bottom: 2px;
+  }
+}
+
+// Styles for footer min width 768px
+@media screen and (min-width: 768px){
+  footer{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+    height: min-content;
+
+    img{
+      float: none;
+      justify-self: center;
+      width: 35%;
+      max-width: none;
+    }
+
+    .e1, .e2, .e3{
+      width: 11%;
+      justify-self: flex-start;
+    }
+
+    .e5, .e6{
+      width: 16%;
+      justify-self: flex-end;
+    }
   }
 }

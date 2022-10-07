@@ -1,6 +1,5 @@
 .container-account{
   width: 100%;
-  border: 1px solid blue;
 
   img{
     width: 100%;
@@ -101,6 +100,20 @@
       @include button;
       width: 192px;
       height: 52px;
+    }
+  }
+}
+
+@media screen and (min-width: 768px){
+  .container-account{
+    .credential-account{
+      grid-template-columns: 100%;
+    }
+
+    .credential-card{
+      max-width: 600px;
+      max-height: 80%;
+      box-shadow: 10px 10px 10px rgba(237, 28, 46, 0.5);
     }
   }
 }

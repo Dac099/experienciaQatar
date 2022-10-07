@@ -33,3 +33,12 @@
     }
   }
 }
+
+// Styles for min width 1050px
+@media screen and (min-width: 1050px){
+  .acerca{
+    h3{
+      flex-basis: 700px;
+    }
+  }
+}
