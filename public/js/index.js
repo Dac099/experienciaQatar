@@ -12,12 +12,20 @@ modalControl(btn3, modal3);
 modalControl(btn4, modal4);
 
 function modalControl(btn, modal){
+  const close = modal.querySelector('.close');
+  const btn_position = btn.getBoundingClientRect();
+
+  const modal_top = btn_position.top;
+  const modal_left = btn_position.left;
+
+  console.log(modal_top, modal_left);
 
   btn.addEventListener('click', () => {
     modal.style.display = 'block';
+    modal.style.top = modal_top;
+    modal.style.left = modal_left;
   })
 
-  const close = modal.querySelector('.close');
 
   close.addEventListener('click', () => {
     modal.style.display = 'none';
@@ -29,9 +37,9 @@ function modalControl(btn, modal){
     }
   })
 
-  window.addEventListener('scroll', () => {
-    modal.style.display = 'none';
-  });
+  // window.addEventListener('scroll', () => {
+  //   modal.style.display = 'none';
+  // });
 }
 
 // Respondive header
