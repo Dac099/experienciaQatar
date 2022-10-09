@@ -554,26 +554,9 @@ main h1 {
   font-size: 3rem;
   margin-bottom: 20px;
 }
-main button {
-  background-color: rgb(255, 255, 255);
-  color: rgb(237, 28, 46);
-  border: 2px solid rgb(237, 28, 46);
-  font-size: 1.3rem;
-  border-radius: 5px;
-  display: grid;
-  place-content: center;
-  width: 100px;
-  height: 40px;
-  margin: 0 auto;
-  font-size: 3rem;
-}
-main button:hover {
-  background-color: rgb(237, 28, 46);
-  color: rgb(255, 255, 255);
-  font-weight: 600;
-}
 main .etapas {
   width: 100%;
+  margin-bottom: 20px;
 }
 main .etapas nav {
   display: flex;
@@ -587,6 +570,79 @@ main .etapas p {
 main .etapas p:hover {
   background-color: rgb(237, 28, 46);
   color: rgb(255, 255, 255);
+}
+main .container {
+  width: 100%;
+  height: min-content;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(375px, 1fr));
+  grid-auto-rows: min-content;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+main button.addCard {
+  align-self: center;
+  justify-self: center;
+  background-color: rgb(255, 255, 255);
+  color: rgb(237, 28, 46);
+  border: 2px solid rgb(237, 28, 46);
+  font-size: 1.3rem;
+  border-radius: 5px;
+  display: grid;
+  place-content: center;
+  width: 100px;
+  height: 40px;
+  margin: 0 auto;
+  font-size: 3rem;
+}
+main button.addCard:hover {
+  background-color: rgb(237, 28, 46);
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+}
+main .container section {
+  height: 200px;
+  margin: 0px 10px;
+  padding: 5px;
+  background-color: rgb(237, 28, 46);
+  color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 10px;
+}
+main .container section .equipo {
+  font-size: 4rem;
+  font-weight: bold;
+}
+main .container section .estats {
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 3.5rem;
+}
+main .container section .estats p {
+  margin-bottom: 3px;
+}
+main .modalForm {
+  display: block;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+main .modalForm form {
+  border: 1px solid red;
+  position: relative;
+  top: 50px;
+  display: flex;
+  flex-direction: column;
+}
+main .modalInfo {
+  display: none;
 }
 
 /*# sourceMappingURL=style.css.map */

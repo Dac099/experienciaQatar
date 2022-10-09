@@ -18,16 +18,77 @@ html(lang="en")
           p SemiFinal
           p Final
       article.container
+        button.addCard &plus;
         section 
           p.equipo México
+          .estats  
+            .index
+              p Partidos jugados: 
+              p Partidos perdidos:
+              p Partidos ganados:
+              p Goles totales:
+              p Goles contra:
+              p Puntos totales:
+            .values
+              p.partidos-jugados 0
+              p.partidos-perdidos 0
+              p.partidos-ganados 0
+              p.goles-totales 0
+              p.goles-contra 0
+              p.puntos-totales 0
         section 
           p.equipo Qatar
+          .estats 
+            .index
+              p Partidos jugados: 
+              p Partidos perdidos:
+              p Partidos ganados:
+              p Goles totales:
+              p Goles contra:
+              p Puntos totales:
+            .values
+              p.partidos-jugados 0
+              p.partidos-perdidos 0
+              p.partidos-ganados 0
+              p.goles-totales 0
+              p.goles-contra 0
+              p.puntos-totales 0
         section 
           p.equipo Alemania
+          .estats  
+            .index
+              p Partidos jugados: 
+              p Partidos perdidos:
+              p Partidos ganados:
+              p Goles totales:
+              p Goles contra:
+              p Puntos totales:
+            .values
+              p.partidos-jugados 0
+              p.partidos-perdidos 0
+              p.partidos-ganados 0
+              p.goles-totales 0
+              p.goles-contra 0
+              p.puntos-totales 0
         section 
           p.equipo Brasil
-      button &plus;
+          .estats  
+            .index
+              p Partidos jugados: 
+              p Partidos perdidos:
+              p Partidos ganados:
+              p Goles totales:
+              p Goles contra:
+              p Puntos totales:
+            .values
+              p.partidos-jugados 0
+              p.partidos-perdidos 0
+              p.partidos-ganados 0
+              p.goles-totales 0
+              p.goles-contra 0
+              p.puntos-totales 0
       section.modalForm
+        span.close &times;
         form(action="/equipos-etapas/nuevos-equipos", method="post")
           input(type="text", placeholder="Nombre", required, name="nombre")
           input(type="number", placeholder="Partidos jugados", required, name="p_jugados") 
