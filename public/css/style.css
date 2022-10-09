@@ -624,7 +624,7 @@ main .container section .estats p {
   margin-bottom: 3px;
 }
 main .modalForm {
-  display: block;
+  display: none;
   position: fixed;
   width: 100%;
   height: 100%;
@@ -632,14 +632,42 @@ main .modalForm {
   left: 0;
   z-index: 1;
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(147, 147, 147, 0.9);
 }
 main .modalForm form {
-  border: 1px solid red;
   position: relative;
-  top: 50px;
+  top: calc(50% - 220px);
+  max-width: 400px;
   display: flex;
   flex-direction: column;
+  gap: 10px;
+  margin: 0 auto;
+}
+main .modalForm form input {
+  height: 40px;
+  font-size: 1.3rem;
+  padding-left: 10px;
+  border-radius: 5px;
+}
+main .modalForm form input:focus-visible {
+  outline: none;
+}
+main .modalForm button {
+  background-color: rgb(255, 255, 255);
+  color: rgb(237, 28, 46);
+  border: 2px solid rgb(237, 28, 46);
+  font-size: 1.3rem;
+  border-radius: 5px;
+  display: grid;
+  place-content: center;
+  width: 140px;
+  height: 40px;
+  align-self: center;
+}
+main .modalForm button:hover {
+  background-color: rgb(237, 28, 46);
+  color: rgb(255, 255, 255);
+  font-weight: 600;
 }
 main .modalInfo {
   display: none;

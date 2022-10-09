@@ -7,7 +7,8 @@ async function administrarEtapas(req, res){
 
     res.render('admin', {
       icon: urlImgs.logo,
-      logged: true
+      logged: true,
+      home: '/'
     });
   } catch (error) {
     console.log(error);
