@@ -1,0 +1,41 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href="/css/style.css")
+    title Experiecia Etapas
+  body 
+    include includes/header.pug
+    main
+      h1 Equipos por etapa 
+      section.etapas
+        nav
+          p Grupos
+          p Octavos
+          p Cuartos
+          p SemiFinal
+          p Final
+      article.container
+        section 
+          p.equipo México
+        section 
+          p.equipo Qatar
+        section 
+          p.equipo Alemania
+        section 
+          p.equipo Brasil
+      button &plus;
+      section.modalForm
+        form(action="/equipos-etapas/nuevos-equipos", method="post")
+          input(type="text", placeholder="Nombre", required, name="nombre")
+          input(type="number", placeholder="Partidos jugados", required, name="p_jugados") 
+          input(type="number", placeholder="Partidos ganados", required, name="p_ganados") 
+          input(type="number", placeholder="Partidos perdidos", required, name="p_perdidos") 
+          input(type="number", placeholder="Goles totales", required, name="g_totales") 
+          input(type="number", placeholder="Goles en contra", required, name="g_contra") 
+          input(type="number", placeholder="Puntos", required, name="puntos")
+          button(type="submit") Guardar 
+      section.modalInfo
+  script(src="/js/admin.js") 

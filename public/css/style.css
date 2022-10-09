@@ -546,5 +546,47 @@ footer a {
     box-shadow: 10px 10px 10px rgba(237, 28, 46, 0.5);
   }
 }
+main {
+  width: 100%;
+}
+main h1 {
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+main button {
+  background-color: rgb(255, 255, 255);
+  color: rgb(237, 28, 46);
+  border: 2px solid rgb(237, 28, 46);
+  font-size: 1.3rem;
+  border-radius: 5px;
+  display: grid;
+  place-content: center;
+  width: 100px;
+  height: 40px;
+  margin: 0 auto;
+  font-size: 3rem;
+}
+main button:hover {
+  background-color: rgb(237, 28, 46);
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+}
+main .etapas {
+  width: 100%;
+}
+main .etapas nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+main .etapas p {
+  font-size: 1.2rem;
+  border-bottom: 3px solid rgb(237, 28, 46);
+}
+main .etapas p:hover {
+  background-color: rgb(237, 28, 46);
+  color: rgb(255, 255, 255);
+}
 
 /*# sourceMappingURL=style.css.map */

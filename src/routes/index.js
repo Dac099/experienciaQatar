@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const { db, auth } = require('../firebase.js');
 const { signin, signup, getUser, getAllUsers, deleteUser} = require('./users.router.js');
+const { administrarEtapas } = require('./admin.js');
 const { getUrlImages } = require('../storage.js');
 
 const router = Router();
@@ -21,5 +22,6 @@ router.get('/', async (req, res) => {
 
 router.get('/signin', signin);
 router.get('/signup', signup);
+router.get('/admin-etapas', administrarEtapas);
 
 module.exports = router;

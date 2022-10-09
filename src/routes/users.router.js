@@ -32,22 +32,7 @@ async function signup(req, res){
 
 }
 
-async function deleteUser(req, res){
-  res.send('Estas eliminando un usuario');
-}
-
-async function getUser(req, res){
-  res.send('Estas obteniendo un usuario');
-}
-
-async function getAllUsers(req, res){
-  res.send('Estas obteniendo todos los usuarios');
-}
-
 module.exports = {
   signin,
-  signup,
-  getUser,
-  getAllUsers,
-  deleteUser
+  signup
 };
