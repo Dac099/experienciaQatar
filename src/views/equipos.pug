@@ -7,7 +7,7 @@ html(lang="en")
     link(rel="stylesheet", href="/css/style.css")
     title Experiecia Etapas
   body 
-    include includes/header.pug
+    include includes/admin-header.pug
     main
       h1 Equipos por etapa 
       section.etapas
@@ -99,4 +99,4 @@ html(lang="en")
           input(type="number", placeholder="Puntos", required, name="puntos", id="puntos")
           input(type="text", placeholder="Etapa", required, name="etapa")
           button(type="submit", id="submitEquipo") Guardar 
-  script(src="/js/admin.js", type="module") 
+  script(src="/js/equipos-admin.js", type="module") 

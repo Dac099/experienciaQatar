@@ -1,0 +1,36 @@
+header.admin-header{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .home{
+    width: 165px;
+    height: 65px;
+    
+    .logo-img{
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .admin-options{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .admin-options a{
+    @include button;
+    font-size: 1.3rem;
+    text-align: center;
+    margin-right: 10px;
+    width: 80px;
+    height: 40px;
+  }
+
+  .admin-options a.selected{
+    background-color: $red-color;
+    color: $white-color;
+  }
+}
