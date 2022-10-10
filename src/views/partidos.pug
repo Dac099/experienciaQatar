@@ -17,40 +17,21 @@ html(lang="en")
           section.equipoA
             p México
             section.estats-equipo
-              p Goles: 
-              p Puntos:
-            section.results
-              p.goles 12
-              p.puntos 3
+              section.index-results
+                p Goles: 
+                p Puntos:
+              section.results
+                p.goles 12
+                p.puntos 3
           section.equipoB
             p Brasil
             section.estats-equipo
-              p Goles:
-              p Puntos:
-            section.results
-              p.goles 8
-              p.puntos 2
-          section.dataPartido
-            p.fecha-partido 12/11/2022
-            p.etapa-partido Etapa de grupos
-            
-        section.cardPartido 
-          section.equipoA
-            p México
-            section.estats-equipo
-              p Goles: 
-              p Puntos:
-            section.results
-              p.goles 12
-              p.puntos 3
-          section.equipoB
-            p Brasil
-            section.estats-equipo
-              p Goles:
-              p Puntos:
-            section.results
-              p.goles 8
-              p.puntos 2
+              section.index-results
+                p Goles:
+                p Puntos:
+              section.results
+                p.goles 8
+                p.puntos 2
           section.dataPartido
             p.fecha-partido 12/11/2022
             p.etapa-partido Etapa de grupos
@@ -59,19 +40,57 @@ html(lang="en")
           section.equipoA
             p México
             section.estats-equipo
-              p Goles: 
-              p Puntos:
-            section.results
-              p.goles 12
-              p.puntos 3
+              section.index-results
+                p Goles: 
+                p Puntos:
+              section.results
+                p.goles 12
+                p.puntos 3
           section.equipoB
             p Brasil
             section.estats-equipo
-              p Goles:
-              p Puntos:
-            section.results
-              p.goles 8
-              p.puntos 2
+              section.index-results
+                p Goles:
+                p Puntos:
+              section.results
+                p.goles 8
+                p.puntos 2
           section.dataPartido
             p.fecha-partido 12/11/2022
             p.etapa-partido Etapa de grupos
+            
+        section.cardPartido 
+          section.equipoA
+            p México
+            section.estats-equipo
+              section.index-results
+                p Goles: 
+                p Puntos:
+              section.results
+                p.goles 12
+                p.puntos 3
+          section.equipoB
+            p Brasil
+            section.estats-equipo
+              section.index-results
+                p Goles:
+                p Puntos:
+              section.results
+                p.goles 8
+                p.puntos 2
+          section.dataPartido
+            p.fecha-partido 12/11/2022
+            p.etapa-partido Etapa de grupos
+      
+      section.modalFormPartido
+        span.close &times;
+        form(action="/partidos/nuevo-partido", method="post")
+          input(type="text", placeholder="Equipo A", required, name="equipo_a", id="equipo_a")
+          input(type="number", placeholder="Goles de equipo A", required, name="goles_a", id="goles_a")
+          input(type="number", placeholder="Puntos de quipo A", required, name="puntos_a", id="puntos_a")
+          input(type="text", placeholder="Equipo B", required, name="equipo_b", id="equipo_b")
+          input(type="number", placeholder="Goles de equipo B", required, name="goles_b", id="goles_b")
+          input(type="number", placeholder="Puntos de equipo B", required, name="equipo_b", id="equipo_b")
+          input(type="date", placeholder="Fecha", required, name="date", id="date")
+          input(type="text", placeholder="Etapa", required, name="etapa", id="etapa")
+          button(type="submit", id="btnSubmit") Agregar
