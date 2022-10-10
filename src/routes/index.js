@@ -1,22 +1,20 @@
 const { Router } = require('express');
-const { db, auth } = require('../firebase.js');
 const { signin, signup, getUser, getAllUsers, deleteUser} = require('./users.router.js');
 const { administrarEquipos, administrarPartidos } = require('./admin.js');
-const { getUrlImages } = require('../storage.js');
+const path = require('path');
 
 const router = Router();
 const logged = true;
 
 router.get('/', async (req, res) => {
-  const urlImgs = await getUrlImages();
   
   res.render('landing', {
     title: 'Experiencia Qatar',
     message: 'Landing page',
     logged: !logged,
-    banner: urlImgs.banner,
-    icon: urlImgs.logo,
-    home: 'http://localhost:3001'
+    banner: '/media/banner.png',
+    icon: '/media/logo-economicas.svg',
+    home: '/'
   });
 });
 

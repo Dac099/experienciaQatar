@@ -1,12 +1,8 @@
-const { getUrlImages } = require('../storage.js');
-
-
 async function administrarEquipos(req, res){
   try {
-    const urlImgs = await getUrlImages();
 
     res.render('equipos', {
-      logo: urlImgs.logo,
+      logo: '/media/logo-economicas.svg',
       home: '/',
       path: '/equipos'
     });
@@ -17,10 +13,9 @@ async function administrarEquipos(req, res){
 
 async function administrarPartidos(req, res){
   try {
-    const urlImgs = await getUrlImages();
 
     res.render('partidos', {
-      logo: urlImgs.logo,
+      logo: '/media/logo-economicas.svg',
       home:'/',
       path: '/partidos'
 
