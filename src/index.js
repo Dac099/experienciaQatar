@@ -1,5 +1,6 @@
+require('dotenv').config();
+const { testConnection } = require('./database/db-connection.js');
 const app = require('./app.js');
-const { port } = require('./config.js');
+const PORT = process.env.PORT;
 
-const PORT = port;
 app.listen(PORT, () => console.log(`http://localhost:${PORT}`));
