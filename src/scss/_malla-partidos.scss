@@ -2,19 +2,22 @@
   width: 100%;
 }
 
+h2{
+  width: 100%;
+  font-size: 3rem;
+  text-align: center;
+  margin:60px 0px 15px 0px;
+}
+
 .malla-container{
   width: 100%;
   padding: 10px;
-  
-  h2{
-    width: 100%;
-    font-size: 3rem;
-    text-align: center;
-  }
 
   .partidos-container{
     display: grid;
     grid-auto-rows: 150px;
+    grid-template-columns: repeat(auto-fit, 355px);
+    justify-content: center;
     gap: 20px;
     
   }
@@ -55,10 +58,82 @@
     font-size: 6rem;
     font-weight: bold;
   }
+}
 
-  .line-divider{
+.posiciones-container{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 400px;
+  margin: 0px auto;
+
+  .partido-row{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 40px;
+    background-color: $red-color;
+    padding: 0px 20px;
+    cursor: pointer;
+    border-radius: 10px;
+  }
+
+  .partido-row p{
+    font-size: 1.8rem;
+    color: $white-color;
+    font-weight: bold;
+    margin-right: 20px;
+  }
+
+  .partido-row .posicion{
+    border-right: 2px solid $white-color;
+    padding-right: 5px;
+  }
+}
+
+.modal-posicion--window{
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(237, 28, 46, 0.4);
+
+  .modal-posicion--content{
+    display: flex;
+    justify-content: space-between;
+    width: 350px;
+    max-width: 500px;
+    position: relative;
+    left: calc(50% - 175px);
+    top: calc(50% - 250px);
+    height: 400px;
+    border-radius: 10px;
+    background-color: $white-color;
+    padding: 20px;
+  }
+
+  .modal-posicion--content p{
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    border-bottom: 2px solid $red-color;
+    word-spacing: 3px;
+  }
+
+  .data-posicion{
+    font-weight: bold;
+    text-align: end;
+  }
+
+  .index-posicion, .data-posicion{
+    margin-top: 10px;
+  }
+
+  .close{
     position: absolute;
-    width: 50%;
-    height: 100%;
+    top: 0px;
+    left: 10px;
   }
 }
