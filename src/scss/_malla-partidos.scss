@@ -1,0 +1,64 @@
+.malla-banner{
+  width: 100%;
+}
+
+.malla-container{
+  width: 100%;
+  padding: 10px;
+  
+  h2{
+    width: 100%;
+    font-size: 3rem;
+    text-align: center;
+  }
+
+  .partidos-container{
+    display: grid;
+    grid-auto-rows: 150px;
+    gap: 20px;
+    
+  }
+  
+  .partidos-container .partido-current--card{
+    position: relative;
+    background-color: $red-color;
+    border-radius: 15px;
+    padding: 20px;
+  }
+
+  .partido-current--card .partido-a{
+    display: inline;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 3rem;
+    color: $white-color;
+    font-weight: bold;
+  }
+
+  .partido-current--card .partido-b{
+    display: inline;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 3rem;
+    color: $white-color;
+    font-weight: bold;
+  }
+
+  .partido-current--card .vs{
+    position: absolute;
+    left: calc(50% - 35px);
+    bottom: 15px;
+    display: inline;
+    color: $white-color;
+    font-size: 6rem;
+    font-weight: bold;
+  }
+
+  .line-divider{
+    position: absolute;
+    width: 50%;
+    height: 100%;
+  }
+}

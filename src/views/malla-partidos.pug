@@ -1,0 +1,42 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href="/css/style.css")
+    title Malla de partidos
+  body 
+    include includes/header.pug
+    img(src=banner, alt="Promocion farmacias", class="malla-banner")
+    main.malla-container 
+
+      article.malla-partidos
+        h2 Malla de partidos
+        section.partidos-container
+          
+          .partido-current--card 
+            p.partido-a México
+            p.partido-b Qatar
+            p.vs VS
+
+          .partido-current--card 
+            p.partido-a México
+            p.partido-b Qatar
+            p.vs VS
+
+          .partido-current--card 
+            p.partido-a México
+            p.partido-b Qatar
+            p.vs VS
+          
+          .line-divider
+
+
+      article.tabla-posiciones
+        h2 Tabla de posiciones
+        section.posiciones-container
+          .partido-row
+            p.posicion 1
+            p.nombre-partido México
+
