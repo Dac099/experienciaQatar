@@ -12,9 +12,9 @@ router.get('/', async (req, res) => {
   res.render('landing', {
     title: 'Experiencia Qatar',
     message: 'Landing page',
-    logged: !logged,
+    logged: logged,
     banner: '/media/banner.png',
-    icon: '/media/logo-economicas.svg',
+    logo: '/media/logo-economicas.svg',
     home: '/'
   });
 });

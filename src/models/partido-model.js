@@ -1,18 +1,54 @@
-const { Datatypes } = require('sequelize');
+const { DataTypes, Model } = require('sequelize');
 const { sequelize } = require('../database/db-connection.js');
 const { Etapa } = require('./etapa-model.js');
 
 class Partido extends Model{}
 Partido.init({
-  id: {},
-  fecha: {},
-  etapa: {},
-  equipo_a: {},
-  equipo_b: {},
-  puntos_a: {},
-  puntos_b: {},
-  goles_a: {},
-  goles_b: {}
+  id: {
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4,
+    allowNull: false,
+    primaryKey: true,
+    unique: true
+  },
+  fecha: {
+    type: DataTypes.DATEONLY,
+    defaultValue: DataTypes.DATEONLY,
+    allowNull: false
+  },
+  etapa: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  },
+  equipo_a: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  equipo_b: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  puntos_a: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  },
+  puntos_b: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  },
+  goles_a: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  },
+  goles_b: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  },
+  sequelize,
+  modelName: 'Partido',
+  tableName: 'partidos'
 });
+
+Partido.sync();
 
 module.exports = { Partido };
