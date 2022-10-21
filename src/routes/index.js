@@ -1,8 +1,8 @@
 const { Router } = require('express');
-const { signin, signup, getUser, getAllUsers, deleteUser} = require('./users.router.js');
+// const { signin, signup, getUser, getAllUsers, deleteUser} = require('./users.router.js');
 const { administrarEquipos, administrarPartidos } = require('./admin.js');
 const { mallaPartidos } = require('./malla-partidos.js');
-const path = require('path');
+const { createUser, getUser } = require('../controllers/usuarios-controller.js');
 
 const router = Router();
 const logged = true;
@@ -19,10 +19,10 @@ router.get('/', async (req, res) => {
   });
 });
 
-router.get('/signin', signin);
-router.get('/signup', signup);
 router.get('/admin-equipos', administrarEquipos);
 router.get('/admin-partidos', administrarPartidos);
 router.get('/malla-partidos', mallaPartidos);
+router.post('/createUser', createUser);
+router.get('/getuser', getUser);
 
 module.exports = router;
