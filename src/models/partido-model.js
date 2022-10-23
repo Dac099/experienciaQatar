@@ -3,8 +3,7 @@ const { sequelize } = require('../database/db-connection.js');
 const { Etapa } = require('./etapa-model.js');
 const { Equipo } = require('./equipo-model.js');
 
-class Partido extends Model{}
-Partido.init({
+const Partido = sequelize.define('partidos', {
   id: {
     type: DataTypes.UUID,
     defaultValue: DataTypes.UUIDV4,
@@ -17,21 +16,6 @@ Partido.init({
     type: DataTypes.DATEONLY,
     defaultValue: DataTypes.DATEONLY,
     allowNull: false
-  },
-
-  etapa: {
-    type: DataTypes.INTEGER,
-    allowNull: false
-  },
-
-  equipo_a: {
-    type: DataTypes.INTEGER,
-    allowNull: false
-  },
-
-  equipo_b: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
   },
 
   puntos_a: {
@@ -52,12 +36,30 @@ Partido.init({
   goles_b: {
     type: DataTypes.INTEGER,
     allowNull: false
-  },
-
-  sequelize,
-  modelName: 'Partido',
-  tableName: 'partidos'
+  }
 });
+
+Partido.hasOne(Etapa, {
+  foreignKey: {
+    name: "etapa_partido",
+    type: DataTypes.INTEGER
+  }
+});
+Partido.hasOne(Equipo, {
+  foreignKey: {
+    name: "equipo_a",
+    type: DataTypes.INTEGER
+  }
+});
+
+Partido.hasOne(Equipo, {
+  foreignKey: {
+    name: "equipo_b",
+    type: DataTypes.INTEGER
+  }
+})
+Etapa.belongsTo(Partido);
+Equipo.belongsTo(Partido);
 
 Partido.sync();
 

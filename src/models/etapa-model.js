@@ -24,9 +24,8 @@ const Etapa = sequelize.define('etapas', {
   nombre: {
     type: DataTypes.STRING,
     allowNull: false
-  }
+  },
 });
-
 Etapa.sync();
 
 module.exports = { Etapa };

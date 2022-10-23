@@ -1,8 +1,9 @@
 const { DataTypes, Model } = require('sequelize');
 const { sequelize } = require('../database/db-connection.js');
+const { User } = require('./users-model.js');
+const { Partido } = require('./partido-model.js');
 
-class Apuesta extends Model {}
-Apuesta.init({
+const Apuesta = sequelize.define('apuestas', {
   id: {
     type: DataTypes.UUID,
     defaultValue: DataTypes.UUIDV4,
@@ -27,11 +28,13 @@ Apuesta.init({
   },
   usuario: {
     type: DataTypes.INTEGER
-  },
-  sequelize,
-  modelName: 'Apuesta',
-  tableName: 'apuestas'
+  }
 });
+
+Apuesta.hasOne(Partido);
+Apuesta.hasOne(User);
+Partido.belongsTo(Apuesta);
+User.belongsTo(Apuesta);
 
 Apuesta.sync();
 
