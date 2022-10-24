@@ -1,6 +1,5 @@
-const { DataTypes, Model } = require('sequelize');
+const { DataTypes } = require('sequelize');
 const { sequelize } = require('../database/db-connection.js');
-const { Etapa } = require('./etapa-model.js');
 
 const Equipo = sequelize.define('equipos', {
   id: {
@@ -12,7 +11,8 @@ const Equipo = sequelize.define('equipos', {
   },
   nombre: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
+    unique: true
   },
   partidos_jugados: {
     type: DataTypes.INTEGER,
@@ -30,19 +30,16 @@ const Equipo = sequelize.define('equipos', {
     type: DataTypes.INTEGER,
     allowNull: false
   },
-  goles_favor: {
-    type: DataTypes.INTEGER,
-    allowNull: false
-  },
   puntos: {
     type: DataTypes.INTEGER, 
     allowNull: false
   },
+  etapa: {
+    type: DataTypes.STRING,
+    allowNull: false
+  }
+}, {
+  timestamps: false
 });
-
-Equipo.hasOne(Etapa);
-Etapa.belongsTo(Equipo);
-
-Equipo.sync();
 
 module.exports = { Equipo };

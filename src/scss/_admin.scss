@@ -1,0 +1,65 @@
+.container-main{
+  width: 100%;
+
+  .container-main--buttons{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 10px;
+    margin-top: 30px;
+
+    button{
+      height: 50px;
+      width: 200px;
+      background-color: $red-color;
+      color: $white-color;
+      border-radius: 10px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      border: none;
+      box-shadow: 2px 2px 2px 1px rgba(0,0,0,0.2);
+      cursor: pointer;
+    }
+  }
+
+  .container-main--admin-content{
+    padding: 20px;
+    margin: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 375px);
+    grid-auto-rows: 250px;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .card-team{
+    height: 100%;
+    width: 100%;
+    font-size: 80px;
+  }
+
+  th, td{
+    border: 1px solid black;
+  }
+
+  th{
+    color: $red-color;
+  }
+  
+  td{
+    padding: 0px 10px;
+  }
+
+  table tr td:first-child{
+    font-weight: bold;
+  }
+
+  table tr td:nth-child(2){
+    text-align: right;
+    background-color: $red-color;
+    color: $white-color;
+    font-weight: bold;
+  }
+}

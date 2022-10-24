@@ -1,31 +1,7 @@
-async function administrarEquipos(req, res){
-  try {
+const { adminPage, getTeams } = require('../controllers/admin-controller.js');
+const router = require('express').Router();
 
-    res.render('equipos', {
-      logo: '/media/logo-economicas.svg',
-      home: '/',
-      path: '/equipos'
-    });
-  } catch (error) {
-    console.log(error);
-  }
-}
+router.get('/admin', adminPage);
+router.get('/admin/equipos', getTeams);
 
-async function administrarPartidos(req, res){
-  try {
-
-    res.render('partidos', {
-      logo: '/media/logo-economicas.svg',
-      home:'/',
-      path: '/partidos'
-
-    })
-  } catch (error) { 
-    console.log(error);
-  }
-}
-
-module.exports = {
-  administrarEquipos,
-  administrarPartidos
-};
+module.exports = router;

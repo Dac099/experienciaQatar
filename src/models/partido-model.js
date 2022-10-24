@@ -1,6 +1,5 @@
 const { DataTypes, Model } = require('sequelize');
 const { sequelize } = require('../database/db-connection.js');
-const { Etapa } = require('./etapa-model.js');
 const { Equipo } = require('./equipo-model.js');
 
 const Partido = sequelize.define('partidos', {
@@ -36,31 +35,25 @@ const Partido = sequelize.define('partidos', {
   goles_b: {
     type: DataTypes.INTEGER,
     allowNull: false
+  },
+  etapa: {
+    type: DataTypes.STRING,
+    allowNull: false
   }
+}, {
+  timestamps: false
 });
 
-Partido.hasOne(Etapa, {
-  foreignKey: {
-    name: "etapa_partido",
-    type: DataTypes.INTEGER
-  }
+Partido.belongsTo(Equipo, {
+  foreignKey: 'equipo_a',
+  as: 'team_a',
+  targetKey: 'nombre'
 });
-Partido.hasOne(Equipo, {
-  foreignKey: {
-    name: "equipo_a",
-    type: DataTypes.INTEGER
-  }
+Partido.belongsTo(Equipo, {
+  foreignKey: 'equipo_b',
+  as: 'team_b',
+  targetKey: 'nombre'
 });
 
-Partido.hasOne(Equipo, {
-  foreignKey: {
-    name: "equipo_b",
-    type: DataTypes.INTEGER
-  }
-})
-Etapa.belongsTo(Partido);
-Equipo.belongsTo(Partido);
-
-Partido.sync();
 
 module.exports = { Partido };

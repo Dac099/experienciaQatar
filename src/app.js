@@ -10,5 +10,5 @@ app.set('view engine', 'pug');
 app.use('/assets', express.static(path.join(__dirname, '../public')));
 
 app.use(require('./routes/index.js'));
-app.use(require('./routes/testDB'));
+app.use(require('./routes/admin.js'));
 module.exports = app;

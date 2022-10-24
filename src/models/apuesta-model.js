@@ -22,20 +22,7 @@ const Apuesta = sequelize.define('apuestas', {
   puntos_b: {
     type: DataTypes.INTEGER,
     allowNull: false
-  },
-  partido: {
-    type: DataTypes.INTEGER
-  },
-  usuario: {
-    type: DataTypes.INTEGER
   }
 });
-
-Apuesta.hasOne(Partido);
-Apuesta.hasOne(User);
-Partido.belongsTo(Apuesta);
-User.belongsTo(Apuesta);
-
-Apuesta.sync();
 
 module.exports = { Apuesta };
