@@ -1,4 +1,5 @@
 const { Equipo } = require('../models/equipo-model.js');
+const { Partido } = require('../models/partido-model.js');
 
 //Crear equipos y cargar los equipos que necesite la aplicacion
 async function CreateTeams(){
@@ -294,6 +295,56 @@ async function CreateTeams(){
   } catch (error) {
     console.log(error);
   }
+};
+
+async function testPartidos(){
+  try {
+    await Partido.create({
+      fecha: '2022/11/21',
+      equipo_a: 'Alemania',
+      equipo_b: 'México',
+      puntos_a: 0,
+      puntos_b: 0,
+      goles_a: 0,
+      goles_b: 0,
+      etapa: 'Grupos'
+    });
+  
+    await Partido.create({
+      fecha: '2022/11/21',
+      equipo_a: 'Japón',
+      equipo_b: 'Brasil',
+      puntos_a: 0,
+      puntos_b: 0,
+      goles_a: 0,
+      goles_b: 0,
+      etapa: 'Grupos'
+    });
+  
+    await Partido.create({
+      fecha: '2022/11/21',
+      equipo_a: 'Polonia',
+      equipo_b: 'Brasil',
+      puntos_a: 0,
+      puntos_b: 0,
+      goles_a: 0,
+      goles_b: 0,
+      etapa: 'Octavos'
+    });
+  
+    await Partido.create({
+      fecha: '2022/11/21',
+      equipo_a: 'Argentina',
+      equipo_b: 'Francia',
+      puntos_a: 0,
+      puntos_b: 0,
+      goles_a: 0,
+      goles_b: 0,
+      etapa: 'Octavos'
+    });
+  } catch (error) {
+    console.log(error);
+  }
 }
 
-module.exports = { CreateTeams };
+module.exports = { CreateTeams, testPartidos };

@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const { CreateTeams } = require('./controllers/startup-app.js');
+const { CreateTeams, testPartidos } = require('./controllers/startup-app.js');
 const { sequelize } = require('./database/db-connection.js');
 
 const app = require('./app.js');
@@ -11,6 +11,7 @@ const PORT = process.env.PORT;
   try {
     await sequelize.sync({force:true});
     await CreateTeams();
+    await testPartidos();
   } catch (error) {
     console.log(error);
   }
