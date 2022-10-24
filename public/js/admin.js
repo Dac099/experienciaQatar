@@ -4,6 +4,7 @@ const teams_btn = document.getElementById('show-teams');
 const container = document.querySelector('.container-main--admin-content');
 
 const teams_url = '/admin/equipos';
+const matches_url = '/admin/partidos';
 
 function createTeamCard(team){
   const cardTeam = document.createElement('table');
@@ -73,6 +74,57 @@ function modalControl(modal){
 
   submitBtn.addEventListener('click', (e) => {
     modal.style.display = "none";
+  });
+}
+
+async function containerMatches(){
+  const matches_options = document.createElement('nav');
+  const matches_container = document.createElement('article');
+
+  matches_container.className = 'match-cards--container';
+  matches_options.className = 'matches-type';
+
+  matches_options.innerHTML = `
+    <p id="grupos">Grupos</p>
+    <p id="octavos">Octavos</p>
+    <p id="cuartos">Cuartos</p>
+    <p id="semi">Semifinal</p>
+    <p id="final">Final</p>
+  `;
+
+  const grupos = matches_options.getElementById('grupos');
+  const octavos = matches_options.getElementById('octavos');  
+  const cuartos = matches_options.getElementById('cuartos');  
+  const semi = matches_options.getElementById('semi');  
+  const final = matches_options.getElementById('final');  
+
+  grupos.addEventListener('click', async () => {
+    const url = `${matches_url}/grupos`;
+    const result = await fetch(url);
+    const data = result.json();
+
+    
+
+  });
+
+  octavos.addEventListener('click', async () => {
+    const url = `${matches_url}/octavos`;
+    
+  });
+
+  cuartos.addEventListener('click', async () => {
+    const url = `${matches_url}/cuartos`;
+    
+  });
+
+  semi.addEventListener('click', async () => {
+    const url = `${matches_url}/semi`;
+    
+  });
+
+  final.addEventListener('click', async () => {
+    const url = `${matches_url}/final`;
+    
   });
 }
 

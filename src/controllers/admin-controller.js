@@ -52,10 +52,52 @@ async function createTeam(req, res){
   }
 }
 
-//Crear funcion para obtener todos los partidos por etapa
+async function getMatchByStage(req, res){
+  const { etapa } = req.params;
+  let matches;
+
+  if(etapa == "grupos"){
+    matches = await Partido.findAll({
+      where: {
+        etapa: "Grupos"
+      }
+    });
+  }
+  if(etapa == "octavos"){
+    matches = await Partido.findAll({
+      where: {
+        etapa: "Octavos"
+      }
+    });
+  }
+  if(etapa == "cuartos"){
+    matches = await Partido.findAll({
+      where: {
+        etapa: "Cuartos"
+      }
+    });
+  }
+  if(etapa == "semi"){
+    matches = await Partido.findAll({
+      where: {
+        etapa: "Semifinal"
+      }
+    });
+  }
+  if(etapa == "final"){
+    matches = await Partido.findAll({
+      where: {
+        etapa: "Final"
+      }
+    });
+  }
+
+  res.json(matches);
+}
 
 module.exports = {
   adminPage,
   getTeams,
-  createTeam
+  createTeam,
+  getMatchByStage
 }
