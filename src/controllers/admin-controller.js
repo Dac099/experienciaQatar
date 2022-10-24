@@ -31,25 +31,31 @@ async function createTeam(req, res){
       goles_a,
       goles_b,
       puntos_a,
-      puntos_b
+      puntos_b,
+      etapa
     } = req.body;
 
-    const match = Partido.create({
+    await Partido.create({
       fecha: fecha,
       equipo_a: equipo_a,
       equipo_b: equipo_b,
       goles_b: goles_b,
       goles_a: goles_a,
       puntos_a: puntos_a,
-      puntos_b: puntos_b
+      puntos_b: puntos_b,
+      etapa: etapa
     });
 
+    res.redirect('/admin');
   } catch (error) { 
     console.log(error);
   }
 }
 
+//Crear funcion para obtener todos los partidos por etapa
+
 module.exports = {
   adminPage,
-  getTeams
+  getTeams,
+  createTeam
 }

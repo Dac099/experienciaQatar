@@ -62,4 +62,27 @@
     color: $white-color;
     font-weight: bold;
   }
+
+  .modal .modal-content{
+    width: 375px;
+    top: calc(50% - 240px); 
+  }
+
+  .modal .modal-content input{
+    height: 40px;
+    font-size: 1.5rem;
+    padding-left: 10px;
+  }
+
+  .modal .modal-content input::placeholder{
+    font-size: 1.5rem;
+  }
+
+  .modal .modal-content button{
+    height: 40px;
+    width: 120px;
+    position: relative;
+    left: calc(50% - 60px);
+    @include button;
+  }
 }

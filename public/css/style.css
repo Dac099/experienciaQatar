@@ -601,6 +601,36 @@ footer a {
   color: rgb(255, 255, 255);
   font-weight: bold;
 }
+.container-main .modal .modal-content {
+  width: 375px;
+  top: calc(50% - 240px);
+}
+.container-main .modal .modal-content input {
+  height: 40px;
+  font-size: 1.5rem;
+  padding-left: 10px;
+}
+.container-main .modal .modal-content input::placeholder {
+  font-size: 1.5rem;
+}
+.container-main .modal .modal-content button {
+  height: 40px;
+  width: 120px;
+  position: relative;
+  left: calc(50% - 60px);
+  background-color: rgb(255, 255, 255);
+  color: rgb(237, 28, 46);
+  border: 2px solid rgb(237, 28, 46);
+  font-size: 1.3rem;
+  border-radius: 5px;
+  display: grid;
+  place-content: center;
+}
+.container-main .modal .modal-content button:hover {
+  background-color: rgb(237, 28, 46);
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+}
 
 .malla-banner {
   width: 100%;
