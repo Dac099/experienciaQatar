@@ -77,6 +77,38 @@ function modalControl(modal){
   });
 }
 
+function createMatchesCards(matches, matches_container){
+  matches.forEach(match => {
+    const table = document.createElement('table');
+    table.innerHTML = `
+      <tr>
+        <th class="table-head"></th>
+        <th class="table-head">${match.equipo_a}</th>
+        <th class="table-head">${match.equipo_b}</th>
+      </tr>
+      <tr>
+        <th class="table-head">Puntos</th>
+        <td>${match.puntos_a}</td>
+        <td>${match.puntos_b}</td>
+      </tr>
+      <tr>
+        <th class="table-head">Goles</th>
+        <td>${match.goles_a}</td>
+        <td>${match.goles_b}</td>
+      </tr>
+      <tr>
+        <th class="table-head">Fecha</th>
+        <td colspan="2">${match.fecha}</td>
+      </tr>
+      <tr>
+        <th class="table-head">Etapa</th>
+        <td colspan="2">${match.etapa}</td>
+      </tr>
+    `;
+    matches_container.append(table);
+  });
+}
+
 async function containerMatches(){
   const matches_options = document.createElement('nav');
   const matches_container = document.createElement('article');
@@ -101,31 +133,45 @@ async function containerMatches(){
   grupos.addEventListener('click', async () => {
     const url = `${matches_url}/grupos`;
     const result = await fetch(url);
-    const data = result.json();
+    const data = await result.json();
 
-    //function para crear tarjeta de partidos
-
+    createMatchesCards(data, matches_container);
   });
 
   octavos.addEventListener('click', async () => {
     const url = `${matches_url}/octavos`;
-    
+    const result = await fetch(url);
+    const data = await result.json();
+
+    createMatchesCards(data, matches_container);  
   });
 
   cuartos.addEventListener('click', async () => {
     const url = `${matches_url}/cuartos`;
-    
+    const result = await fetch(url);
+    const data = await result.json();
+
+    createMatchesCards(data, matches_container);
   });
 
   semi.addEventListener('click', async () => {
     const url = `${matches_url}/semi`;
-    
+    const result = await fetch(url);
+    const data = await result.json();
+
+    createMatchesCards(data, matches_container);
   });
 
   final.addEventListener('click', async () => {
     const url = `${matches_url}/final`;
+    const result = await fetch(url);
+    const data = await result.json();
     
+    createMatchesCards(data, matches_container);
   });
+
+  container.append(matches_options);
+  container.append(matches_container);
 }
 
 teams_btn.addEventListener('click', async () => {
@@ -141,8 +187,9 @@ teams_btn.addEventListener('click', async () => {
 
 match_btn.addEventListener('click', async () => {
   cleanContainer(container);
-  const form = createModalForm();
-  modalControl(form);
-  container.append(form);
-  form.style.display = "block";
+  containerMatches();
+  // const form = createModalForm();
+  // modalControl(form);
+  // container.append(form);
+  // form.style.display = "block";
 })
