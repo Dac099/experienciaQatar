@@ -555,7 +555,7 @@ footer a {
   justify-content: space-evenly;
   align-items: center;
   gap: 10px;
-  margin-top: 30px;
+  margin: 30px 0px;
 }
 .container-main .container-main--buttons button {
   height: 50px;
@@ -569,7 +569,7 @@ footer a {
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
-.container-main .container-main--admin-content {
+.container-main .container-main--teams-content {
   padding: 20px;
   margin: 20px;
   display: grid;
@@ -630,6 +630,76 @@ footer a {
   background-color: rgb(237, 28, 46);
   color: rgb(255, 255, 255);
   font-weight: 600;
+}
+
+.container-main--matches-content {
+  margin: 0px 20px;
+}
+.container-main--matches-content .matches-type {
+  display: flex;
+  justify-content: flex-start;
+  gap: 15px;
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+.container-main--matches-content .matches-type p {
+  width: 80px;
+  height: 30px;
+  text-align: center;
+}
+.container-main--matches-content .matches-type p.option-selected {
+  background-color: rgb(237, 28, 46);
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  border-radius: 10px 10px 10px 10px;
+  padding-top: 5px;
+}
+
+.groupContainer button.newMatch {
+  margin: 15px 0px;
+  width: 100px;
+  height: 40px;
+  background-color: rgb(255, 255, 255);
+  color: rgb(237, 28, 46);
+  border: 2px solid rgb(237, 28, 46);
+  font-size: 1.3rem;
+  border-radius: 5px;
+  display: grid;
+  place-content: center;
+}
+.groupContainer button.newMatch:hover {
+  background-color: rgb(237, 28, 46);
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+}
+.groupContainer .match-cards--container {
+  padding: 20px;
+  margin: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 375px);
+  grid-auto-rows: 250px;
+  justify-content: center;
+  gap: 20px;
+}
+.groupContainer .match-cards--container .card-table-match {
+  width: 100%;
+  height: 100%;
+  font-size: 80px;
+}
+.groupContainer .match-cards--container .card-table-match td {
+  color: black;
+  background-color: rgb(255, 255, 255);
+  font-weight: 400;
+  text-align: center;
+}
+.groupContainer .match-cards--container .card-table-match th {
+  color: rgb(255, 255, 255);
+  background-color: rgb(237, 28, 46);
+  font-weight: bold;
+}
+.groupContainer .match-cards--container .card-table-match .match-id {
+  color: rgb(237, 28, 46);
+  font-size: 0.5rem;
 }
 
 .malla-banner {

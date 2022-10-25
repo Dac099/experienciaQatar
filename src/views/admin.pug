@@ -13,5 +13,16 @@ html(lang="en")
         button#new-match Agregar Partido
         button#show-positions Mostrar Posiciones
         button#show-teams Mostrar Equipos
-      article.container-main--admin-content
+      article.container-main--teams-content
+      article.container-main--matches-content
+        nav.matches-type
+          p#grupos Grupos
+          p#octavos Octavos
+          p#cuartos Cuartos
+          p#semi Semifinal
+          p#final Final 
+        article.groupContainer
+          button.newMatch &plus;
+          article.match-cards--container
+      article.container-main--positions-content
     script(src="/js/admin.js") 

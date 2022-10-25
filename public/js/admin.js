@@ -1,10 +1,21 @@
 const match_btn = document.getElementById('new-match');
 const position_btn = document.getElementById('show-positions');
 const teams_btn = document.getElementById('show-teams');
-const container = document.querySelector('.container-main--admin-content');
+const container_teams = document.querySelector('.container-main--teams-content');
+const container_matches = document.querySelector('.container-main--matches-content');
+const container_positions = document.querySelector('.container-main--positions-content');
+
+//Elementos del contenedor de equipos
+const add_new_match = document.querySelector('.newMatch');
+const groupContainer = document.querySelector('.groupContainer');
 
 const teams_url = '/admin/equipos';
 const matches_url = '/admin/partidos';
+
+container_teams.style.display = "none";
+container_matches.style.display = "block";
+container_positions.style.display = "none";
+containerMatches();
 
 function createTeamCard(team){
   const cardTeam = document.createElement('table');
@@ -59,8 +70,10 @@ function createModalForm(){
 }
 
 function cleanContainer(container){
-  while(container.firstChild != null){
-    container.removeChild(container.firstChild);
+  if(container.firstChild){
+    while(container.firstChild != null){
+      container.removeChild(container.firstChild);
+    }
   }
 }
 
@@ -78,11 +91,13 @@ function modalControl(modal){
 }
 
 function createMatchesCards(matches, matches_container){
+  cleanContainer(matches_container);
   matches.forEach(match => {
     const table = document.createElement('table');
+    table.className = 'card-table-match';
     table.innerHTML = `
       <tr>
-        <th class="table-head"></th>
+        <th class="table-head match-id">${match.id}</th>
         <th class="table-head">${match.equipo_a}</th>
         <th class="table-head">${match.equipo_b}</th>
       </tr>
@@ -109,28 +124,23 @@ function createMatchesCards(matches, matches_container){
   });
 }
 
-async function containerMatches(){
-  const matches_options = document.createElement('nav');
-  const matches_container = document.createElement('article');
+function containerMatches(){
+  const matches_container = document.querySelector('.match-cards--container');
+  cleanContainer(matches_container);
 
-  matches_container.className = 'match-cards--container';
-  matches_options.className = 'matches-type';
-
-  matches_options.innerHTML = `
-    <p id="grupos">Grupos</p>
-    <p id="octavos">Octavos</p>
-    <p id="cuartos">Cuartos</p>
-    <p id="semi">Semifinal</p>
-    <p id="final">Final</p>
-  `;
-
-  const grupos = matches_options.getElementById('grupos');
-  const octavos = matches_options.getElementById('octavos');  
-  const cuartos = matches_options.getElementById('cuartos');  
-  const semi = matches_options.getElementById('semi');  
-  const final = matches_options.getElementById('final');  
-
+  const grupos = document.getElementById('grupos');
+  const octavos = document.getElementById('octavos');  
+  const cuartos = document.getElementById('cuartos');  
+  const semi = document.getElementById('semi');  
+  const final = document.getElementById('final');  
+    
   grupos.addEventListener('click', async () => {
+    grupos.className = 'option-selected';
+    octavos.classList.remove('option-selected');
+    cuartos.classList.remove('option-selected');
+    semi.classList.remove('option-selected');
+    final.classList.remove('option-selected');
+
     const url = `${matches_url}/grupos`;
     const result = await fetch(url);
     const data = await result.json();
@@ -139,6 +149,12 @@ async function containerMatches(){
   });
 
   octavos.addEventListener('click', async () => {
+    octavos.className = 'option-selected';
+    grupos.classList.remove('option-selected');
+    cuartos.classList.remove('option-selected');
+    semi.classList.remove('option-selected');
+    final.classList.remove('option-selected');
+
     const url = `${matches_url}/octavos`;
     const result = await fetch(url);
     const data = await result.json();
@@ -147,6 +163,12 @@ async function containerMatches(){
   });
 
   cuartos.addEventListener('click', async () => {
+    cuartos.className = 'option-selected';
+    octavos.classList.remove('option-selected');
+    grupos.classList.remove('option-selected');
+    semi.classList.remove('option-selected');
+    final.classList.remove('option-selected');
+
     const url = `${matches_url}/cuartos`;
     const result = await fetch(url);
     const data = await result.json();
@@ -155,6 +177,12 @@ async function containerMatches(){
   });
 
   semi.addEventListener('click', async () => {
+    semi.className = 'option-selected';
+    octavos.classList.remove('option-selected');
+    cuartos.classList.remove('option-selected');
+    grupos.classList.remove('option-selected');
+    final.classList.remove('option-selected');
+
     const url = `${matches_url}/semi`;
     const result = await fetch(url);
     const data = await result.json();
@@ -163,6 +191,12 @@ async function containerMatches(){
   });
 
   final.addEventListener('click', async () => {
+    final.className = 'option-selected';
+    octavos.classList.remove('option-selected');
+    cuartos.classList.remove('option-selected');
+    semi.classList.remove('option-selected');
+    grupos.classList.remove('option-selected');
+
     const url = `${matches_url}/final`;
     const result = await fetch(url);
     const data = await result.json();
@@ -170,26 +204,35 @@ async function containerMatches(){
     createMatchesCards(data, matches_container);
   });
 
-  container.append(matches_options);
-  container.append(matches_container);
+  groupContainer.append(matches_container);
+  container_matches.append(groupContainer);
 }
 
 teams_btn.addEventListener('click', async () => {
-  cleanContainer(container);
+  container_matches.style.display = 'none';
+  container_positions.style.display = 'none';
+  container_teams.style.display = 'grid';
+  
   const response = await fetch(teams_url);
   const data = await response.json();
 
   data.forEach(team => {
     const card = createTeamCard(team);
-    container.append(card);
+    container_teams.append(card);
   });
 });
 
 match_btn.addEventListener('click', async () => {
-  cleanContainer(container);
+  container_matches.style.display = 'block';
+  container_positions.style.display = 'none';
+  container_teams.style.display = 'none';
+
   containerMatches();
-  // const form = createModalForm();
-  // modalControl(form);
-  // container.append(form);
-  // form.style.display = "block";
 })
+
+add_new_match.addEventListener('click', () => {
+  const form = createModalForm();
+  modalControl(form);
+  container_matches.append(form);
+  form.style.display = "block";
+});
