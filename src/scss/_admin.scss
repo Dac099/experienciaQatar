@@ -65,13 +65,14 @@
 
   .modal .modal-content{
     width: 375px;
-    top: calc(50% - 240px); 
+    top: calc(50% - 372px); 
   }
 
   .modal .modal-content input{
     height: 40px;
     font-size: 1.5rem;
     padding-left: 10px;
+    margin-bottom: 10px;
   }
 
   .modal .modal-content input::placeholder{
@@ -84,6 +85,12 @@
     position: relative;
     left: calc(50% - 60px);
     @include button;
+  }
+
+  .modal .modal-content label{
+    font-size: 1.5rem;
+    color: $red_color;
+    font-weight: bold;
   }
 }
 

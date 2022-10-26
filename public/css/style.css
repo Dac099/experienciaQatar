@@ -603,12 +603,13 @@ footer a {
 }
 .container-main .modal .modal-content {
   width: 375px;
-  top: calc(50% - 240px);
+  top: calc(50% - 372px);
 }
 .container-main .modal .modal-content input {
   height: 40px;
   font-size: 1.5rem;
   padding-left: 10px;
+  margin-bottom: 10px;
 }
 .container-main .modal .modal-content input::placeholder {
   font-size: 1.5rem;
@@ -630,6 +631,11 @@ footer a {
   background-color: rgb(237, 28, 46);
   color: rgb(255, 255, 255);
   font-weight: 600;
+}
+.container-main .modal .modal-content label {
+  font-size: 1.5rem;
+  color: rgb(237, 28, 46);
+  font-weight: bold;
 }
 
 .container-main--matches-content {

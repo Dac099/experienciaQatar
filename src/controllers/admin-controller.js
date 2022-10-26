@@ -95,9 +95,83 @@ async function getMatchByStage(req, res){
   res.json(matches);
 }
 
+async function getMatchById(req, res){
+  try {
+    const { id } = req.params;
+
+    const match = await Partido.findByPk(id);
+
+    res.json(match);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+async function updateMatch(req, res){
+  try {
+    const {
+      equipo_a,
+      equipo_b,
+      goles_a,
+      goles_b,
+      puntos_a,
+      puntos_b,
+      etapa, 
+      fecha
+    } = req.body;
+
+    const { id } = req.params;
+
+    const match = await Partido.findByPk(id);
+
+    match.goles_a = parseInt(goles_a);
+    match.goles_b = parseInt(goles_b);
+    match.equipo_a = equipo_a;
+    match.equipo_b = equipo_b;
+    match.puntos_a = parseInt(puntos_a);
+    match.puntos_b = parseInt(puntos_b);
+    match.etapa = etapa;
+    match.fecha = fecha;
+
+    const team_a = await Equipo.findAll({
+      where: {
+        nombre: equipo_a
+      }
+    });
+
+    const team_b = await Equipo.findAll({
+      where: {
+        nombre: equipo_b
+      }
+    });
+
+    team_a[0].puntos += parseInt(puntos_a);
+    team_a[0].goles_totales += parseInt(goles_a);
+    team_a[0].goles_contra += parseInt(goles_b);
+    team_a[0].partidos_jugados += 1;
+    
+    team_b[0].puntos += parseInt(puntos_b);
+    team_b[0].goles_totales += parseInt(goles_b);
+    team_b[0].goles_contra += parseInt(goles_a);
+    team_b[0].partidos_jugados += 1;
+
+    (puntos_a > puntos_b) ? team_a[0].partidos_ganados += 1 : team_b[0].partidos_ganados += 1;
+
+    await team_a[0].save();
+    await team_b[0].save();
+    await match.save();
+
+    res.redirect('/admin');
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 module.exports = {
   adminPage,
   getTeams,
   createTeam,
-  getMatchByStage
+  getMatchByStage,
+  getMatchById,
+  updateMatch
 }

@@ -48,23 +48,57 @@ function createTeamCard(team){
   return cardTeam;
 }
 
-function createModalForm(){
+function createModalForm(action, method, data={}){
   const modal = document.createElement('article');
   modal.classList = 'modal';
-  modal.innerHTML = `
-  <form class="modal-content" action="/admin/new-match" method="post">
-    <span class="close">&times;</span>
-      <input type="date" required placeholder="fecha" id="fecha" name="fecha">
-      <input type="text" required placeholder="Equipo A" id="equipo_a" name="equipo_a">
-      <input type="text" required placeholder="Equipo B" id="equipo_b" name="equipo_b">
-      <input type="number" required placeholder="Goles de A" id="goles_a" name="goles_a">
-      <input type="number" required placeholder="Goles de B" id="goles_b" name="goles_b">
-      <input type="number" required placeholder="Puntos de A" id="puntos_a" name="puntos_a">
-      <input type="number" required placeholder="Puntos de B" id="puntos_b" name="puntos_b">
-      <input type="text" required placeholder="Etapa" id="etapa" name="etapa">
-      <button type="submit" class="submitBtn">Agregar Partido</button>
-    </form>
-  `;
+
+  if(Object.keys(data).length == 0){
+    modal.innerHTML = `
+    <form class="modal-content" action=${action} method=${method}>
+      <span class="close">&times;</span>
+        <input type="date" required placeholder="fecha" id="fecha" name="fecha">
+        <input type="text" required placeholder="Equipo A" id="equipo_a" name="equipo_a">
+        <input type="text" required placeholder="Equipo B" id="equipo_b" name="equipo_b">
+        <input type="number" required placeholder="Goles de A" id="goles_a" name="goles_a">
+        <input type="number" required placeholder="Goles de B" id="goles_b" name="goles_b">
+        <input type="number" required placeholder="Puntos de A" id="puntos_a" name="puntos_a">
+        <input type="number" required placeholder="Puntos de B" id="puntos_b" name="puntos_b">
+        <input type="text" required placeholder="Etapa" id="etapa" name="etapa">
+        <button type="submit" class="submitBtn">Agregar Partido</button>
+      </form>
+    `;
+  }else{
+    modal.innerHTML = `
+    <form class="modal-content" action=${action} method=${method}>
+      <span class="close">&times;</span>
+
+        <label for="fecha">Fecha</label>
+        <input type="date" required placeholder="fecha" id="fecha" name="fecha" value="${data.fecha}">
+
+        <label for="equipo_a">Equipo A</label>
+        <input type="text" required placeholder="Equipo A" id="equipo_a" name="equipo_a" value="${data.equipo_a}">
+
+        <label for="equipo_b">Equipo B</label>
+        <input type="text" required placeholder="Equipo B" id="equipo_b" name="equipo_b" value="${data.equipo_b}">
+
+        <label for="goles_a">Goles de A</label>
+        <input type="number" required placeholder="Goles de A" id="goles_a" name="goles_a" value="${data.goles_a}">
+
+        <label for="goles_b">Goles de B</label>
+        <input type="number" required placeholder="Goles de B" id="goles_b" name="goles_b" value="${data.goles_b}">
+
+        <label for="puntos_a">Puntos de A</label>
+        <input type="number" required placeholder="Puntos de A" id="puntos_a" name="puntos_a" value="${data.puntos_a}">
+
+        <label for="puntos_b">Puntos de B</label>
+        <input type="number" required placeholder="Puntos de B" id="puntos_b" name="puntos_b" value="${data.puntos_b}">
+
+        <label for="etapa">Etapa</label>
+        <input type="text" required placeholder="Etapa" id="etapa" name="etapa" value="${data.etapa}">
+        <button type="submit" class="submitBtn">Agregar Partido</button>
+      </form>
+    `;
+  }
 
   return modal;
 }
@@ -97,7 +131,7 @@ function createMatchesCards(matches, matches_container){
     table.className = 'card-table-match';
     table.innerHTML = `
       <tr>
-        <th class="table-head match-id">${match.id}</th>
+        <th class="table-head match-id"></th>
         <th class="table-head">${match.equipo_a}</th>
         <th class="table-head">${match.equipo_b}</th>
       </tr>
@@ -120,6 +154,18 @@ function createMatchesCards(matches, matches_container){
         <td colspan="2">${match.etapa}</td>
       </tr>
     `;
+    table.id = match.id;
+
+    table.addEventListener('click', async () => {
+      const match_id = table.id;
+      const result = await fetch(`/admin/partidos/get-partido/${match_id}`);
+      const data = await result.json();
+
+      const modalUpdate = createModalForm(`/admin/partidos/update/${match_id}`, 'post', data);
+      modalControl(modalUpdate);
+      modalUpdate.style.display = 'block';
+      matches_container.append(modalUpdate);
+    });
     matches_container.append(table);
   });
 }
@@ -231,8 +277,14 @@ match_btn.addEventListener('click', async () => {
 })
 
 add_new_match.addEventListener('click', () => {
-  const form = createModalForm();
+  const form = createModalForm('/admin/new-match', 'post');
   modalControl(form);
   container_matches.append(form);
   form.style.display = "block";
+});
+
+position_btn.addEventListener('click', () => {
+  container_matches.style.display = 'none';
+  container_positions.style.display = 'block';
+  container_teams.style.display = 'none';
 });
