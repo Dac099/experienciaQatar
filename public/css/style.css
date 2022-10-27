@@ -708,6 +708,154 @@ footer a {
   font-size: 0.5rem;
 }
 
+.container-main--positions-content {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 60px auto;
+  justify-content: center;
+  padding: 20px;
+}
+.container-main--positions-content .positions-labels {
+  display: grid;
+  align-items: center;
+  justify-content: space-around;
+  grid-template-columns: 490px 204px 490px;
+  width: 100%;
+}
+.container-main--positions-content .positions-labels div {
+  display: flex;
+  justify-content: space-around;
+}
+.container-main--positions-content .positions-labels div p {
+  text-align: center;
+  width: 100px;
+  margin-right: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.container-main--positions-content .position-content--container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  margin: 10px auto;
+  gap: 40px;
+}
+.container-main--positions-content .position-content--container button {
+  background-color: rgb(255, 255, 255);
+  color: rgb(237, 28, 46);
+  border: 2px solid rgb(237, 28, 46);
+  font-size: 1.3rem;
+  border-radius: 5px;
+  display: grid;
+  place-content: center;
+  width: 200px;
+  height: 40px;
+  position: absolute;
+  bottom: 200px;
+}
+.container-main--positions-content .position-content--container button:hover {
+  background-color: rgb(237, 28, 46);
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+}
+.container-main--positions-content .positions-container {
+  display: grid;
+  grid-template-columns: repeat(3, 150px);
+  grid-template-rows: auto;
+  row-gap: 10px;
+  column-gap: 20px;
+}
+.container-main--positions-content .positions-container div input {
+  height: 40px;
+  width: 100%;
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+  border: none;
+  background-color: rgb(237, 28, 46);
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  text-align: center;
+}
+.container-main--positions-content .positions-container div input:hover {
+  outline: 0px;
+  outline-offset: none;
+  box-shadow: 2px 2px 0px 1px rgba(167, 167, 167, 0.7490196078);
+}
+.container-main--positions-content .positions-left {
+  align-items: center;
+  grid-template-areas: "o1 c1 s1" "o2 c1 s1" "o3 c2 s1" "o4 c2 s1";
+}
+.container-main--positions-content .positions-left div input {
+  border-radius: 0px 10px 10px 0px;
+}
+.container-main--positions-content .positions-left :nth-child(1) {
+  grid-area: o1;
+}
+.container-main--positions-content .positions-left :nth-child(2) {
+  grid-area: o2;
+}
+.container-main--positions-content .positions-left :nth-child(3) {
+  grid-area: o3;
+}
+.container-main--positions-content .positions-left :nth-child(4) {
+  grid-area: o4;
+}
+.container-main--positions-content .positions-left :nth-child(5) {
+  grid-area: c1;
+}
+.container-main--positions-content .positions-left :nth-child(6) {
+  grid-area: c2;
+}
+.container-main--positions-content .positions-left :nth-child(7) {
+  grid-area: s1;
+}
+.container-main--positions-content .positions-right {
+  align-items: center;
+  grid-template-areas: "s1 c1 o1" "s1 c1 o2" "s1 c2 o3" "s1 c2 o4";
+}
+.container-main--positions-content .positions-right div input {
+  border-radius: 10px 0px 0px 10px;
+}
+.container-main--positions-content .positions-right :nth-child(1) {
+  grid-area: s1;
+}
+.container-main--positions-content .positions-right :nth-child(2) {
+  grid-area: c1;
+}
+.container-main--positions-content .positions-right :nth-child(3) {
+  grid-area: c2;
+}
+.container-main--positions-content .positions-right :nth-child(4) {
+  grid-area: o1;
+}
+.container-main--positions-content .positions-right :nth-child(5) {
+  grid-area: o2;
+}
+.container-main--positions-content .positions-right :nth-child(6) {
+  grid-area: o3;
+}
+.container-main--positions-content .positions-right :nth-child(7) {
+  grid-area: o4;
+}
+.container-main--positions-content .position-final {
+  display: flex;
+  flex-direction: column;
+}
+.container-main--positions-content .position-final input {
+  height: 40px;
+  width: 100%;
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+  border: none;
+  background-color: rgb(237, 28, 46);
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  text-align: center;
+  border-radius: 10px;
+}
+
 .malla-banner {
   width: 100%;
 }

@@ -27,5 +27,85 @@ html(lang="en")
           article.match-cards--container
 
       article.container-main--positions-content
-        
-    script(src="/js/admin.js") 
+        section.positions-labels
+          div.left-labels
+            p Octavos
+            p Cuartos
+            p Semifinal
+          div.center-labels
+            p Final
+          div.right-labels
+            p Semifinal
+            p Cuartos
+            p Octavos
+        form(class="position-content--container", action="/admin/save-positions", method="post")
+          section(class="positions-left positions-container")
+            div.position-8
+              input(type="text", name="g1p1_octavos", id="g1p1_octavos")
+              input(type="text", name="g1p2_octavos", id="g1p2_octavos")
+
+            div.position-8
+              input(type="text", name="g1p3_octavos", id="g1p3_octavos")
+              input(type="text", name="g1p4_octavos", id="g1p4_octavos")
+
+            div.position-8
+              input(type="text", name="g1p5_octavos", id="g1p5_octavos")
+              input(type="text", name="g1p6_octavos", id="g1p6_octavos")
+
+            div.position-8
+              input(type="text", name="g1p7_octavos", id="g1p7_octavos")
+              input(type="text", name="g1p8_octavos", id="g1p8_octavos")
+              
+            div
+              div.position-4
+              input(type="text", name="g1p1_cuartos", id="g1p1_cuartos")
+              input(type="text", name="g1p2_cuartos", id="g1p2_cuartos")
+
+            div
+              div.position-4
+                input(type="text", name="g1p3_cuartos", id="g1p3_cuartos")
+                input(type="text", name="g1p4_cuartos", id="g1p4_cuartos")
+
+            div
+              div.position-semi
+                input(type="text", name="g1p1_semifinal", id="g1p1_semifinal")
+                input(type="text", name="g1p2_semifinal", id="g1p2_semifinal")
+
+          div.position-final
+              input(type="text", name="g1p1_final", id="g1p1_final")
+              input(type="text", name="g1p2_final", id="g1p2_final")
+
+          section(class="positions-right positions-container")
+            div
+              div.position-semi
+                input(type="text", name="g2p1_semifinal", id="g2p1_semifinal")
+                input(type="text", name="g2p2_semifinal", id="g2p2_semifinal")
+
+            div   
+              div.position-4
+                input(type="text", name="g2p1_cuartos", id="g2p1_cuartos")
+                input(type="text", name="g2p2_cuartos", id="g2p2_cuartos")
+
+            div    
+              div.position-4
+                input(type="text", name="g2p3_cuartos", id="g2p3_cuartos")
+                input(type="text", name="g2p4_cuartos", id="g2p4_cuartos")
+
+            div.position-8
+              input(type="text", name="g2p1_octavos", id="g2p1_octavos")
+              input(type="text", name="g2p2_octavos", id="g2p2_octavos")
+
+            div.position-8
+              input(type="text", name="g2p3_octavos", id="g2p3_octavos")
+              input(type="text", name="g2p4_octavos", id="g2p4_octavos")
+
+            div.position-8
+              input(type="text", name="g2p5_octavos", id="g2p5_octavos")
+              input(type="text", name="g2p6_octavos", id="g2p6_octavos")
+
+            div.position-8
+              input(type="text", name="g2p7_octavos", id="g2p7_octavos")
+              input(type="text", name="g2p8_octavos", id="g2p8_octavos")
+
+          button(type="submit" id="btn-table-positions") Guardar datos 
+    script(src="/js/admin.js", type="module") 

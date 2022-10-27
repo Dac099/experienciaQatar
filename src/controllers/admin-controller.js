@@ -1,5 +1,6 @@
 const { Equipo } = require('../models/equipo-model.js');
 const { Partido } = require('../models/partido-model.js');
+const { Positions } = require('../models/positions-model.js');
 
 async function adminPage(req, res){
   try {
@@ -167,11 +168,114 @@ async function updateMatch(req, res){
   }
 }
 
+async function savePositions(req, res){
+  try {
+    const {
+      g1p1_octavos, g1p2_octavos, g1p3_octavos, g1p4_octavos,
+      g1p5_octavos, g1p6_octavos, g1p7_octavos, g1p8_octavos,
+      g1p1_cuartos, g1p2_cuartos, g1p3_cuartos, g1p4_cuartos,
+      g1p1_semifinal, g1p2_semifinal, g1p1_final, g1p2_final,
+      g2p1_octavos, g2p2_octavos, g2p3_octavos, g2p4_octavos,
+      g2p5_octavos, g2p6_octavos, g2p7_octavos, g2p8_octavos,
+      g2p1_cuartos, g2p2_cuartos, g2p3_cuartos, g2p4_cuartos,
+      g2p1_semifinal, g2p2_semifinal
+    } = req.body;
+
+    const [table, created] = await Positions.findOrCreate({
+      where: { nombre: "valores"},
+      defaults: {
+        nombre: "valores",
+        g1p1_octavos: g1p1_octavos,
+        g1p2_octavos: g1p2_octavos,    
+        g1p3_octavos: g1p3_octavos,
+        g1p4_octavos: g1p4_octavos,    
+        g1p5_octavos: g1p5_octavos,    
+        g1p6_octavos: g1p6_octavos,    
+        g1p7_octavos: g1p7_octavos,    
+        g1p8_octavos: g1p8_octavos,    
+        g1p1_cuartos: g1p1_cuartos,    
+        g1p2_cuartos: g1p2_cuartos,    
+        g1p3_cuartos: g1p3_cuartos,    
+        g1p4_cuartos: g1p4_cuartos,    
+        g1p1_semifinal: g1p1_semifinal,    
+        g1p2_semifinal: g1p2_semifinal,    
+        g1p1_final: g1p1_final,    
+        g1p2_final: g1p2_final,    
+        g2p1_octavos: g2p1_octavos,    
+        g2p2_octavos: g2p2_octavos,    
+        g2p3_octavos: g2p3_octavos,    
+        g2p4_octavos: g2p4_octavos,    
+        g2p5_octavos: g2p5_octavos,    
+        g2p6_octavos: g2p6_octavos,    
+        g2p7_octavos: g2p7_octavos,      
+        g2p8_octavos: g2p8_octavos,    
+        g2p1_cuartos: g2p1_cuartos,    
+        g2p2_cuartos: g2p2_cuartos,    
+        g2p3_cuartos: g2p3_cuartos,    
+        g2p4_cuartos: g2p4_cuartos,    
+        g2p1_semifinal: g2p1_semifinal,    
+        g2p2_semifinal: g2p2_semifinal
+      }
+    });
+
+    if(!created){
+      table.g1p1_octavos = g1p1_octavos;
+      table.g1p2_octavos = g1p2_octavos;    
+      table.g1p3_octavos = g1p3_octavos;
+      table.g1p4_octavos = g1p4_octavos;    
+      table.g1p5_octavos = g1p5_octavos;    
+      table.g1p6_octavos = g1p6_octavos;    
+      table.g1p7_octavos = g1p7_octavos;    
+      table.g1p8_octavos = g1p8_octavos;    
+      table.g1p1_cuartos = g1p1_cuartos;    
+      table.g1p2_cuartos = g1p2_cuartos;    
+      table.g1p3_cuartos = g1p3_cuartos;    
+      table.g1p4_cuartos = g1p4_cuartos;    
+      table.g1p1_semifinal = g1p1_semifinal;    
+      table.g1p2_semifinal = g1p2_semifinal;    
+      table.g1p1_final = g1p1_final;    
+      table.g1p2_final = g1p2_final;    
+      table.g2p1_octavos = g2p1_octavos;    
+      table.g2p2_octavos = g2p2_octavos;    
+      table.g2p3_octavos = g2p3_octavos;    
+      table.g2p4_octavos = g2p4_octavos;    
+      table.g2p5_octavos = g2p5_octavos;    
+      table.g2p6_octavos = g2p6_octavos;    
+      table.g2p7_octavos = g2p7_octavos;      
+      table.g2p8_octavos = g2p8_octavos;    
+      table.g2p1_cuartos = g2p1_cuartos;    
+      table.g2p2_cuartos = g2p2_cuartos;    
+      table.g2p3_cuartos = g2p3_cuartos;    
+      table.g2p4_cuartos = g2p4_cuartos;    
+      table.g2p1_semifinal = g2p1_semifinal;    
+      table.g2p2_semifinal = g2p2_semifinal;
+
+      table.save();
+    }
+
+    res.redirect('/admin');
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+async function getPositions(req, res){
+  try {
+    const values = await Positions.findByPk('valores');
+
+    res.json(values);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 module.exports = {
   adminPage,
   getTeams,
   createTeam,
   getMatchByStage,
   getMatchById,
-  updateMatch
+  updateMatch,
+  savePositions,
+  getPositions
 }

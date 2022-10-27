@@ -161,3 +161,174 @@
     }
   }
 }
+
+// Styles for positions tab
+.container-main--positions-content{
+
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 60px auto;
+  justify-content: center;
+  padding: 20px;
+
+  // General styles
+  .positions-labels{
+    display: grid;
+    align-items: center;
+    justify-content: space-around;
+    grid-template-columns: 490px 204px 490px;
+    width: 100%;
+
+    div{
+      display: flex;
+      justify-content: space-around;
+      
+      p{
+        text-align: center;
+        width: 100px;
+        margin-right: 10px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  .position-content--container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    margin: 10px auto;
+    gap: 40px;
+
+    button{ 
+      @include button;
+      width: 200px;
+      height: 40px;
+      position: absolute;
+      bottom: 200px;
+    }
+  }
+
+  .positions-container{
+    display: grid;
+    grid-template-columns: repeat(3, 150px);
+    grid-template-rows: auto;
+    row-gap: 10px;
+    column-gap: 20px;
+
+    div input{
+      height: 40px;
+      width: 100%;
+      font-size: 1.5rem;
+      margin-bottom: 5px;
+      border: none;
+      background-color: $red-color;
+      color: $white-color;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    div input:hover{
+      outline: 0px;
+        outline-offset: none;
+        box-shadow: 2px 2px 0px 1px #a7a7a7bf;
+    }
+  }
+  
+
+  // Container left styles
+  .positions-left{
+    align-items: center;
+    grid-template-areas: 
+    "o1 c1 s1"
+    "o2 c1 s1"
+    "o3 c2 s1"
+    "o4 c2 s1"
+    ;
+    
+    div input{
+      border-radius: 0px 10px 10px 0px;
+    }
+
+    :nth-child(1){
+      grid-area: o1;
+    }
+    :nth-child(2){
+      grid-area: o2;
+    }
+    :nth-child(3){
+      grid-area: o3;
+    }
+    :nth-child(4){
+      grid-area: o4;
+    }
+    :nth-child(5){
+      grid-area: c1;
+    }
+    :nth-child(6){
+      grid-area: c2;
+    }
+    :nth-child(7){
+      grid-area: s1;
+    }
+
+  }
+
+  // Container right styles
+  .positions-right{
+    align-items: center;
+    grid-template-areas:
+      "s1 c1 o1"
+      "s1 c1 o2"
+      "s1 c2 o3"
+      "s1 c2 o4"
+    ;
+
+    div input{
+      border-radius: 10px 0px 0px 10px;
+    }
+
+    :nth-child(1){
+      grid-area: s1;
+    }
+    :nth-child(2){
+      grid-area: c1;
+    }
+    :nth-child(3){
+      grid-area: c2;
+    }
+    :nth-child(4){
+      grid-area: o1;
+    }
+    :nth-child(5){
+      grid-area: o2;
+    }
+    :nth-child(6){
+      grid-area: o3;
+    }
+    :nth-child(7){
+      grid-area: o4;
+    }
+  }
+
+  // Styles for center input
+  .position-final {
+    display: flex;
+    flex-direction: column;
+
+    input{
+      height: 40px;
+      width: 100%;
+      font-size: 1.5rem;
+      margin-bottom: 5px;
+      border: none;
+      background-color: $red-color;
+      color: $white-color;
+      font-weight: bold;
+      text-align: center;
+      border-radius: 10px;
+    }
+  }
+}
