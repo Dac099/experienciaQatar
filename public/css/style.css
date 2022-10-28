@@ -878,108 +878,225 @@ h2 {
   justify-content: center;
   gap: 20px;
 }
-.malla-container .partidos-container .partido-current--card {
-  position: relative;
+.malla-container .partidos-container table, .malla-container .partidos-container th, .malla-container .partidos-container td {
+  border: 1px solid black;
+}
+.malla-container .partidos-container .card-table-match {
+  width: 100%;
+  height: 100%;
+  font-size: 80px;
+}
+.malla-container .partidos-container .card-table-match td {
+  color: black;
+  background-color: rgb(255, 255, 255);
+  font-weight: 400;
+  text-align: center;
+}
+.malla-container .partidos-container .card-table-match th {
+  color: rgb(255, 255, 255);
   background-color: rgb(237, 28, 46);
-  border-radius: 15px;
-  padding: 20px;
-}
-.malla-container .partido-current--card .partido-a {
-  display: inline;
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  font-size: 3rem;
-  color: rgb(255, 255, 255);
   font-weight: bold;
 }
-.malla-container .partido-current--card .partido-b {
-  display: inline;
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  font-size: 3rem;
-  color: rgb(255, 255, 255);
-  font-weight: bold;
-}
-.malla-container .partido-current--card .vs {
-  position: absolute;
-  left: calc(50% - 35px);
-  bottom: 15px;
-  display: inline;
-  color: rgb(255, 255, 255);
-  font-size: 6rem;
-  font-weight: bold;
+.malla-container .partidos-container .card-table-match .match-id {
+  color: rgb(237, 28, 46);
+  font-size: 0.5rem;
 }
 
 .posiciones-container {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  max-width: 400px;
-  margin: 0px auto;
-}
-.posiciones-container .partido-row {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  width: 100%;
-  height: 40px;
-  background-color: rgb(237, 28, 46);
-  padding: 0px 20px;
-  cursor: pointer;
-  border-radius: 10px;
-}
-.posiciones-container .partido-row p {
-  font-size: 1.8rem;
-  color: rgb(255, 255, 255);
-  font-weight: bold;
-  margin-right: 20px;
-}
-.posiciones-container .partido-row .posicion {
-  border-right: 2px solid rgb(255, 255, 255);
-  padding-right: 5px;
-}
-
-.modal-posicion--window {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(237, 28, 46, 0.4);
-}
-.modal-posicion--window .modal-posicion--content {
-  display: flex;
-  justify-content: space-between;
-  width: 350px;
-  max-width: 500px;
-  position: relative;
-  left: calc(50% - 175px);
-  top: calc(50% - 250px);
-  height: 400px;
-  border-radius: 10px;
-  background-color: rgb(255, 255, 255);
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 60px auto;
+  justify-content: center;
   padding: 20px;
 }
-.modal-posicion--window .modal-posicion--content p {
+.posiciones-container .positions-labels {
+  display: grid;
+  align-items: center;
+  justify-content: space-around;
+  grid-template-columns: 490px 204px 490px;
+  width: 100%;
+}
+.posiciones-container .positions-labels div {
+  display: flex;
+  justify-content: space-around;
+}
+.posiciones-container .positions-labels div p {
+  text-align: center;
+  width: 100px;
+  margin-right: 10px;
   font-size: 1.5rem;
-  margin-bottom: 20px;
-  border-bottom: 2px solid rgb(237, 28, 46);
-  word-spacing: 3px;
-}
-.modal-posicion--window .data-posicion {
   font-weight: bold;
-  text-align: end;
+  text-transform: uppercase;
 }
-.modal-posicion--window .index-posicion, .modal-posicion--window .data-posicion {
-  margin-top: 10px;
+.posiciones-container .position-content--container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  margin: 10px auto;
+  gap: 40px;
 }
-.modal-posicion--window .close {
+.posiciones-container .position-content--container button {
+  background-color: rgb(255, 255, 255);
+  color: rgb(237, 28, 46);
+  border: 2px solid rgb(237, 28, 46);
+  font-size: 1.3rem;
+  border-radius: 5px;
+  display: grid;
+  place-content: center;
+  width: 200px;
+  height: 40px;
   position: absolute;
-  top: 0px;
-  left: 10px;
+  bottom: 200px;
+}
+.posiciones-container .position-content--container button:hover {
+  background-color: rgb(237, 28, 46);
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+}
+.posiciones-container .position-content--container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  margin: 10px auto;
+  gap: 40px;
+}
+.posiciones-container .position-content--container button {
+  background-color: rgb(255, 255, 255);
+  color: rgb(237, 28, 46);
+  border: 2px solid rgb(237, 28, 46);
+  font-size: 1.3rem;
+  border-radius: 5px;
+  display: grid;
+  place-content: center;
+  width: 200px;
+  height: 40px;
+  position: absolute;
+  bottom: 200px;
+}
+.posiciones-container .position-content--container button:hover {
+  background-color: rgb(237, 28, 46);
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+}
+.posiciones-container .positions-container {
+  display: grid;
+  grid-template-columns: repeat(3, 150px);
+  grid-template-rows: auto;
+  row-gap: 10px;
+  column-gap: 20px;
+}
+.posiciones-container .positions-container div input {
+  height: 40px;
+  width: 100%;
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+  border: none;
+  background-color: rgb(237, 28, 46);
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  text-align: center;
+}
+.posiciones-container .positions-container div input:hover {
+  outline: 0px;
+  outline-offset: none;
+  box-shadow: 2px 2px 0px 1px rgba(167, 167, 167, 0.7490196078);
+}
+.posiciones-container .positions-left {
+  align-items: center;
+  grid-template-areas: "o1 c1 s1" "o2 c1 s1" "o3 c2 s1" "o4 c2 s1";
+}
+.posiciones-container .positions-left div input {
+  border-radius: 0px 10px 10px 0px;
+}
+.posiciones-container .positions-left :nth-child(1) {
+  grid-area: o1;
+}
+.posiciones-container .positions-left :nth-child(2) {
+  grid-area: o2;
+}
+.posiciones-container .positions-left :nth-child(3) {
+  grid-area: o3;
+}
+.posiciones-container .positions-left :nth-child(4) {
+  grid-area: o4;
+}
+.posiciones-container .positions-left :nth-child(5) {
+  grid-area: c1;
+}
+.posiciones-container .positions-left :nth-child(6) {
+  grid-area: c2;
+}
+.posiciones-container .positions-left :nth-child(7) {
+  grid-area: s1;
+}
+.posiciones-container .positions-right {
+  align-items: center;
+  grid-template-areas: "s1 c1 o1" "s1 c1 o2" "s1 c2 o3" "s1 c2 o4";
+}
+.posiciones-container .positions-right div input {
+  border-radius: 10px 0px 0px 10px;
+}
+.posiciones-container .positions-right :nth-child(1) {
+  grid-area: s1;
+}
+.posiciones-container .positions-right :nth-child(2) {
+  grid-area: c1;
+}
+.posiciones-container .positions-right :nth-child(3) {
+  grid-area: c2;
+}
+.posiciones-container .positions-right :nth-child(4) {
+  grid-area: o1;
+}
+.posiciones-container .positions-right :nth-child(5) {
+  grid-area: o2;
+}
+.posiciones-container .positions-right :nth-child(6) {
+  grid-area: o3;
+}
+.posiciones-container .positions-right :nth-child(7) {
+  grid-area: o4;
+}
+.posiciones-container .position-final {
+  display: flex;
+  flex-direction: column;
+}
+.posiciones-container .position-final input {
+  height: 40px;
+  width: 100%;
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+  border: none;
+  background-color: rgb(237, 28, 46);
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.user404 {
+  font-size: 5rem;
+  text-align: center;
+}
+
+.returnLanding {
+  background-color: rgb(255, 255, 255);
+  color: rgb(237, 28, 46);
+  border: 2px solid rgb(237, 28, 46);
+  font-size: 1.3rem;
+  border-radius: 5px;
+  display: grid;
+  place-content: center;
+  width: 200px;
+  height: 40px;
+  margin: 0 auto;
+}
+.returnLanding:hover {
+  background-color: rgb(237, 28, 46);
+  color: rgb(255, 255, 255);
+  font-weight: 600;
 }
 
 /*# sourceMappingURL=style.css.map */

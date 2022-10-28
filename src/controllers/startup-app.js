@@ -1,5 +1,6 @@
 const { Equipo } = require('../models/equipo-model.js');
 const { Partido } = require('../models/partido-model.js');
+const { User } = require('../models/users-model.js');
 
 //Crear equipos y cargar los equipos que necesite la aplicacion
 async function CreateTeams(){
@@ -347,4 +348,22 @@ async function testPartidos(){
   }
 }
 
-module.exports = { CreateTeams, testPartidos };
+async function testUsers(){
+  try {
+    await User.create({
+      nickname: 'Juan',
+      correo: 'juan@gmail.com',
+      password: '1234',
+      puntos_totales: 0,
+      puntos_de_grupo: 0,
+      puntos_de_octavos: 0,
+      puntos_de_cuartos: 0,
+      puntos_de_semi: 0,
+      puntos_de_final: 0,
+      rol: 'admin'
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
+module.exports = { CreateTeams, testPartidos, testUsers };

@@ -13,60 +13,90 @@ html(lang="en")
 
       article.malla-partidos
         h2 Malla de partidos
-        section.partidos-container
-          
-          .partido-current--card 
-            p.partido-a México
-            p.partido-b Qatar
-            p.vs VS
-
-          .partido-current--card 
-            p.partido-a México
-            p.partido-b Qatar
-            p.vs VS
-
-          .partido-current--card 
-            p.partido-a México
-            p.partido-b Qatar
-            p.vs VS
-          
-
+        section.partidos-container         
 
       article.tabla-posiciones
         h2 Tabla de posiciones
         section.posiciones-container
-          .partido-row
-            p.posicion 1
-            p.nombre-partido México
-          .partido-row
-            p.posicion 2
-            p.nombre-partido Qatar
-          .partido-row
-            p.posicion 3
-            p.nombre-partido Brasil
+          section.positions-labels
+            div.left-labels
+              p Octavos
+              p Cuartos
+              p Semifinal
+            div.center-labels
+              p Final
+            div.right-labels
+              p Semifinal
+              p Cuartos
+              p Octavos
+          section(class="position-content--container")
+            section(class="positions-left positions-container")
+              div.position-8
+                input(type="text", name="g1p1_octavos", id="g1p1_octavos", readonly)
+                input(type="text", name="g1p2_octavos", id="g1p2_octavos", readonly)
 
-      article.modal-posicion--window 
-        section.modal-posicion--content
-          span.close &times;
-          .index-posicion
-            p Nombre del Equipo
-            p Partidos Jugados
-            p Partidos Ganados
-            p Partidos Perdidos
-            p Goles Totales
-            p Goles en Contra
-            p Goles a Favor
-            p Puntos
-            p Etapa
-          .data-posicion
-            p México
-            p 3
-            p 1
-            p 2
-            p 8
-            p 6
-            p 2
-            p 3
-            p Grupos
-  script(src="/js/malla-partidos.js") 
+              div.position-8
+                input(type="text", name="g1p3_octavos", id="g1p3_octavos", readonly)
+                input(type="text", name="g1p4_octavos", id="g1p4_octavos", readonly)
+
+              div.position-8
+                input(type="text", name="g1p5_octavos", id="g1p5_octavos", readonly)
+                input(type="text", name="g1p6_octavos", id="g1p6_octavos", readonly)
+
+              div.position-8
+                input(type="text", name="g1p7_octavos", id="g1p7_octavos", readonly)
+                input(type="text", name="g1p8_octavos", id="g1p8_octavos", readonly)
+                
+              div
+                div.position-4
+                input(type="text", name="g1p1_cuartos", id="g1p1_cuartos", readonly)
+                input(type="text", name="g1p2_cuartos", id="g1p2_cuartos", readonly)
+
+              div
+                div.position-4
+                  input(type="text", name="g1p3_cuartos", id="g1p3_cuartos", readonly)
+                  input(type="text", name="g1p4_cuartos", id="g1p4_cuartos", readonly)
+
+              div
+                div.position-semi
+                  input(type="text", name="g1p1_semifinal", id="g1p1_semifinal", readonly)
+                  input(type="text", name="g1p2_semifinal", id="g1p2_semifinal", readonly)
+
+            div.position-final
+                input(type="text", name="g1p1_final", id="g1p1_final", readonly)
+                input(type="text", name="g1p2_final", id="g1p2_final", readonly)
+
+            section(class="positions-right positions-container")
+              div
+                div.position-semi
+                  input(type="text", name="g2p1_semifinal", id="g2p1_semifinal", readonly)
+                  input(type="text", name="g2p2_semifinal", id="g2p2_semifinal", readonly)
+
+              div   
+                div.position-4
+                  input(type="text", name="g2p1_cuartos", id="g2p1_cuartos", readonly)
+                  input(type="text", name="g2p2_cuartos", id="g2p2_cuartos", readonly)
+
+              div    
+                div.position-4
+                  input(type="text", name="g2p3_cuartos", id="g2p3_cuartos", readonly)
+                  input(type="text", name="g2p4_cuartos", id="g2p4_cuartos", readonly)
+
+              div.position-8
+                input(type="text", name="g2p1_octavos", id="g2p1_octavos", readonly)
+                input(type="text", name="g2p2_octavos", id="g2p2_octavos", readonly)
+
+              div.position-8
+                input(type="text", name="g2p3_octavos", id="g2p3_octavos", readonly)
+                input(type="text", name="g2p4_octavos", id="g2p4_octavos", readonly)
+
+              div.position-8
+                input(type="text", name="g2p5_octavos", id="g2p5_octavos", readonly)
+                input(type="text", name="g2p6_octavos", id="g2p6_octavos", readonly)
+
+              div.position-8
+                input(type="text", name="g2p7_octavos", id="g2p7_octavos", readonly)
+                input(type="text", name="g2p8_octavos", id="g2p8_octavos", readonly)
+
+  script(src="/js/malla-partidos.js", type="module") 
 

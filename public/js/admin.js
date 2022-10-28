@@ -17,9 +17,9 @@ const matches_url = '/admin/partidos';
 
 //Startup page
 container_teams.style.display = "none";
-container_matches.style.display = "none";
-container_positions.style.display = "grid";
-// containerMatches();
+container_matches.style.display = "block";
+container_positions.style.display = "none";
+containerMatches();
 
 teams_btn.addEventListener('click', async () => {
   container_matches.style.display = 'none';

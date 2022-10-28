@@ -22,8 +22,8 @@ html(lang="en")
             button(type="submit") Registrarse
         else 
           p Ingresa tus datos
-          form(action="/signin" method="post" autocomplete)
-            input(type="text" placeholder="Correo" required autofocus name="nickname")
+          form(action="/auth" method="post" autocomplete)
+            input(type="text" placeholder="Correo" required autofocus name="email")
             input(type="password" placeholder="Constraseña" required autofocus name="password")
             button(type="submit") Iniciar
     .signin-option

@@ -4,7 +4,7 @@ const { sequelize } = require('../database/db-connection.js');
 const User = sequelize.define('users', {
   id : {
     type: DataTypes.UUID,
-    defaultValue: DataTypes.UUIDV4,
+    defaultValue: DataTypes.UUIDV1,
     allowNull: false,
     primaryKey: true,
     unique: true

@@ -44,7 +44,14 @@ export function createModalForm(action, method, data={}){
         <input type="number" required placeholder="Goles de B" id="goles_b" name="goles_b">
         <input type="number" required placeholder="Puntos de A" id="puntos_a" name="puntos_a">
         <input type="number" required placeholder="Puntos de B" id="puntos_b" name="puntos_b">
-        <input type="text" required placeholder="Etapa" id="etapa" name="etapa">
+        <input type="text" required placeholder="Etapa" id="etapa" name="etapa" list="etapas">
+        <datalist id="etapas">
+          <option value="Grupos">
+          <option value="Octavos">
+          <option value="Cuartos">
+          <option value="Semifinal">
+          <option value="Final">
+        </datalist>
         <button type="submit" class="submitBtn">Agregar Partido</button>
       </form>
     `;
@@ -75,7 +82,14 @@ export function createModalForm(action, method, data={}){
         <input type="number" required placeholder="Puntos de B" id="puntos_b" name="puntos_b" value="${data.puntos_b}">
 
         <label for="etapa">Etapa</label>
-        <input type="text" required placeholder="Etapa" id="etapa" name="etapa" value="${data.etapa}">
+        <input type="text" required placeholder="Etapa" id="etapa" name="etapa" value="${data.etapa}" list="etapas">
+        <datalist id="etapas">
+          <option value="Grupos">
+          <option value="Octavos">
+          <option value="Cuartos">
+          <option value="Semifinal">
+          <option value="Final">
+        </datalist>
         <button type="submit" class="submitBtn">Agregar Partido</button>
       </form>
     `;

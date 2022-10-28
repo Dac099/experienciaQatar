@@ -11,4 +11,6 @@ app.use('/assets', express.static(path.join(__dirname, '../public')));
 
 app.use(require('./routes/index.js'));
 app.use(require('./routes/admin.js'));
+app.use(require('./routes/users.js'));
+app.use(require('./routes/auth.js'));
 module.exports = app;

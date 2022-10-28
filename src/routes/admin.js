@@ -1,4 +1,13 @@
-const { adminPage, getTeams, createTeam, getMatchByStage, getMatchById, updateMatch, savePositions, getPositions } = require('../controllers/admin-controller.js');
+const { 
+  adminPage, 
+  getTeams, 
+  createTeam, 
+  getMatchByStage, 
+  getMatchById, 
+  updateMatch, 
+  savePositions, 
+  getPositions
+} = require('../controllers/admin-controller.js');
 const router = require('express').Router();
 
 router.get('/admin', adminPage);

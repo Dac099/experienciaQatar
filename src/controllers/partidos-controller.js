@@ -1,19 +1,36 @@
 const { Partido } = require('../models/partido-model.js');
 
-async function ShowPartido(req, res){
+async function getPartidos(req, res){
   try {
-    const p = await Partido.create({
-      fecha: "2022/11/21",
-      puntos_a: 0,
-      puntos_b: 0,
-      goles_a: 0,
-      goles_b:0
+    const etapa = req.query.etapa;
+    console.log(etapa);
+    const partidos = await Partido.findAll({
+      where: {
+        etapa: etapa
+      }
     });
 
-    res.json(p);
+    res.json(partidos);
   } catch (error) {
     console.log(error);
   }
 }
 
-module.exports = { ShowPartido };
+async function mallaPartidos(req, res){
+  try {
+    res.render('malla-partidos', {
+      logged: true,
+      banner: '/media/banner.png',
+      logo: '/media/logo-economicas.svg',
+      home: '/'
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+
+module.exports = { 
+  getPartidos,
+  mallaPartidos
+ };
