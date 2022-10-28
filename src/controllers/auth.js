@@ -28,17 +28,22 @@ function generateToken(user){
 }
 
 async function validateToken(req, res, next){
-  const accessToken = req.headers.authorization;
+  const authorization = req.get('authorization');
+
   if(!accessToken) res.status(403).send("No puedes acceder a este recurso");
 
-  jwt.verify(accessToken, process.env.TOKEN, (err, user) => {
-    if(err){
-      res.status(403).send("Token expirado o incorrecto");
-    }else{
-      req.user = user;
-      next();
-    }
-  });
+  if(accessToken.toLowerCase().startsWith('bearer')){
+    let token = authorization.split(' ')[1];
+    
+    jwt.verify(token, process.env.TOKEN, (err, user) => {
+      if(err){
+        res.status(403).send("Token expirado o incorrecto");
+      }else{
+        req.user = user;
+        next();
+      }
+    });
+  }
 }
 
 module.exports = {
