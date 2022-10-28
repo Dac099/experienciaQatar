@@ -22,10 +22,10 @@ html(lang="en")
             button(type="submit") Registrarse
         else 
           p Ingresa tus datos
-          form(action="/auth" method="post" autocomplete)
+          form(autocomplete id="signin")
             input(type="text" placeholder="Correo" required autofocus name="email")
             input(type="password" placeholder="Constraseña" required autofocus name="password")
-            button(type="submit") Iniciar
+            button(type="submit" id="submitBtn") Iniciar
     .signin-option
       if action=="signup"
         p Si ya estas registrado inicia sesion
@@ -34,3 +34,4 @@ html(lang="en")
         p Si no tienes una cuenta registrate 
         a(href="/signup") Registrarse 
     include includes/about.pug
+  script(src="/js/sign.js") 

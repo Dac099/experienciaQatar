@@ -26,7 +26,8 @@ async function createUser(req, res){
 
 async function getUser(email, password){
   try {
-    const result = await User.findOne({
+    const result = await User.findAll({
+      attributes: ["nickname", "correo", "rol"],
       where: {
         correo: email,
         password: password 

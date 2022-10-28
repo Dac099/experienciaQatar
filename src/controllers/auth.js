@@ -6,16 +6,17 @@ async function Auth(req, res){
   try {
     const {password, email} = req.body;
 
-    const user = getUser(email, password);
+    const user = await getUser(email, password);
+
+
     const accessToken = generateToken({
-      email: user.correo,
-      password: user.password
+      email: user[0].correo,
+      nickname: user[0].nickname,
+      rol: user[0].rol
     });
 
-    res.header('authorization', accessToken).json({
-      message: "Usuario autenticado",
-      token: accessToken
-    });
+    res.header('authorization', accessToken).json(accessToken);
+
   } catch (error) {
     console.log(error);
     res.redirect('/user404');
@@ -27,13 +28,14 @@ function generateToken(user){
 }
 
 async function validateToken(req, res, next){
-  const accessToken = req.headers['authorization'] || req.query.token
-  if(!accessToken) res.send("No puedes acceder a este recurso");
+  const accessToken = req.headers.authorization;
+  if(!accessToken) res.status(403).send("No puedes acceder a este recurso");
 
   jwt.verify(accessToken, process.env.TOKEN, (err, user) => {
     if(err){
-      res.send("Token expirado o incorrecto");
+      res.status(403).send("Token expirado o incorrecto");
     }else{
+      req.user = user;
       next();
     }
   });
@@ -41,5 +43,5 @@ async function validateToken(req, res, next){
 
 module.exports = {
   Auth,
-  validateToken
+  validateToken,
 }

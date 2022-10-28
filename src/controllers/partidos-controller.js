@@ -18,6 +18,8 @@ async function getPartidos(req, res){
 
 async function mallaPartidos(req, res){
   try {
+    const user = req.user;
+    console.log(user);
     res.render('malla-partidos', {
       logged: true,
       banner: '/media/banner.png',
