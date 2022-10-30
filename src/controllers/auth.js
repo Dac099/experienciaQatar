@@ -1,5 +1,6 @@
 const { getUser } = require('./usuarios-controller');
 const jwt = require('jsonwebtoken');
+const { User } = require('../models/users-model');
 require('dotenv').config();
 
 async function Auth(req, res){
@@ -20,7 +21,7 @@ async function Auth(req, res){
     }
 
     res.cookie('jwt', accessToken, cookieOptions);
-    res.json(accessToken);
+    res.redirect('/malla-partidos');
 
   } catch (error) {
     console.log(error);
@@ -33,21 +34,24 @@ function generateToken(user){
 }
 
 async function validateToken(req, res, next){
-  const authorization = req.get('authorization');
+  console.log(req.cookies);
 
-  if(!accessToken) res.status(403).send("No puedes acceder a este recurso");
-
-  if(accessToken.toLowerCase().startsWith('bearer')){
-    let token = authorization.split(' ')[1];
+  if(req.cookies.jwt){
+    try {
+      jwt.verify(req.cookies.jwt, process.env.TOKEN, (err, user) => {
+        if(err){
+          res.status(403).send('Usuario no autorizado, inicia sesion');
+        }else{
+          req.user = user;
+          next();
+        }
+      });
     
-    jwt.verify(token, process.env.TOKEN, (err, user) => {
-      if(err){
-        res.status(403).send("Token expirado o incorrecto");
-      }else{
-        req.user = user;
-        next();
-      }
-    });
+    } catch (error) {
+      console.log(error);
+    }
+  }else{
+    res.redirect('/signin');
   }
 }
 

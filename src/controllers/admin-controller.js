@@ -3,6 +3,7 @@ const { Equipo } = require('../models/equipo-model.js');
 const { Partido } = require('../models/partido-model.js');
 const { Positions } = require('../models/positions-model.js');
 const { User } = require('../models/users-model.js');
+const { validateToken } = require('./auth.js');
 
 async function adminPage(req, res){
   try {
