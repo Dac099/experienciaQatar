@@ -15,7 +15,12 @@ async function Auth(req, res){
       rol: user[0].rol
     });
 
-    res.header('authorization', accessToken).json(accessToken);
+    const cookieOptions = {
+      httpOnly: true
+    }
+
+    res.cookie('jwt', accessToken, cookieOptions);
+    res.json(accessToken);
 
   } catch (error) {
     console.log(error);

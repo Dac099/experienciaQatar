@@ -22,7 +22,7 @@ html(lang="en")
             button(type="submit") Registrarse
         else 
           p Ingresa tus datos
-          form(autocomplete id="signin")
+          form(action="/auth" method="post" autocomplete id="signin")
             input(type="text" placeholder="Correo" required autofocus name="email")
             input(type="password" placeholder="Constraseña" required autofocus name="password")
             button(type="submit" id="submitBtn") Iniciar
