@@ -34,8 +34,6 @@ function generateToken(user){
 }
 
 async function validateToken(req, res, next){
-  console.log(req.cookies);
-
   if(req.cookies.jwt){
     try {
       jwt.verify(req.cookies.jwt, process.env.TOKEN, (err, user) => {
