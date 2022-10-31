@@ -2,8 +2,8 @@ const {  User } = require('../models/users-model.js');
 
 async function getOrderedUsers(req, res){
   try {
-    const users = User.findAll({
-      order: ['puntos_totales', 'DESC']
+    const users = await User.findAll({
+      order: ['puntos_totales']
     })
 
     res.json(users);

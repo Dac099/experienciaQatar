@@ -1189,19 +1189,28 @@ button:hover {
 
 .ranking-container {
   padding: 20px;
+  height: 70vh;
 }
 
 table.users {
   border: 1px solid black;
   width: 100%;
+  border-spacing: 5px;
 }
 table.users th, table.users td {
   border: 1px solid black;
+  text-align: center;
 }
 table.users th {
   font-size: 2rem;
   color: rgb(255, 255, 255);
   background-color: rgb(237, 28, 46);
+  height: 40px;
+}
+table.users td {
+  font-size: 1.7rem;
+  background-color: rgba(0, 0, 0, 0.2);
+  height: 35px;
 }
 
 /*# sourceMappingURL=style.css.map */

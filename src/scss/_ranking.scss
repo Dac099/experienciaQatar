@@ -1,18 +1,28 @@
 .ranking-container{
   padding: 20px;
+  height: 70vh;
 }
 
 table.users{
   border: 1px solid black;
   width: 100%;
+  border-spacing: 5px;
 
   th, td{
     border: 1px solid black;
+    text-align: center;
   }
 
   th{
     font-size: 2rem;
     color: $white-color;
     background-color: $red-color;
+    height: 40px;
+  }
+
+  td{
+    font-size: 1.7rem;
+    background-color: rgba(0,0,0,0.2);
+    height: 35px;
   }
 }
