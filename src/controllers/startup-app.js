@@ -360,7 +360,7 @@ async function testUsers(){
       puntos_de_cuartos: 0,
       puntos_de_semi: 0,
       puntos_de_final: 0,
-      rol: 'admin'
+      rol: 'Admin'
     });
   } catch (error) {
     console.log(error);

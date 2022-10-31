@@ -3,14 +3,19 @@ const { Equipo } = require('../models/equipo-model.js');
 const { Partido } = require('../models/partido-model.js');
 const { Positions } = require('../models/positions-model.js');
 const { User } = require('../models/users-model.js');
-const { validateToken } = require('./auth.js');
 
 async function adminPage(req, res){
   try {
-    res.render('admin', {
-      logged: true,
-      logo: '/media/logo-economicas.svg'
-    });
+    const user = req.user;
+
+    if(user.rol === 'Admin'){
+      res.render('admin', {
+        logged: true,
+        logo: '/media/logo-economicas.svg'
+      });
+    }else{
+      res.status(403).send('<h1>No tienes permisos para acceder a estos recursos</h1>');
+    }
   } catch (error) {
     console.log(error);
   }
@@ -18,9 +23,14 @@ async function adminPage(req, res){
 
 async function getTeams(req, res){
   try {
-    const result = await Equipo.findAll();
-
-    res.json(result);
+    const user = req.user;
+    if(user.rol === 'Admin'){
+      const result = await Equipo.findAll();
+  
+      res.json(result);
+    }else{
+      res.status(403).send('<h1>No tienes permisos para acceder a estos recursos</h1>');
+    }
   } catch (error) {
     console.log(error);
   }
@@ -28,29 +38,34 @@ async function getTeams(req, res){
 
 async function createTeam(req, res){
   try {
-    const {
-      fecha,
-      equipo_a,
-      equipo_b,
-      goles_a,
-      goles_b,
-      puntos_a,
-      puntos_b,
-      etapa
-    } = req.body;
-
-    await Partido.create({
-      fecha: fecha,
-      equipo_a: equipo_a,
-      equipo_b: equipo_b,
-      goles_b: goles_b,
-      goles_a: goles_a,
-      puntos_a: puntos_a,
-      puntos_b: puntos_b,
-      etapa: etapa
-    });
-
-    res.redirect('/admin');
+    const user = req.user;
+    if(user.rol === 'Admin'){
+      const {
+        fecha,
+        equipo_a,
+        equipo_b,
+        goles_a,
+        goles_b,
+        puntos_a,
+        puntos_b,
+        etapa
+      } = req.body;
+  
+      await Partido.create({
+        fecha: fecha,
+        equipo_a: equipo_a,
+        equipo_b: equipo_b,
+        goles_b: goles_b,
+        goles_a: goles_a,
+        puntos_a: puntos_a,
+        puntos_b: puntos_b,
+        etapa: etapa
+      });
+  
+      res.redirect('/admin');
+    }else{
+      res.status(403).send('<h1>No tienes permisos para acceder a estos recursos</h1>');
+    }
   } catch (error) { 
     console.log(error);
   }
