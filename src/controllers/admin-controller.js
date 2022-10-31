@@ -11,7 +11,8 @@ async function adminPage(req, res){
     if(user.rol === 'Admin'){
       res.render('admin', {
         logged: true,
-        logo: '/media/logo-economicas.svg'
+        logo: '/media/logo-economicas.svg',
+        admin: true
       });
     }else{
       res.status(403).send('<h1>No tienes permisos para acceder a estos recursos</h1>');

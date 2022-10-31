@@ -1,5 +1,6 @@
 header  
   if logged
+  
     a(href='/', class="home") 
       img(src=logo, alt="logo", class="logo-img")
     nav.nav--options
@@ -7,10 +8,13 @@ header
       a(href="/pronosticos") Registra tus pronosticos
       a(href="/ranking") Ranking de participantes
       a(href="/ayuda") Ayuda
-      a(class="icon") &Congruent; 
+      if admin 
+        a(href="/admin") Admin
+      a(class="icon") &Congruent;
   else  
     a(href=home, class="home") 
       img(src=logo, alt="logo", class="logo-img")
     .btn-account
       a(href="/signin") Iniciar sesion
       a(href="/signup") Registrarse
+

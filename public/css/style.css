@@ -62,7 +62,7 @@ main .text-card button:hover {
   color: rgb(255, 255, 255);
   font-weight: 600;
 }
-main .info-premios > button {
+main .info-premios a#btn-1 {
   width: 314px;
   height: 40px;
   margin: 0 auto;
@@ -74,7 +74,7 @@ main .info-premios > button {
   display: grid;
   place-content: center;
 }
-main .info-premios > button:hover {
+main .info-premios a#btn-1:hover {
   background-color: rgb(237, 28, 46);
   color: rgb(255, 255, 255);
   font-weight: 600;
@@ -151,7 +151,7 @@ main .card-premio__final .premio-cart--text__final h5 {
 main .card-premio__final .premio-cart--text__final p {
   font-size: 1.5rem;
 }
-main .premios button {
+main .premios a#btn-2 {
   display: inherit;
   width: 80%;
   height: 40px;
@@ -164,7 +164,7 @@ main .premios button {
   display: grid;
   place-content: center;
 }
-main .premios button:hover {
+main .premios a#btn-2:hover {
   background-color: rgb(237, 28, 46);
   color: rgb(255, 255, 255);
   font-weight: 600;
@@ -201,7 +201,40 @@ main .premios button:hover {
   main .premios button {
     max-width: 417px;
   }
+  main a.btn-pronosticos {
+    background-color: rgb(255, 255, 255);
+    color: rgb(237, 28, 46);
+    border: 2px solid rgb(237, 28, 46);
+    font-size: 1.3rem;
+    border-radius: 5px;
+    display: grid;
+    place-content: center;
+    width: 120px;
+    height: 40px;
+  }
+  main a.btn-pronosticos:hover {
+    background-color: rgb(237, 28, 46);
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+  }
 }
+a.btn-pronosticos {
+  background-color: rgb(255, 255, 255);
+  color: rgb(237, 28, 46);
+  border: 2px solid rgb(237, 28, 46);
+  font-size: 1.3rem;
+  border-radius: 5px;
+  display: grid;
+  place-content: center;
+  width: 120px;
+  height: 40px;
+}
+a.btn-pronosticos:hover {
+  background-color: rgb(237, 28, 46);
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+}
+
 header {
   width: 100%;
   display: flex;
@@ -1152,6 +1185,23 @@ button:hover {
   background-color: rgb(237, 28, 46);
   color: rgb(255, 255, 255);
   font-weight: 600;
+}
+
+.ranking-container {
+  padding: 20px;
+}
+
+table.users {
+  border: 1px solid black;
+  width: 100%;
+}
+table.users th, table.users td {
+  border: 1px solid black;
+}
+table.users th {
+  font-size: 2rem;
+  color: rgb(255, 255, 255);
+  background-color: rgb(237, 28, 46);
 }
 
 /*# sourceMappingURL=style.css.map */

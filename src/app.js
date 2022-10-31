@@ -16,4 +16,5 @@ app.use(require('./routes/admin.js'));
 app.use(require('./routes/users.js'));
 app.use(require('./routes/auth.js'));
 app.use(require('./routes/pronosticos.js'));
+app.use(require('./routes/ranking.js'));
 module.exports = app;

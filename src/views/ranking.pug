@@ -1,0 +1,22 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href="/css/style.css")
+    title Ranking 
+  body 
+    include includes/header.pug
+    main.ranking-container
+      table(class="users" id="table-ranking")
+        tr 
+          th Nickname
+          th Puntos totales
+          th Puntos de Grupos
+          th Puntos de Octavos
+          th Puntos de Cuartos
+          th Puntos de Semifinal
+          th Puntos de final
+    include includes/footer.pug
+    script(src="/js/ranking.js") 

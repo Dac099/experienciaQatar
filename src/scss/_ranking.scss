@@ -1,0 +1,18 @@
+.ranking-container{
+  padding: 20px;
+}
+
+table.users{
+  border: 1px solid black;
+  width: 100%;
+
+  th, td{
+    border: 1px solid black;
+  }
+
+  th{
+    font-size: 2rem;
+    color: $white-color;
+    background-color: $red-color;
+  }
+}
