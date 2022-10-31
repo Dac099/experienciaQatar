@@ -14,11 +14,11 @@ const Apuesta = sequelize.define('apuestas', {
     type: DataTypes.DATEONLY,
     allowNull: false
   },
-  puntos_a: {
+  goles_a: {
     type: DataTypes.INTEGER,
     allowNull: false
   },
-  puntos_b: {
+  goles_b: {
     type: DataTypes.INTEGER,
     allowNull: false
   },

@@ -145,7 +145,7 @@ async function updateMatch(req, res){
   try {
     const user = req.user;
     if(user.rol === 'Admin'){
-      const {
+      let {
         equipo_a,
         equipo_b,
         goles_a,
@@ -177,18 +177,18 @@ async function updateMatch(req, res){
             correo: apuesta.correo_user
           }
         });
-  
-        //Definir el ganador de apuestas
-        const ganadorApuesta = (apuesta.puntos_a > apuesta.puntos_b) ? apuesta.equipo_a : apuesta.equipo_b;
-  
+
+        goles_a = parseInt(goles_a);
+        goles_b = parseInt(goles_b);
+
         //Definir el ganador del partido
-        const ganadorPartido = (puntos_a > puntos_b) ? equipo_a : equipo_b;
+        const ganadorPartido = (goles_a > goles_b) ? equipo_a : equipo_b;
   
-  
-        console.log(ganadorPartido);
         //Si ganadorApuesta == ganadorPartido dar punto
-        if(ganadorApuesta == ganadorPartido){
+        if(apuesta.ganador == ganadorPartido){
+
           userApuesta.puntos_totales += 1;
+
           //Definir etapas para dar puntos
           if(etapa == 'Grupos'){
             userApuesta.puntos_de_grupo += 1;
@@ -206,9 +206,12 @@ async function updateMatch(req, res){
             userApuesta.puntos_de_final += 1;
           }
         }
+
         //Si acerta con el marcador, tambien dar un punto
-        if(apuesta.puntos_a == puntos_a && apuesta.puntos_b == puntos_b){
+        if(parseInt(apuesta.goles_a) == goles_a && parseInt(apuesta.goles_b) == goles_b){
+
           userApuesta.puntos_totales += 1;
+
           //Definir etapas para dar puntos
           if(etapa == 'Grupos'){
             userApuesta.puntos_de_grupo += 1;
@@ -228,9 +231,10 @@ async function updateMatch(req, res){
         }
   
         userApuesta.save();
+
       //Actualizar partido
-      match.goles_a = parseInt(goles_a);
-      match.goles_b = parseInt(goles_b);
+      match.goles_a = goles_a;
+      match.goles_b = goles_b;
       match.equipo_a = equipo_a;
       match.equipo_b = equipo_b;
       match.puntos_a = parseInt(puntos_a);

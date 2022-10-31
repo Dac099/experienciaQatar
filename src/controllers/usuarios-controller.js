@@ -110,11 +110,42 @@ function user404(req, res){
   }
 }
 
+async function updateApuesta(req, res){
+  try {
+    const {
+      fecha, etapa, goles_a, goles_b, equipo_a, equipo_b, ganador, correo_user
+    } = req.body;
+
+    const apuesta = Apuesta.findAll({
+      where: {
+        etapa: etapa,
+        equipo_a: equipo_a,
+        equipo_b: equipo_b,
+        fecha: fecha,
+        correo_user: correo_user
+      }
+    });
+
+    apuesta[0].goles_a = goles_a
+    apuesta[0].goles_b = goles_b
+    apuesta[0].ganador = ganador
+
+    console.log(apuesta)
+    
+    apuesta[0].save();
+
+
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 module.exports = {
   createUser,
   getUser,
   signin,
   signup,
   user404,
-  createApuesta
+  createApuesta,
+  updateApuesta
 };

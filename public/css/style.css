@@ -1103,6 +1103,7 @@ h2 {
   display: grid;
   grid-template-columns: repeat(auto-fit, 300px);
   grid-auto-rows: 200px;
+  justify-content: center;
   gap: 20px;
   padding: 20px;
 }
@@ -1133,6 +1134,24 @@ h2 {
   background-color: rgb(237, 28, 46);
   color: white;
   font-weight: bold;
+}
+
+button {
+  background-color: rgb(255, 255, 255);
+  color: rgb(237, 28, 46);
+  border: 2px solid rgb(237, 28, 46);
+  font-size: 1.3rem;
+  border-radius: 5px;
+  display: grid;
+  place-content: center;
+  width: 200px;
+  height: 40px;
+  margin: 20px auto;
+}
+button:hover {
+  background-color: rgb(237, 28, 46);
+  color: rgb(255, 255, 255);
+  font-weight: 600;
 }
 
 /*# sourceMappingURL=style.css.map */

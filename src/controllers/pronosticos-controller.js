@@ -4,11 +4,14 @@ const { Apuesta } = require('../models/apuesta-model.js');
 
 async function pronosticosPage(req, res){
   try {
+    const user = req.user;
+
     res.render('pronosticos', {
       logged: true,
       banner: '/media/banner.png',
       logo: '/media/logo-economicas.svg',
-      home: '/'
+      home: '/',
+      correoUser: user.email
     });
   } catch (error) {
     console.log(error);
