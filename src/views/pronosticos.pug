@@ -8,5 +8,26 @@ html(lang="en")
     title Pronosticos
   body 
     include includes/header.pug
-    main.pronosticos-container 
+    main.pronosticos-container
+      section.pronosticos-grupos
+        h2 ETAPA DE GRUPOS
+        section(class="pronosticos--container-cards" id="container-grupos")
+        
+      section.pronosticos-octavos
+        h2 OCTAVOS DE FINAL
+        section(class="pronosticos--container-cards" id="container-octavos")
+
+      section.pronosticos-cuartos
+        h2 CUARTOS DE FINAL
+        section(class="pronosticos--container-cards" id="container-cuartos")
+
+      section.pronosticos-semifinal 
+        h2 SEMI-FINAL
+        section(class="pronosticos--container-cards" id="container-semifinal")
+
+      section.pronosticos-final
+        h2 FINAL
+        section(class="pronosticos--container-cards" id="container-final")
+
     include includes/footer.pug
+    script(src="/js/pronosticos.js" type="module") 

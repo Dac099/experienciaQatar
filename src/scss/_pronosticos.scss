@@ -1,0 +1,42 @@
+.pronosticos--container-cards{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 300px);
+  grid-auto-rows: 200px;
+  gap: 20px;
+  padding: 20px;
+
+  th, td{
+    padding: 10px;
+    font-size: 1.5rem;
+  }
+  
+  table{
+    background-color: rgba(237, 28, 46, 0.2);
+    width: 300px;
+  }
+  
+  th{
+    background-color: rgb(237, 28, 46);
+    color: white;
+    text-align: left;
+  }
+  
+  .marcador{
+    text-align: center;
+  }
+  
+  td input{
+    width: 80px;
+    height: 20px;
+  }
+  
+  .td-input{
+    text-align: center;
+  }
+  
+  .footer-table{
+    background-color: rgb(237, 28, 46);
+    color: white;
+    font-weight: bold;
+  }
+}

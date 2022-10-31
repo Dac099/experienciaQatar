@@ -1099,4 +1099,40 @@ h2 {
   font-weight: 600;
 }
 
+.pronosticos--container-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 300px);
+  grid-auto-rows: 200px;
+  gap: 20px;
+  padding: 20px;
+}
+.pronosticos--container-cards th, .pronosticos--container-cards td {
+  padding: 10px;
+  font-size: 1.5rem;
+}
+.pronosticos--container-cards table {
+  background-color: rgba(237, 28, 46, 0.2);
+  width: 300px;
+}
+.pronosticos--container-cards th {
+  background-color: rgb(237, 28, 46);
+  color: white;
+  text-align: left;
+}
+.pronosticos--container-cards .marcador {
+  text-align: center;
+}
+.pronosticos--container-cards td input {
+  width: 80px;
+  height: 20px;
+}
+.pronosticos--container-cards .td-input {
+  text-align: center;
+}
+.pronosticos--container-cards .footer-table {
+  background-color: rgb(237, 28, 46);
+  color: white;
+  font-weight: bold;
+}
+
 /*# sourceMappingURL=style.css.map */

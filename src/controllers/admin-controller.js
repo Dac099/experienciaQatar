@@ -72,55 +72,70 @@ async function createTeam(req, res){
 }
 
 async function getMatchByStage(req, res){
-  const { etapa } = req.params;
-  let matches;
-
-  if(etapa == "grupos"){
-    matches = await Partido.findAll({
-      where: {
-        etapa: "Grupos"
+  try {
+    const user = req.user;
+    if(user.rol === 'Admin'){
+      const { etapa } = req.params;
+      let matches;
+    
+      if(etapa == "grupos"){
+        matches = await Partido.findAll({
+          where: {
+            etapa: "Grupos"
+          }
+        });
       }
-    });
-  }
-  if(etapa == "octavos"){
-    matches = await Partido.findAll({
-      where: {
-        etapa: "Octavos"
+      if(etapa == "octavos"){
+        matches = await Partido.findAll({
+          where: {
+            etapa: "Octavos"
+          }
+        });
       }
-    });
-  }
-  if(etapa == "cuartos"){
-    matches = await Partido.findAll({
-      where: {
-        etapa: "Cuartos"
+      if(etapa == "cuartos"){
+        matches = await Partido.findAll({
+          where: {
+            etapa: "Cuartos"
+          }
+        });
       }
-    });
-  }
-  if(etapa == "semi"){
-    matches = await Partido.findAll({
-      where: {
-        etapa: "Semifinal"
+      if(etapa == "semi"){
+        matches = await Partido.findAll({
+          where: {
+            etapa: "Semifinal"
+          }
+        });
       }
-    });
-  }
-  if(etapa == "final"){
-    matches = await Partido.findAll({
-      where: {
-        etapa: "Final"
+      if(etapa == "final"){
+        matches = await Partido.findAll({
+          where: {
+            etapa: "Final"
+          }
+        });
       }
-    });
+    
+      res.json(matches);
+  }else{
+    res.status(403).send('<h1>No tienes permisos para acceder a estos recursos</h1>');
   }
-
-  res.json(matches);
+  } catch (error) {
+    console.log(error);
+  }
+  
 }
 
 async function getMatchById(req, res){
   try {
-    const { id } = req.params;
-
-    const match = await Partido.findByPk(id);
-
-    res.json(match);
+    const user = req.user;
+    if(user.rol === 'Admin'){
+      const { id } = req.params;
+  
+      const match = await Partido.findByPk(id);
+  
+      res.json(match);
+    }else{
+      res.status(403).send('<h1>No tienes permisos para acceder a estos recursos</h1>');
+    }
   } catch (error) {
     console.log(error);
   }
@@ -128,142 +143,135 @@ async function getMatchById(req, res){
 
 async function updateMatch(req, res){
   try {
-    const {
-      equipo_a,
-      equipo_b,
-      goles_a,
-      goles_b,
-      puntos_a,
-      puntos_b,
-      etapa, 
-      fecha
-    } = req.body;
-
-    const { id } = req.params;
-
-    const match = await Partido.findByPk(id);
-
-    //Actualizar informacion de usuario dependiendo de su apuesta
-      //Buscar la apuesta que tiene el partido relacionado
-      const apuesta = await Apuesta.findOne({
+    const user = req.user;
+    if(user.rol === 'Admin'){
+      const {
+        equipo_a,
+        equipo_b,
+        goles_a,
+        goles_b,
+        puntos_a,
+        puntos_b,
+        etapa, 
+        fecha
+      } = req.body;
+  
+      const { id } = req.params;
+  
+      const match = await Partido.findByPk(id);
+  
+      //Actualizar informacion de usuario dependiendo de su apuesta
+        //Buscar la apuesta que tiene el partido relacionado
+        const apuesta = await Apuesta.findOne({
+          where: {
+            equipo_a : equipo_a,
+            equipo_b: equipo_b,
+            fecha: fecha,
+            etapa: etapa
+          }
+        });
+  
+        //Buscar al usuario correspondiente de la apuesta
+        const userApuesta = await User.findOne({
+          where: {
+            correo: apuesta.correo_user
+          }
+        });
+  
+        //Definir el ganador de apuestas
+        const ganadorApuesta = (apuesta.puntos_a > apuesta.puntos_b) ? apuesta.equipo_a : apuesta.equipo_b;
+  
+        //Definir el ganador del partido
+        const ganadorPartido = (puntos_a > puntos_b) ? equipo_a : equipo_b;
+  
+  
+        console.log(ganadorPartido);
+        //Si ganadorApuesta == ganadorPartido dar punto
+        if(ganadorApuesta == ganadorPartido){
+          userApuesta.puntos_totales += 1;
+          //Definir etapas para dar puntos
+          if(etapa == 'Grupos'){
+            userApuesta.puntos_de_grupo += 1;
+          }
+          if(etapa == 'Octavos'){
+            userApuesta.puntos_de_octavos += 1;
+          }
+          if(etapa == 'Cuartos'){
+            userApuesta.puntos_de_cuartos += 1;
+          }
+          if(etapa == 'Semifinal'){
+            userApuesta.puntos_de_semi += 1;
+          }
+          if(etapa == 'final'){
+            userApuesta.puntos_de_final += 1;
+          }
+        }
+        //Si acerta con el marcador, tambien dar un punto
+        if(apuesta.puntos_a == puntos_a && apuesta.puntos_b == puntos_b){
+          userApuesta.puntos_totales += 1;
+          //Definir etapas para dar puntos
+          if(etapa == 'Grupos'){
+            userApuesta.puntos_de_grupo += 1;
+          }
+          if(etapa == 'Octavos'){
+            userApuesta.puntos_de_octavos += 1;
+          }
+          if(etapa == 'Cuartos'){
+            userApuesta.puntos_de_cuartos += 1;
+          }
+          if(etapa == 'Semifinal'){
+            userApuesta.puntos_de_semi += 1;
+          }
+          if(etapa == 'final'){
+            userApuesta.puntos_de_final += 1;
+          }
+        }
+  
+        userApuesta.save();
+      //Actualizar partido
+      match.goles_a = parseInt(goles_a);
+      match.goles_b = parseInt(goles_b);
+      match.equipo_a = equipo_a;
+      match.equipo_b = equipo_b;
+      match.puntos_a = parseInt(puntos_a);
+      match.puntos_b = parseInt(puntos_b);
+      match.etapa = etapa;
+      match.fecha = fecha;
+  
+      //Actualizar equipos relacionados en el partido
+      const team_a = await Equipo.findAll({
         where: {
-          equipo_a : equipo_a,
-          equipo_b: equipo_b,
-          fecha: fecha,
-          etapa: etapa
+          nombre: equipo_a
         }
       });
-
-      //Buscar al usuario correspondiente de la apuesta
-      const userApuesta = await User.findOne({
+  
+      const team_b = await Equipo.findAll({
         where: {
-          correo: apuesta.correo_user
+          nombre: equipo_b
         }
       });
-
-      //Definir el ganador del partido
-      let ganadorPartido;
-
-      goles_a = parseInt(goles_a);
-      goles_b = parseInt(goles_b);
-
-      if(goles_a > goles_b){
-        ganadorPartido = equipo_a;
-      }
-
-      if(goles_a < goles_b){
-        ganadorPartido = equipo_b;
-      }
-
-      if(goles_a == goles_b){
-
-        ganadorPartido = '';
-      }
-
-      //Si ganadorApuesta == ganadorPartido dar punto
-      if(apuesta.ganador == ganadorPartido){
-        userApuesta.puntos_totales += 1;
-        //Definir etapas para dar puntos
-        if(etapa == 'Grupos'){
-          userApuesta.puntos_de_grupo += 1;
-        }
-        if(etapa == 'Octavos'){
-          userApuesta.puntos_de_octavos += 1;
-        }
-        if(etapa == 'Cuartos'){
-          userApuesta.puntos_de_cuartos += 1;
-        }
-        if(etapa == 'Semifinal'){
-          userApuesta.puntos_de_semi += 1;
-        }
-        if(etapa == 'final'){
-          userApuesta.puntos_de_final += 1;
-        }
-      }
-      //Si acerta con el marcador, tambien dar un punto
-      if(apuesta.goles_a == goles_a && apuesta.goles_b == goles_b){
-        userApuesta.puntos_totales += 1;
-        //Definir etapas para dar puntos
-        if(etapa == 'Grupos'){
-          userApuesta.puntos_de_grupo += 1;
-        }
-        if(etapa == 'Octavos'){
-          userApuesta.puntos_de_octavos += 1;
-        }
-        if(etapa == 'Cuartos'){
-          userApuesta.puntos_de_cuartos += 1;
-        }
-        if(etapa == 'Semifinal'){
-          userApuesta.puntos_de_semi += 1;
-        }
-        if(etapa == 'final'){
-          userApuesta.puntos_de_final += 1;
-        }
-      }
-
-      userApuesta.save();
-
+  
+      team_a[0].puntos += parseInt(puntos_a);
+      team_a[0].goles_totales += parseInt(goles_a);
+      team_a[0].goles_contra += parseInt(goles_b);
+      team_a[0].partidos_jugados += 1;
+      
+      team_b[0].puntos += parseInt(puntos_b);
+      team_b[0].goles_totales += parseInt(goles_b);
+      team_b[0].goles_contra += parseInt(goles_a);
+      team_b[0].partidos_jugados += 1;
+  
+      (puntos_a > puntos_b) ? team_a[0].partidos_ganados += 1 : team_b[0].partidos_ganados += 1;
+  
+      await team_a[0].save();
+      await team_b[0].save();
+      await match.save();
+  
+      res.redirect('/admin');
+    }else{
+      res.status(403).send('<h1>No tienes permisos para acceder a estos recursos</h1>');
+    }
     
-    //Actualizar partido
-    match.goles_a = parseInt(goles_a);
-    match.goles_b = parseInt(goles_b);
-    match.equipo_a = equipo_a;
-    match.equipo_b = equipo_b;
-    match.puntos_a = parseInt(puntos_a);
-    match.puntos_b = parseInt(puntos_b);
-    match.etapa = etapa;
-    match.fecha = fecha;
-
-    //Actualizar equipos relacionados en el partido
-    const team_a = await Equipo.findAll({
-      where: {
-        nombre: equipo_a
-      }
-    });
-
-    const team_b = await Equipo.findAll({
-      where: {
-        nombre: equipo_b
-      }
-    });
-
-    team_a[0].puntos += parseInt(puntos_a);
-    team_a[0].goles_totales += parseInt(goles_a);
-    team_a[0].goles_contra += parseInt(goles_b);
-    team_a[0].partidos_jugados += 1;
-    
-    team_b[0].puntos += parseInt(puntos_b);
-    team_b[0].goles_totales += parseInt(goles_b);
-    team_b[0].goles_contra += parseInt(goles_a);
-    team_b[0].partidos_jugados += 1;
-
-    (goles_a > goles_b) ? team_a[0].partidos_ganados += 1 : team_b[0].partidos_ganados += 1;
-
-    await team_a[0].save();
-    await team_b[0].save();
-    await match.save();
-
-    res.redirect('/admin');
   } catch (error) {
     console.log(error);
   }
