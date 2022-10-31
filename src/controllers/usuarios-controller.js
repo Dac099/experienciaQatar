@@ -116,7 +116,7 @@ async function updateApuesta(req, res){
       fecha, etapa, goles_a, goles_b, equipo_a, equipo_b, ganador, correo_user
     } = req.body;
 
-    const apuesta = Apuesta.findAll({
+    const apuesta = await Apuesta.findOne({
       where: {
         etapa: etapa,
         equipo_a: equipo_a,
@@ -126,15 +126,17 @@ async function updateApuesta(req, res){
       }
     });
 
-    apuesta[0].goles_a = goles_a
-    apuesta[0].goles_b = goles_b
-    apuesta[0].ganador = ganador
-
     console.log(apuesta)
+
+
+    apuesta.goles_a = goles_a
+    apuesta.goles_b = goles_b
+    apuesta.ganador = ganador
+
     
-    apuesta[0].save();
+    apuesta.save();
 
-
+    res.json(apuesta)
   } catch (error) {
     console.log(error);
   }

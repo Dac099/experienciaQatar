@@ -9,8 +9,8 @@ export class Apuesta{
     this.etapa = data.etapa;
     this.equipo_a = data.equipo_a;
     this.equipo_b = data.equipo_b; 
-    this.goles_a = data.goles_a;
-    this.goles_b = data.goles_b;
+    this.goles_a = data.goles_a || 0;
+    this.goles_b = data.goles_b || 0;
     this.correoUser = correoUser;
   }
 
@@ -55,13 +55,15 @@ export class Apuesta{
     const goles_b = inputs.item(1);
 
     goles_a.addEventListener('change', () => {
-      this.actualizarDatos({goles_a: goles_a.value});
+      console.log(this);
+      this.actualizarDatos({goles_a: goles_a.value, goles_b: this.goles_b});
       ganador.innerHTML = this.ganador;
       this.saveApuesta();
     });
 
     goles_b.addEventListener('change', async () => {
-      this.actualizarDatos({goles_b: goles_b.value});
+      console.log(this);
+      this.actualizarDatos({goles_b: goles_b.value, goles_a: this.goles_a});
       ganador.innerHTML = this.ganador;
       this.saveApuesta();
     });
@@ -70,7 +72,7 @@ export class Apuesta{
     return table;
   }
 
-  actualizarDatos({goles_a=0, goles_b=0}){
+  actualizarDatos({goles_a, goles_b}){
     this.goles_a = goles_a;
     this.goles_b = goles_b;
     this.ganador = (this.goles_a > this.goles_b) ? this.equipo_a : this.equipo_b;
