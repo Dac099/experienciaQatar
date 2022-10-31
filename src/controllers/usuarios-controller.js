@@ -67,23 +67,32 @@ async function createApuesta(req, res){
   try {
     const {
       fecha,
-      puntos_a,
-      puntos_b,
+      goles_a,
+      goles_b,
       equipo_a,
       equipo_b,
-      ganador,
       etapa,
       correo_user
     } = req.body;
+
+    let ganador = '';
+
+    if(parseInt(goles_a) > parseInt(goles_b)){
+      ganador = equipo_a;
+    }
+
+    if(parseInt(goles_a) < parseInt(goles_b)){
+      ganador = equipo_b;
+    }
 
     const newApuesta = await Apuesta.create({
       fecha: fecha,
       equipo_a: equipo_a,
       equipo_b: equipo_b,
-      puntos_a: puntos_a,
-      puntos_b: puntos_b,
-      ganador: ganador,
+      goles_a: goles_a,
+      goles_b: goles_b,
       etapa: etapa,
+      ganador: ganador,
       correo_user: correo_user
     });
 

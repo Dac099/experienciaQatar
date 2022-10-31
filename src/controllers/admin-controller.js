@@ -161,16 +161,27 @@ async function updateMatch(req, res){
         }
       });
 
-      //Definir el ganador de apuestas
-      const ganadorApuesta = (apuesta.puntos_a > apuesta.puntos_b) ? apuesta.equipo_a : apuesta.equipo_b;
-
       //Definir el ganador del partido
-      const ganadorPartido = (puntos_a > puntos_b) ? equipo_a : equipo_b;
+      let ganadorPartido;
 
+      goles_a = parseInt(goles_a);
+      goles_b = parseInt(goles_b);
 
-      console.log(ganadorPartido);
+      if(goles_a > goles_b){
+        ganadorPartido = equipo_a;
+      }
+
+      if(goles_a < goles_b){
+        ganadorPartido = equipo_b;
+      }
+
+      if(goles_a == goles_b){
+
+        ganadorPartido = '';
+      }
+
       //Si ganadorApuesta == ganadorPartido dar punto
-      if(ganadorApuesta == ganadorPartido){
+      if(apuesta.ganador == ganadorPartido){
         userApuesta.puntos_totales += 1;
         //Definir etapas para dar puntos
         if(etapa == 'Grupos'){
@@ -190,7 +201,7 @@ async function updateMatch(req, res){
         }
       }
       //Si acerta con el marcador, tambien dar un punto
-      if(apuesta.puntos_a == puntos_a && apuesta.puntos_b == puntos_b){
+      if(apuesta.goles_a == goles_a && apuesta.goles_b == goles_b){
         userApuesta.puntos_totales += 1;
         //Definir etapas para dar puntos
         if(etapa == 'Grupos'){
@@ -211,6 +222,8 @@ async function updateMatch(req, res){
       }
 
       userApuesta.save();
+
+    
     //Actualizar partido
     match.goles_a = parseInt(goles_a);
     match.goles_b = parseInt(goles_b);
@@ -244,7 +257,7 @@ async function updateMatch(req, res){
     team_b[0].goles_contra += parseInt(goles_a);
     team_b[0].partidos_jugados += 1;
 
-    (puntos_a > puntos_b) ? team_a[0].partidos_ganados += 1 : team_b[0].partidos_ganados += 1;
+    (goles_a > goles_b) ? team_a[0].partidos_ganados += 1 : team_b[0].partidos_ganados += 1;
 
     await team_a[0].save();
     await team_b[0].save();
