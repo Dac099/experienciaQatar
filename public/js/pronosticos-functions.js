@@ -5,9 +5,7 @@ export function createPartidosCards(partidos, apuestas ,correoUser){
 
   partidos.forEach((partido) => {
     const apuesta = getApuestaByPartido(partido, apuestas);
-
-    console.log(apuesta);
-
+    
     if(apuesta != null){
       const nuevoPronostico = new Apuesta(apuesta, correoUser);
       cards.push(nuevoPronostico.createTable());

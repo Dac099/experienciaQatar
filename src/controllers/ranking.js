@@ -1,10 +1,12 @@
+const { QueryTypes } = require('sequelize');
+const { sequelize } = require('../database/db-connection.js');
 const {  User } = require('../models/users-model.js');
 
 async function getOrderedUsers(req, res){
   try {
-    const users = await User.findAll({
-      order: ['puntos_totales']
-    })
+    const users = await sequelize.query('select * from users ORDER BY puntos_totales DESC', {
+      type: QueryTypes.SELECT
+    });
 
     res.json(users);
   } catch (error) {

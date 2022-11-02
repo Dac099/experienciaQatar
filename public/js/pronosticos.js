@@ -16,44 +16,22 @@ if(today < new Date('2022/12/03')){
 
 //Si la fecha es mayor o igual al 3 de diciembre y menor a  9 de diciembre: fetch(octavos)
 if(today >= new Date('2022/12/03') && today < new Date('2022/12/09')){
-  console.log('Date');
-  getPartidos('/get-partidos/octavos')
-    .then(data => {
-      const cards = createPartidosCards(data, correoUser.id);
-
-      cards.forEach(card => {
-        container_octavos.append(card);
-      })
-    })
-    .catch(err => console.log(err));
-  }
-
-//Si la fecha es mayor o igual al 9 de diciembre y menor a 13 de diciembre: fetch(semifinales)
-if(today >= new Date('2022/12/09') && today < new Date('2022/12/13')){
-  console.log('Date');
-  getPartidos('/get-partidos/cuartos')
-    .then(data => {
-      const cards = createPartidosCards(data, correoUser.id);
-
-      cards.forEach(card => {
-        container_cuartos.append(card);
-      })
-    })
-    .catch(err => console.log(err));
+  createCards(container_octavos, '/get-partidos/octavos', correoUser.id);
 }
+//Si la fecha es mayor o igual al 9 de diciembre y menor a 13 de diciembre: fetch(cuartos)
+if(today >= new Date('2022/12/09') && today < new Date('2022/12/13')){
+  createCards(container_cuartos, '/get-partidos/cuartos', correoUser.id);
+}
+
+//Si la fecha es mayor igual a 13 y menor igual a 14: fetch(semifinales)
+if(today >= new Date('2022/12/13') && today < new Date('2022/12/14')){
+  createCards(container_semifinal, '/get-partidos/semi', correoUser.id);
+}
+
 
 //Si la fecha es mayor o igual al 17 de diciembre y menor al 18 de diciembre: fetch(finales)
 if(today >= new Date('2022/12/17') && today < new Date('2022/12/18')){
-  console.log('Date');
-  getPartidos('/get-partidos/semi')
-    .then(data => {
-      const cards = createPartidosCards(data, correoUser.id);
-
-      cards.forEach(card => {
-        container_semifinal.append(card);
-      })
-    })
-    .catch(err => console.log(err));
+  createCards(container_final, '/get-partidos/final', correoUser.id);
 }
 
 async function getPartidos(partidosUrl){

@@ -301,6 +301,17 @@ async function CreateTeams(){
 async function testPartidos(){
   try {
     await Partido.create({
+      fecha: '2022/11/02',
+      equipo_a: 'Francia',
+      equipo_b: 'Argentina',
+      puntos_a: 0,
+      puntos_b: 0,
+      goles_a: 0,
+      goles_b: 0,
+      etapa: 'Grupos'
+    });
+
+    await Partido.create({
       fecha: '2022/11/21',
       equipo_a: 'Alemania',
       equipo_b: 'México',
@@ -361,6 +372,32 @@ async function testUsers(){
       puntos_de_semi: 0,
       puntos_de_final: 0,
       rol: 'Admin'
+    });
+
+    await User.create({
+      nickname: 'David',
+      correo: 'david@gmail.com',
+      password: '1234',
+      puntos_totales: 0,
+      puntos_de_grupo: 0,
+      puntos_de_octavos: 0,
+      puntos_de_cuartos: 0,
+      puntos_de_semi: 0,
+      puntos_de_final: 0,
+      rol: 'User'
+    });
+
+    await User.create({
+      nickname: 'Emilio',
+      correo: 'emi@gmail.com',
+      password: '1234',
+      puntos_totales: 0,
+      puntos_de_grupo: 0,
+      puntos_de_octavos: 0,
+      puntos_de_cuartos: 0,
+      puntos_de_semi: 0,
+      puntos_de_final: 0,
+      rol: 'User'
     });
   } catch (error) {
     console.log(error);

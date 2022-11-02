@@ -51,6 +51,13 @@ export class Apuesta{
     const goles_a = inputs.item(0);
     const goles_b = inputs.item(1);
 
+    //Verifica que no se pueda hacer apuesta si la fecha actual es igual a la fecha del partido
+    let today = new Date();
+    if(today >= new Date(this.fecha)){
+      goles_a.readOnly = true;
+      goles_b.readOnly = true;
+    }
+
     goles_a.addEventListener('change', () => {
       console.log(this);
       this.actualizarDatos({goles_a: goles_a.value, goles_b: this.goles_b});
