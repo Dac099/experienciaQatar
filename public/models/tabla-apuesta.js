@@ -4,7 +4,7 @@ export class Apuesta{
 
   constructor(data, correoUser){
     this.id = Apuesta.id++;
-    this.ganador = '---';
+    this.ganador = data.ganador || '---';
     this.fecha = data.fecha;
     this.etapa = data.etapa;
     this.equipo_a = data.equipo_a;

@@ -5,29 +5,13 @@ const container_semifinal = document.getElementById('container-semifinal');
 const container_final = document.getElementById('container-final');
 const correoUser = document.getElementsByTagName('body').item(0);
 
-//Buttons
-const btnGrupos = document.getElementById('postGrupos');
-const btnOctavos = document.getElementById('postOctavos');
-const btnCuartos = document.getElementById('postCuartos');
-const btnSemifinal = document.getElementById('postSemi');
-const btnFinal = document.getElementById('postFinal');
-
 import { createPartidosCards }  from './pronosticos-functions.js';
 
 let today = new Date();
 
-//Si la fecha es mayor o igual al 20 de noviembre y menor a 3 de diciembre: fetch(grupos)
+//Si la fecha es menor a 3 de diciembre: fetch(grupos)
 if(today < new Date('2022/12/03')){
-  getPartidos('/get-partidos/grupos')
-    .then(data => {
-      const cards = createPartidosCards(data, correoUser.id);
-      console.log(cards.length);
-
-      cards.forEach(card => {
-        container_grupos.append(card);
-      })
-    })
-    .catch(err => console.log(err));
+  createCards(container_grupos, '/get-partidos/grupos', correoUser.id);
 }
 
 //Si la fecha es mayor o igual al 3 de diciembre y menor a  9 de diciembre: fetch(octavos)
@@ -72,9 +56,37 @@ if(today >= new Date('2022/12/17') && today < new Date('2022/12/18')){
     .catch(err => console.log(err));
 }
 
-async function getPartidos(url){
-  const fetchData = await fetch(url);
-  const data = await fetchData.json();
+async function getPartidos(partidosUrl){
+  try {
+    const fetch_partidos = await fetch(partidosUrl);
+    const partidos_data = await fetch_partidos.json();
 
-  return data;
+    return partidos_data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+async function getApuestas(apuestasUrl){
+  try {
+    const fetch_apuestas = await fetch(apuestasUrl);
+    const apuestas_data = await fetch_apuestas.json();
+
+    return apuestas_data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+async function createCards(container, partidos_url, correo){
+  try {
+    const partidos = await getPartidos(partidos_url);
+    const apuestas = await getApuestas(`/get-apuestas/${correoUser.id}`);
+
+    const cards = createPartidosCards(partidos, apuestas, correo);
+
+    container.append(...cards);
+  } catch (error) {
+    console.log(error);
+  }
 }

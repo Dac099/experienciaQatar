@@ -5,13 +5,18 @@ const { Apuesta } = require('../models/apuesta-model.js');
 async function pronosticosPage(req, res){
   try {
     const user = req.user;
+    let isAdmin = false;
+    if(user.rol === 'Admin'){
+      isAdmin = true;
+    };
 
     res.render('pronosticos', {
       logged: true,
       banner: '/media/banner.png',
       logo: '/media/logo-economicas.svg',
       home: '/',
-      correoUser: user.email
+      correoUser: user.email,
+      admin: isAdmin
     });
   } catch (error) {
     console.log(error);

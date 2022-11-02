@@ -1,43 +1,38 @@
 import { Apuesta } from '../models/tabla-apuesta.js';
 
-export function createPartidosCards(partidos, correoUser){
+export function createPartidosCards(partidos, apuestas ,correoUser){
   const cards = [];
 
   partidos.forEach((partido) => {
-    let data = {};
+    const apuesta = getApuestaByPartido(partido, apuestas);
 
-    checkForBets(partido, correoUser)
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
-      })
-      .catch(error => console.log(error));
-    // let data = (bet.goles_a == 0 && bet.goles_b == 0) ? partido : bet; 
+    console.log(apuesta);
 
-    const nuevoPronostico = new Apuesta(data, correoUser);
-    cards.push(nuevoPronostico.createTable());
+    if(apuesta != null){
+      const nuevoPronostico = new Apuesta(apuesta, correoUser);
+      cards.push(nuevoPronostico.createTable());
+    }
+
+    if(apuesta == null){
+      const nuevoPronostico = new Apuesta(partido, correoUser);
+      cards.push(nuevoPronostico.createTable());
+    }
   });
-
   return cards;
 }
 
-async function checkForBets(partido, correo){
-  const req = await fetch('/user/save-apuesta',{
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      fecha: partido.fecha,
-      equipo_a: partido.equipo_a,
-      equipo_b: partido.equipo_b,
-      goles_a: partido.goles_a,
-      goles_b: partido.goles_b,
-      etapa: partido.etapa,
-      correo_user: correo
-    })
-  });
-  const data = await req.json();
+function getApuestaByPartido(partido, array_apuestas){
+  let apuestaEncontrada = {};
 
-  return data;
+  if(array_apuestas.length == []) return null;
+
+  array_apuestas.forEach(apuesta => {
+    if(apuesta.equipo_a == partido.equipo_a && apuesta.equipo_b == partido.equipo_b){
+      if(apuesta.fecha == partido.fecha && apuesta.etapa == partido.etapa){
+        apuestaEncontrada = {...apuesta}
+      }
+    }
+  });
+
+  return apuestaEncontrada;
 }

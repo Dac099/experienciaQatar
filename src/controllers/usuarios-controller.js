@@ -125,23 +125,51 @@ async function updateApuesta(req, res){
       fecha, etapa, goles_a, goles_b, equipo_a, equipo_b, ganador, correo_user
     } = req.body;
 
-    const apuesta = await Apuesta.findOne({
+    const [apuesta, created] = await Apuesta.findOrCreate({
       where: {
         etapa: etapa,
         equipo_a: equipo_a,
         equipo_b: equipo_b,
         fecha: fecha,
         correo_user: correo_user
+      },
+      defaults: {
+        fecha: fecha,
+        etapa: etapa,
+        goles_a: goles_a,
+        goles_b: goles_b,
+        equipo_a: equipo_a,
+        equipo_b: equipo_b,
+        ganador: ganador,
+        correo_user: correo_user
       }
     });
 
-    apuesta.goles_a = goles_a
-    apuesta.goles_b = goles_b
-    apuesta.ganador = ganador
-    
-    apuesta.save();
+    if(!created){
+      apuesta.goles_a = goles_a
+      apuesta.goles_b = goles_b
+      apuesta.ganador = ganador
+      
+      apuesta.save();
+    }
 
     res.json(apuesta)
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+async function getApuestas(req, res){
+  try {
+    const { correo } = req.params;
+
+    const apuestas = await Apuesta.findAll({
+      where: {
+        correo_user: correo
+      }
+    });
+
+    res.json(apuestas);
   } catch (error) {
     console.log(error);
   }
@@ -154,5 +182,6 @@ module.exports = {
   signup,
   user404,
   createApuesta,
-  updateApuesta
+  updateApuesta, 
+  getApuestas
 };
