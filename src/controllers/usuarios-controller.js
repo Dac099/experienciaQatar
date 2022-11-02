@@ -75,7 +75,7 @@ async function createApuesta(req, res){
       correo_user
     } = req.body;
 
-    let ganador = '';
+    let ganador = '---';
 
     if(parseInt(goles_a) > parseInt(goles_b)){
       ganador = equipo_a;
@@ -85,18 +85,27 @@ async function createApuesta(req, res){
       ganador = equipo_b;
     }
 
-    const newApuesta = await Apuesta.create({
-      fecha: fecha,
-      equipo_a: equipo_a,
-      equipo_b: equipo_b,
-      goles_a: goles_a,
-      goles_b: goles_b,
-      etapa: etapa,
-      ganador: ganador,
-      correo_user: correo_user
+    const [apuesta, created] = await Apuesta.findOrCreate({
+      where: {
+        correo_user: correo_user,
+        fecha: fecha,
+        etapa: etapa,
+        equipo_a: equipo_a,
+        equipo_b: equipo_b
+      },
+      defaults: {
+        fecha: fecha,
+        equipo_a: equipo_a,
+        equipo_b: equipo_b,
+        goles_a: goles_a,
+        goles_b: goles_b,
+        etapa: etapa,
+        ganador: ganador,
+        correo_user: correo_user
+      }
     });
 
-    res.json(newApuesta);
+    res.json(apuesta);
   } catch (error) {
     console.log(error);
   }
@@ -126,13 +135,9 @@ async function updateApuesta(req, res){
       }
     });
 
-    console.log(apuesta)
-
-
     apuesta.goles_a = goles_a
     apuesta.goles_b = goles_b
     apuesta.ganador = ganador
-
     
     apuesta.save();
 

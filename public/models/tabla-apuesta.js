@@ -15,9 +15,6 @@ export class Apuesta{
   }
 
   createTable(){
-
-    this.createApuesta();
-    
     const table = document.createElement('table');
     
     table.id = this.id;
@@ -34,12 +31,12 @@ export class Apuesta{
 
       <tr>
         <td>${this.equipo_a}</td>
-        <td class="td-input"> <input type="number" required name="equipo-a-partido" id="equipo-a-partido"> </td>
+        <td class="td-input"> <input type="number" required name="equipo-a-partido" id="equipo-a-partido" value=${this.goles_a}> </td>
       </tr>
 
       <tr>
         <td>${this.equipo_b}</td>
-        <td class="td-input"> <input type="number" required name="equipo-b-partido" id="equipo-b-partido"> </td>
+        <td class="td-input"> <input type="number" required name="equipo-b-partido" id="equipo-b-partido" value=${this.goles_b}> </td>
       </tr>
 
       <tr>
@@ -78,25 +75,6 @@ export class Apuesta{
     this.ganador = (this.goles_a > this.goles_b) ? this.equipo_a : this.equipo_b;
   }
 
-  async createApuesta(){
-    const req = await fetch('/user/save-apuesta',{
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        fecha: this.fecha,
-        equipo_a: this.equipo_a,
-        equipo_b: this.equipo_b,
-        goles_a: this.goles_a,
-        goles_b: this.goles_b,
-        etapa: this.etapa,
-        correo_user: this.correoUser
-      })
-    });
-    const data = await req.json();
-  }
-
   async saveApuesta(){
     const req = await fetch('/updateApuesta',{
       method: 'POST',
@@ -110,6 +88,7 @@ export class Apuesta{
         goles_a: this.goles_a,
         goles_b: this.goles_b,
         etapa: this.etapa,
+        ganador: this.ganador,
         correo_user: this.correoUser
       })
     });
