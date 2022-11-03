@@ -362,9 +362,9 @@ async function testPartidos(){
 async function testUsers(){
   try {
     await User.create({
-      nickname: 'Juan',
-      correo: 'juan@gmail.com',
-      password: '1234',
+      nickname: 'Marco',
+      correo: 'marco@qatar.com',
+      password: 'admin_password',
       puntos_totales: 0,
       puntos_de_grupo: 0,
       puntos_de_octavos: 0,
@@ -372,32 +372,6 @@ async function testUsers(){
       puntos_de_semi: 0,
       puntos_de_final: 0,
       rol: 'Admin'
-    });
-
-    await User.create({
-      nickname: 'David',
-      correo: 'david@gmail.com',
-      password: '1234',
-      puntos_totales: 0,
-      puntos_de_grupo: 0,
-      puntos_de_octavos: 0,
-      puntos_de_cuartos: 0,
-      puntos_de_semi: 0,
-      puntos_de_final: 0,
-      rol: 'User'
-    });
-
-    await User.create({
-      nickname: 'Emilio',
-      correo: 'emi@gmail.com',
-      password: '1234',
-      puntos_totales: 0,
-      puntos_de_grupo: 0,
-      puntos_de_octavos: 0,
-      puntos_de_cuartos: 0,
-      puntos_de_semi: 0,
-      puntos_de_final: 0,
-      rol: 'User'
     });
   } catch (error) {
     console.log(error);

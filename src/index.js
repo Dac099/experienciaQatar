@@ -7,15 +7,14 @@ const app = require('./app.js');
 const PORT = process.env.PORT;
 
 
-// (async function StartApp(){
-//   try {
-//     await sequelize.sync({force:true});
-//     await CreateTeams();
-//     await testPartidos();
-//     await testUsers();
-//   } catch (error) {
-//     console.log(error);
-//   }
-// })();
+(async function StartApp(){
+  try {
+    await sequelize.sync({force:true});
+    await CreateTeams();
+    await testUsers();
+  } catch (error) {
+    console.log(error);
+  }
+})();
 
 app.listen(PORT);
