@@ -301,7 +301,7 @@ async function CreateTeams(){
 async function testPartidos(){
   try {
     await Partido.create({
-      fecha: '2022/11/02',
+      fecha: '2022/11/03',
       equipo_a: 'Francia',
       equipo_b: 'Argentina',
       puntos_a: 0,

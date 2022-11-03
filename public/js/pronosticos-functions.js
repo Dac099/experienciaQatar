@@ -7,11 +7,13 @@ export function createPartidosCards(partidos, apuestas ,correoUser){
     const apuesta = getApuestaByPartido(partido, apuestas);
     
     if(apuesta != null){
-      const nuevoPronostico = new Apuesta(apuesta, correoUser);
-      cards.push(nuevoPronostico.createTable());
+      if(Object.keys(apuesta).length != 0){
+        const nuevoPronostico = new Apuesta(apuesta, correoUser);
+        cards.push(nuevoPronostico.createTable());
+      }
     }
 
-    if(apuesta == null){
+    if(apuesta == null || Object.keys(apuesta).length == 0){
       const nuevoPronostico = new Apuesta(partido, correoUser);
       cards.push(nuevoPronostico.createTable());
     }
