@@ -171,67 +171,68 @@ async function updateMatch(req, res){
             etapa: etapa
           }
         });
+        if(apuesta != null){
+          //Buscar al usuario correspondiente de la apuesta
+          const userApuesta = await User.findOne({
+            where: {
+              correo: apuesta.correo_user
+            }
+          });
   
-        //Buscar al usuario correspondiente de la apuesta
-        const userApuesta = await User.findOne({
-          where: {
-            correo: apuesta.correo_user
-          }
-        });
-
-        goles_a = parseInt(goles_a);
-        goles_b = parseInt(goles_b);
-
-        //Definir el ganador del partido
-        const ganadorPartido = (goles_a > goles_b) ? equipo_a : equipo_b;
+          goles_a = parseInt(goles_a);
+          goles_b = parseInt(goles_b);
   
-        //Si ganadorApuesta == ganadorPartido dar punto
-        if(apuesta.ganador == ganadorPartido){
-
-          userApuesta.puntos_totales += 1;
-
-          //Definir etapas para dar puntos
-          if(etapa == 'Grupos'){
-            userApuesta.puntos_de_grupo += 1;
+          //Definir el ganador del partido
+          const ganadorPartido = (goles_a > goles_b) ? equipo_a : equipo_b;
+    
+          //Si ganadorApuesta == ganadorPartido dar punto
+          if(apuesta.ganador == ganadorPartido){
+  
+            userApuesta.puntos_totales += 1;
+  
+            //Definir etapas para dar puntos
+            if(etapa == 'Grupos'){
+              userApuesta.puntos_de_grupo += 1;
+            }
+            if(etapa == 'Octavos'){
+              userApuesta.puntos_de_octavos += 1;
+            }
+            if(etapa == 'Cuartos'){
+              userApuesta.puntos_de_cuartos += 1;
+            }
+            if(etapa == 'Semifinal'){
+              userApuesta.puntos_de_semi += 1;
+            }
+            if(etapa == 'final'){
+              userApuesta.puntos_de_final += 1;
+            }
           }
-          if(etapa == 'Octavos'){
-            userApuesta.puntos_de_octavos += 1;
+  
+          //Si acerta con el marcador, tambien dar un punto
+          if(parseInt(apuesta.goles_a) == goles_a && parseInt(apuesta.goles_b) == goles_b){
+  
+            userApuesta.puntos_totales += 1;
+  
+            //Definir etapas para dar puntos
+            if(etapa == 'Grupos'){
+              userApuesta.puntos_de_grupo += 1;
+            }
+            if(etapa == 'Octavos'){
+              userApuesta.puntos_de_octavos += 1;
+            }
+            if(etapa == 'Cuartos'){
+              userApuesta.puntos_de_cuartos += 1;
+            }
+            if(etapa == 'Semifinal'){
+              userApuesta.puntos_de_semi += 1;
+            }
+            if(etapa == 'final'){
+              userApuesta.puntos_de_final += 1;
+            }
           }
-          if(etapa == 'Cuartos'){
-            userApuesta.puntos_de_cuartos += 1;
-          }
-          if(etapa == 'Semifinal'){
-            userApuesta.puntos_de_semi += 1;
-          }
-          if(etapa == 'final'){
-            userApuesta.puntos_de_final += 1;
-          }
+    
+          userApuesta.save();
         }
-
-        //Si acerta con el marcador, tambien dar un punto
-        if(parseInt(apuesta.goles_a) == goles_a && parseInt(apuesta.goles_b) == goles_b){
-
-          userApuesta.puntos_totales += 1;
-
-          //Definir etapas para dar puntos
-          if(etapa == 'Grupos'){
-            userApuesta.puntos_de_grupo += 1;
-          }
-          if(etapa == 'Octavos'){
-            userApuesta.puntos_de_octavos += 1;
-          }
-          if(etapa == 'Cuartos'){
-            userApuesta.puntos_de_cuartos += 1;
-          }
-          if(etapa == 'Semifinal'){
-            userApuesta.puntos_de_semi += 1;
-          }
-          if(etapa == 'final'){
-            userApuesta.puntos_de_final += 1;
-          }
-        }
-  
-        userApuesta.save();
 
       //Actualizar partido
       match.goles_a = goles_a;
