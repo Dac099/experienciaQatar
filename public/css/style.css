@@ -786,7 +786,7 @@ footer a {
   width: 200px;
   height: 40px;
   position: absolute;
-  bottom: 200px;
+  bottom: 1%;
 }
 .container-main--positions-content .position-content--container button:hover {
   background-color: rgb(237, 28, 46);
