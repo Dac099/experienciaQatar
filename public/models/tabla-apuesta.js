@@ -21,7 +21,8 @@ export class Apuesta{
 
     table.innerHTML =  `
       <tr>
-        <th colspan="2">Partido</th>
+        <th colspan="1">Partido</th>
+        <th>${this.etapa}</th>
       </tr>
 
       <tr>
@@ -31,17 +32,22 @@ export class Apuesta{
 
       <tr>
         <td>${this.equipo_a}</td>
-        <td class="td-input"> <input type="number" required name="equipo-a-partido" id="equipo-a-partido" value=${this.goles_a}> </td>
+        <td class="td-input"> <input type="number" required name="equipo-a-partido" id="equipo-a-partido" value=${this.goles_a} min="0"> </td>
       </tr>
 
       <tr>
         <td>${this.equipo_b}</td>
-        <td class="td-input"> <input type="number" required name="equipo-b-partido" id="equipo-b-partido" value=${this.goles_b}> </td>
+        <td class="td-input"> <input type="number" required name="equipo-b-partido" id="equipo-b-partido" value=${this.goles_b} min="0"> </td>
       </tr>
 
       <tr>
         <td class="footer-table">Ganador</td>
         <td class="footer-table" id="ganador">${this.ganador}</td>
+      </tr>
+
+      <tr>
+        <td class="footer-table">Fecha</td>
+        <td class="footer-table" id="ganador">${this.fecha}</td>
       </tr>
     `;
 
@@ -79,7 +85,18 @@ export class Apuesta{
   actualizarDatos({goles_a, goles_b}){
     this.goles_a = goles_a;
     this.goles_b = goles_b;
-    this.ganador = (this.goles_a > this.goles_b) ? this.equipo_a : this.equipo_b;
+
+    if(this.goles_a > this.goles_b){
+      this.ganador = this.equipo_a;
+    }
+
+    if(this.goles_a < this.goles_b){
+      this.ganador = this.equipo_b;
+    }
+
+    if(this.goles_a == this.goles_b){
+      this.ganador = 'Empate'
+    }
   }
 
   async saveApuesta(){

@@ -171,6 +171,7 @@ async function updateMatch(req, res){
             etapa: etapa
           }
         });
+
         if(apuesta != null){
           //Buscar al usuario correspondiente de la apuesta
           const userApuesta = await User.findOne({
@@ -183,7 +184,19 @@ async function updateMatch(req, res){
           goles_b = parseInt(goles_b);
   
           //Definir el ganador del partido
-          const ganadorPartido = (goles_a > goles_b) ? equipo_a : equipo_b;
+          let ganadorPartido;
+
+          if(goles_a > goles_b){
+            ganadorPartido = equipo_a;
+          }
+
+          if(goles_a < goles_b){
+            ganadorPartido = equipo_b;
+          }
+
+          if(goles_a == goles_b){
+            ganadorPartido = 'Empate';
+          }
     
           //Si ganadorApuesta == ganadorPartido dar punto
           if(apuesta.ganador == ganadorPartido){
@@ -267,7 +280,18 @@ async function updateMatch(req, res){
       team_b[0].goles_contra += parseInt(goles_a);
       team_b[0].partidos_jugados += 1;
   
-      (puntos_a > puntos_b) ? team_a[0].partidos_ganados += 1 : team_b[0].partidos_ganados += 1;
+      if(parseInt(goles_a) > parseInt(goles_b)){
+        team_a[0].partidos_ganados += 1;
+      }
+
+      if(parseInt(goles_a) < parseInt(goles_b)){
+        team_b[0].partidos_ganados += 1;
+      }
+
+      if(parseInt(goles_a) == parseInt(goles_b)){
+        team_a[0].partidos_ganados += 0;
+        team_b[0].partidos_ganados += 0;
+      }
   
       await team_a[0].save();
       await team_b[0].save();

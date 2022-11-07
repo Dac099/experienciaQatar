@@ -85,6 +85,10 @@ async function createApuesta(req, res){
       ganador = equipo_b;
     }
 
+    if(parseInt(goles_a) == parseInt(goles_b)){
+      ganador = 'Empate';
+    }
+
     const [apuesta, created] = await Apuesta.findOrCreate({
       where: {
         correo_user: correo_user,
