@@ -22,29 +22,33 @@ html(lang="en")
           .text-card
             h5 Registra tus pronosticos para cada etapa
             p
-              |Lorem, ipsum dolor sit amet consectetur adipisicing elit. Earum quos sunt corporis error ducimus tempore! Magni aut quo exercitationem nobis ipsam, maiores non deleniti tempora incidunt repellat, inventore necessitatibus perferendis.
+              |En cada etapa del mundial Qatar 2022 se abrirá la oportunidad para que tu puedas registrar tus pronósticos, solo tienes que hacer clic en el menú Registra tus pronósticos o en el botón que está en esta página.
             button(type="button", id="modal-btn1") Leer mas
-            +cardMondalInfo("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium explicabo consequuntur, neque fuga ipsa, at ad, voluptatibus ducimus saepe accusamus nesciunt placeat id molestias nostrum odio. Deleniti, voluptatum quod. Quisquam.")
+            +cardMondalInfo("Puedes registrar tus pronósticos, incluso cambiarlos hasta un día antes de que se juege el partido que desees participar. Tu puedes participar en cada etapa sin importar si en la etapa anterior no te fue bien en EXPERIENCIA QATAR de FARRMACIAS ECONÓMICAS no vas a quedar eliminado, puedes volverlo a intentar en cada etapa del el mundial.")
+
           .text-card
             h5 Gana puntos por acertar al equipo ganador
             p
-              |Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita accusantium nisi, sunt officiis dignissimos numquam? Voluptatum fugit distinctio nam totam itaque dolor a ipsum, et quae expedita! Architecto, quibusdam! Autem.
+              |Cuando registras tus pronósticos de los resultados del partido que elegiste participar esta información se guarda y si elegiste el ganador correcto de ese partido obtendrás 1 punto en tu ranking como participante.
             button(type="button", id="modal-btn2") Leer mas        
-            +cardMondalInfo("Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium explicabo consequuntur neque fuga ipsa, at ad, voluptatibus ducimus saepe accusamus nesciunt placeat id molestias nostrum odio. Deleniti voluptatum quod. Quisquam.")    
+            +cardMondalInfo("No importa si no aciertas en el marcador, si tu equipo elegido ganó, ya tienes un punto en tu ranking que te ayuda a subir en la tabla de posiciones.") 
+
           .text-card 
             h5 Gana puntos por acertar el marcador
             p   
-              |Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum distinctio obcaecati veritatis id ducimus. Culpa, nihil nulla esse quam veniam ipsa voluptates! Quaerat, cumque ipsum? Ut dolorem accusantium aliquid saepe?
+              |Cuando registras tus pronósticos de los resultados del partido que elegiste participar esta información se guarda y si colocaste el marcador correcto con que termina este partido recibirás un punto en tu ranking como participante.
             button(type="button", id="modal-btn3") Leer mas 
-            +cardMondalInfo("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium explicabo consequuntur neque fuga ips at ad voluptatibus ducimus saepe accusamus nesciunt placeat id molestias nostrum odio. Deleniti voluptatum quod. Quisquam.")           
+            +cardMondalInfo("Para que no te queden dudas, si acertaste al ganador tienes 1 punto y si también le aciertas al marcador tienes 1 punto más, en cada partido puedes ganar 2 puntos que suman en tu tabla de posiciones del ranking de participantes.") 
+
           .text-card 
             h5 Gana premios en cada etapa del mundial
             p
-              |Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident architecto nemo tempora cupiditate consequatur quae odit commodi repudiandae! Officia natus necessitatibus quis officiis autem consectetur dolorem voluptatem pariatur libero rem.
+              |En cada etapa del mundial entregaremos premios a los 3 primeros lugares del ranking de participantes. Luego de cada etapa se abren nuevas oportunidades en la siguiente etapa.
             button(type="button", id="modal-btn4") Leer mas
-            +cardMondalInfo("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium explicabo consequuntur neque fuga ipsa at ad voluptatibus ducimus saepe accusamus nesciunt placeat id molestias nostrum odio. Deleniti voluptatum quod. Quisquam.")            
+            +cardMondalInfo("En cada etapa el marcador de ranking inicia en 0 para darte la oportunidad de ser el ganador en cada una de las etapas, recuerda que en cada etapa serán menos partidos por lo que tienes que ser más preciso y acertar a los ganadores y marcadores para ganar más puntos.")  
+
         a(href="/pronosticos" class="btn-pronosticos" id="btn-1") Registra tus pronosticos ahora
-      section.premios
+      //- section.premios
         h3.premios--title ¿Cuáles son los premios?
         section.premios-cards
           +cardPremio(
