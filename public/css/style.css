@@ -56,6 +56,7 @@ main .text-card button {
   border-radius: 5px;
   display: grid;
   place-content: center;
+  cursor: pointer;
 }
 main .text-card button:hover {
   background-color: rgb(237, 28, 46);
@@ -73,6 +74,7 @@ main .info-premios a#btn-1 {
   border-radius: 5px;
   display: grid;
   place-content: center;
+  cursor: pointer;
 }
 main .info-premios a#btn-1:hover {
   background-color: rgb(237, 28, 46);
@@ -163,6 +165,7 @@ main .premios a#btn-2 {
   border-radius: 5px;
   display: grid;
   place-content: center;
+  cursor: pointer;
 }
 main .premios a#btn-2:hover {
   background-color: rgb(237, 28, 46);
@@ -209,6 +212,7 @@ main .premios a#btn-2:hover {
     border-radius: 5px;
     display: grid;
     place-content: center;
+    cursor: pointer;
     width: 120px;
     height: 40px;
   }
@@ -226,6 +230,7 @@ a.btn-pronosticos {
   border-radius: 5px;
   display: grid;
   place-content: center;
+  cursor: pointer;
   width: 120px;
   height: 40px;
 }
@@ -263,6 +268,7 @@ header .btn-account a {
   border-radius: 5px;
   display: grid;
   place-content: center;
+  cursor: pointer;
 }
 header .btn-account a:hover {
   background-color: rgb(237, 28, 46);
@@ -294,6 +300,71 @@ header .nav--options a {
 }
 header .nav--options a:hover {
   border-bottom: 4px solid rgb(237, 28, 46);
+}
+header .nav--options .user-nickname {
+  color: rgb(237, 28, 46);
+  font-weight: 600;
+  font-size: 1.3rem;
+  height: 30px;
+  padding: 7px 2px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  position: relative;
+}
+header .nav--options .user-nickname:hover {
+  border-bottom: 4px solid rgb(237, 28, 46);
+}
+header .nav--options .user-nickname::before {
+  content: url("/media/usuario.png");
+  width: 24px;
+  height: 24px;
+}
+header .nav--options .dropdown-content {
+  display: none;
+  place-content: center;
+  position: absolute;
+  width: 120px;
+  height: 60px;
+  z-index: 1;
+  top: 60px;
+  background-color: lightgray;
+  border: 3px solid rgb(237, 28, 46);
+  border-radius: 10px;
+}
+header .dropdown-content::before {
+  content: "";
+  width: 15px;
+  height: 15px;
+  background-color: lightgray;
+  position: absolute;
+  transform: rotate(45deg);
+  top: -11px;
+  left: 9px;
+  border-left: 3px solid rgb(237, 28, 46);
+  border-top: 3px solid rgb(237, 28, 46);
+}
+header .nav--options div.show {
+  display: grid;
+}
+
+.dropdown-content .close-sesion {
+  display: relative;
+  width: 100px;
+  background-color: rgb(255, 255, 255);
+  color: rgb(237, 28, 46);
+  border: 2px solid rgb(237, 28, 46);
+  font-size: 1.3rem;
+  border-radius: 5px;
+  display: grid;
+  place-content: center;
+  cursor: pointer;
+}
+.dropdown-content .close-sesion:hover {
+  background-color: rgb(237, 28, 46);
+  color: rgb(255, 255, 255);
+  font-weight: 600;
 }
 
 .nav--responsive {
@@ -358,6 +429,7 @@ header .nav--options a:hover {
   border-radius: 5px;
   display: grid;
   place-content: center;
+  cursor: pointer;
   display: grid;
   place-content: center;
   width: 270px;
@@ -532,6 +604,7 @@ footer a {
   border-radius: 5px;
   display: grid;
   place-content: center;
+  cursor: pointer;
 }
 .container-account .credential-card form button:hover {
   background-color: rgb(237, 28, 46);
@@ -559,6 +632,7 @@ footer a {
   border-radius: 5px;
   display: grid;
   place-content: center;
+  cursor: pointer;
   width: 192px;
   height: 52px;
 }
@@ -659,6 +733,7 @@ footer a {
   border-radius: 5px;
   display: grid;
   place-content: center;
+  cursor: pointer;
 }
 .container-main .modal .modal-content button:hover {
   background-color: rgb(237, 28, 46);
@@ -669,6 +744,10 @@ footer a {
   font-size: 1.5rem;
   color: rgb(237, 28, 46);
   font-weight: bold;
+}
+
+.admin_banner {
+  width: 100%;
 }
 
 .container-main--matches-content {
@@ -705,6 +784,7 @@ footer a {
   border-radius: 5px;
   display: grid;
   place-content: center;
+  cursor: pointer;
 }
 .groupContainer button.newMatch:hover {
   background-color: rgb(237, 28, 46);
@@ -783,10 +863,11 @@ footer a {
   border-radius: 5px;
   display: grid;
   place-content: center;
+  cursor: pointer;
   width: 200px;
   height: 40px;
   position: absolute;
-  bottom: 1%;
+  bottom: -200px;
 }
 .container-main--positions-content .position-content--container button:hover {
   background-color: rgb(237, 28, 46);
@@ -977,6 +1058,7 @@ h2 {
   border-radius: 5px;
   display: grid;
   place-content: center;
+  cursor: pointer;
   width: 200px;
   height: 40px;
   position: absolute;
@@ -1003,6 +1085,7 @@ h2 {
   border-radius: 5px;
   display: grid;
   place-content: center;
+  cursor: pointer;
   width: 200px;
   height: 40px;
   position: absolute;
@@ -1122,6 +1205,7 @@ h2 {
   border-radius: 5px;
   display: grid;
   place-content: center;
+  cursor: pointer;
   width: 200px;
   height: 40px;
   margin: 0 auto;
@@ -1172,6 +1256,10 @@ h2 {
   font-weight: bold;
 }
 
+.pronosticos_banner {
+  width: 100%;
+}
+
 button {
   background-color: rgb(255, 255, 255);
   color: rgb(237, 28, 46);
@@ -1180,6 +1268,7 @@ button {
   border-radius: 5px;
   display: grid;
   place-content: center;
+  cursor: pointer;
   width: 200px;
   height: 40px;
   margin: 20px auto;
@@ -1193,6 +1282,10 @@ button:hover {
 .ranking-container {
   padding: 20px;
   height: 70vh;
+}
+
+.ranking_banner {
+  width: 100%;
 }
 
 table.users {

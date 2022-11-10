@@ -18,7 +18,8 @@ router.get('/', validateToken ,async (req, res) => {
     banner: '/media/banner.png',
     logo: '/media/logo-economicas.svg',
     home: '/',
-    admin: isAdmin
+    admin: isAdmin,
+    username: user.nickname
   });
 });
 

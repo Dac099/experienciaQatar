@@ -3,7 +3,6 @@ const { Partido } = require('../models/partido-model.js');
 async function getPartidos(req, res){
   try {
     const etapa = req.query.etapa;
-    console.log(etapa);
     const partidos = await Partido.findAll({
       where: {
         etapa: etapa
@@ -19,7 +18,7 @@ async function getPartidos(req, res){
 async function mallaPartidos(req, res){
   try {
     const user = req.user;
-
+    console.log(user);
     let isAdmin = (user.rol === 'Admin') ? true : false;
 
     res.render('malla-partidos', {
@@ -27,7 +26,8 @@ async function mallaPartidos(req, res){
       banner: '/media/banner.png',
       logo: '/media/logo-economicas.svg',
       home: '/',
-      admin: isAdmin
+      admin: isAdmin,
+      username: user.nickname
     });
   } catch (error) {
     console.log(error);

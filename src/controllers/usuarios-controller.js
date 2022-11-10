@@ -24,6 +24,15 @@ async function createUser(req, res){
   }
 }
 
+async function closeSesion(req, res){
+  try {
+    res.clearCookie('jwt');
+    res.redirect('/signin');
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 async function getUser(email, password){
   try {
     const result = await User.findAll({
@@ -187,5 +196,6 @@ module.exports = {
   user404,
   createApuesta,
   updateApuesta, 
-  getApuestas
+  getApuestas,
+  closeSesion
 };

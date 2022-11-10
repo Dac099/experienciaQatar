@@ -25,7 +25,7 @@ header{
     height: 40px;
     @include button;
   }
-  //Styles when loggin false
+  //Styles when loggin true
   .nav--options{
     display: flex;
     justify-self: flex-start;
@@ -56,7 +56,68 @@ header{
   .nav--options a:hover{
     border-bottom: 4px solid $red_color;
   }
+
+  .nav--options .user-nickname{
+    color: $red_color;
+    font-weight: 600;
+    font-size: 1.3rem;
+    height: 30px;
+    padding: 7px 2px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 1px;
+    position: relative;
+  }
+
+  .nav--options .user-nickname:hover{
+    border-bottom: 4px solid $red_color;
+  }
+
+  .nav--options .user-nickname::before{
+    content: url('/media/usuario.png');
+    width: 24px;
+    height: 24px;
+  }
+
+  .nav--options .dropdown-content{
+    display: none;
+    place-content: center;
+    position: absolute;
+    width: 120px;
+    height: 60px;
+    z-index: 1;
+    top: 60px;
+    background-color: lightgray;
+    border: 3px solid $red_color;
+    border-radius: 10px;
+  }
+
+  .dropdown-content::before{
+    content: '';
+    width: 15px;
+    height: 15px;
+    background-color: lightgray;
+    position: absolute;
+    transform: rotate(45deg);
+    top: -11px;
+    left: 9px;
+    border-left: 3px solid $red_color;
+    border-top: 3px solid $red_color;
+  }  
+
+  .nav--options div.show{
+    display: grid;
+  }
+  
 }
+
+.dropdown-content .close-sesion{
+  display: relative;
+  width: 100px;
+  @include button;
+}
+
 
 .nav--responsive{
   width: 350px;

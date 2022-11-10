@@ -1,9 +1,12 @@
 header  
   if logged
-  
+
     a(href='/', class="home") 
       img(src=logo, alt="logo", class="logo-img")
     nav.nav--options
+      p.user-nickname=username
+      div.dropdown-content
+        a(href="/close-sesion").close-sesion Cerrar Sesión
       a(href="/malla-partidos") Malla de partidos
       a(href="/pronosticos") Registra tus pronosticos
       a(href="/ranking") Ranking de participantes
@@ -16,4 +19,5 @@ header
     .btn-account
       a(href="/signin") Iniciar sesion
       a(href="/signup") Registrarse
+script(src="/js/header.js") 
 

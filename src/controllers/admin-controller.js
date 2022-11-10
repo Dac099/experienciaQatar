@@ -12,7 +12,9 @@ async function adminPage(req, res){
       res.render('admin', {
         logged: true,
         logo: '/media/logo-economicas.svg',
-        admin: true
+        admin: true,
+        banner: '/media/banner.png',
+        username: user.nickname
       });
     }else{
       res.status(403).send('<h1>No tienes permisos para acceder a estos recursos</h1>');

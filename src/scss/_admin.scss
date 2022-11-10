@@ -94,6 +94,10 @@
   }
 }
 
+.admin_banner{
+  width: 100%;
+}
+
 .container-main--matches-content{
   margin: 0px 20px;
   .matches-type{
@@ -206,7 +210,7 @@
       width: 200px;
       height: 40px;
       position: absolute;
-      bottom: 1%;
+      bottom: -200px;
     }
   }
 

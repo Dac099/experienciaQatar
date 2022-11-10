@@ -16,7 +16,8 @@ async function pronosticosPage(req, res){
       logo: '/media/logo-economicas.svg',
       home: '/',
       correoUser: user.email,
-      admin: isAdmin
+      admin: isAdmin,
+      username: user.nickname
     });
   } catch (error) {
     console.log(error);

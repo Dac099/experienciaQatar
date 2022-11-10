@@ -24,7 +24,8 @@ async function rankingPage(req, res){
       banner: '/media/banner.png',
       logo: '/media/logo-economicas.svg',
       home: '/',
-      admin: isAdmin
+      admin: isAdmin,
+      username: user.nickname
     })
   } catch (error) {
     console.log(error);

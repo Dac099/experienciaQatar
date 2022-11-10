@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { signin, signup, createUser, getUser, user404, createApuesta, updateApuesta, getApuestas } = require('../controllers/usuarios-controller.js');
+const { signin, signup, createUser, getUser, user404, createApuesta, updateApuesta, getApuestas, closeSesion } = require('../controllers/usuarios-controller.js');
 
 router.get('/signup', signup);
 router.get('/signin', signin);
@@ -9,5 +9,6 @@ router.get('/user404', user404);
 router.post('/user/save-apuesta', createApuesta);
 router.post('/updateApuesta', updateApuesta);
 router.get('/get-apuestas/:correo', getApuestas);
+router.get('/close-sesion', closeSesion);
 
 module.exports = router;

@@ -11,6 +11,7 @@ $font-family: 'Montserrat', sans-serif;
   border-radius: 5px;
   display: grid;
   place-content: center;
+  cursor: pointer;
 
   &:hover{
     background-color: $red_color;
