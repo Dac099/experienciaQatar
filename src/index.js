@@ -9,7 +9,7 @@ const PORT = process.env.PORT;
 
 (async function StartApp(){
   try {
-    await sequelize.sync();
+    await sequelize.sync( { force:  true } );
     await CreateTeams();
     await testUsers();
   } catch (error) {
