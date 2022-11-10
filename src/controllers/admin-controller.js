@@ -1,3 +1,5 @@
+const { QueryTypes } = require('sequelize');
+const { sequelize } = require('../database/db-connection.js');
 const { Apuesta } = require('../models/apuesta-model.js');
 const { Equipo } = require('../models/equipo-model.js');
 const { Partido } = require('../models/partido-model.js');
@@ -28,7 +30,7 @@ async function getTeams(req, res){
   try {
     const user = req.user;
     if(user.rol === 'Admin'){
-      const result = await Equipo.findAll();
+      const result = await sequelize.query('select * from equipos order by nombre', { type: QueryTypes.SELECT });
   
       res.json(result);
     }else{
@@ -82,39 +84,19 @@ async function getMatchByStage(req, res){
       let matches;
     
       if(etapa == "grupos"){
-        matches = await Partido.findAll({
-          where: {
-            etapa: "Grupos"
-          }
-        });
+        matches = await sequelize.query(`select * from partidos where etapa='Grupos' order by fecha`, { type: QueryTypes.SELECT });
       }
       if(etapa == "octavos"){
-        matches = await Partido.findAll({
-          where: {
-            etapa: "Octavos"
-          }
-        });
+        matches = await sequelize.query(`select * from partidos where etapa='Octavos' order by fecha`, { type: QueryTypes.SELECT });
       }
       if(etapa == "cuartos"){
-        matches = await Partido.findAll({
-          where: {
-            etapa: "Cuartos"
-          }
-        });
+        matches = await sequelize.query(`select * from partidos where etapa='Cuartos' order by fecha`, { type: QueryTypes.SELECT });
       }
       if(etapa == "semi"){
-        matches = await Partido.findAll({
-          where: {
-            etapa: "Semifinal"
-          }
-        });
+        matches = await sequelize.query(`select * from partidos where etapa='Semifinal' order by fecha`, { type: QueryTypes.SELECT });
       }
       if(etapa == "final"){
-        matches = await Partido.findAll({
-          where: {
-            etapa: "Final"
-          }
-        });
+        matches = await sequelize.query(`select * from partidos where etapa='Final' order by fecha`, { type: QueryTypes.SELECT });
       }
     
       res.json(matches);

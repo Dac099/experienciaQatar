@@ -1,9 +1,12 @@
 const { Partido } = require('../models/partido-model.js');
+const { QueryTypes } = require('sequelize');
+const { sequelize } = require('../database/db-connection.js');
 
 async function getPartidos(req, res){
   try {
     const etapa = req.query.etapa;
-    const partidos = await Partido.findAll({
+    const partidos = await sequelize.query(`select * from partidos where etapa='${etapa}' order by fecha`, { type: QueryTypes.SELECT });
+    Partido.findAll({
       where: {
         etapa: etapa
       }

@@ -341,7 +341,7 @@ header .dropdown-content::before {
   position: absolute;
   transform: rotate(45deg);
   top: -11px;
-  left: 9px;
+  left: 36px;
   border-left: 3px solid rgb(237, 28, 46);
   border-top: 3px solid rgb(237, 28, 46);
 }
