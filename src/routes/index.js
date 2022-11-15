@@ -4,7 +4,7 @@ const router = Router();
 const logged = true;
 let isAdmin = false;
 
-router.get('/', validateToken ,async (req, res) => {
+router.get('/', validateToken, async (req, res) => {
   const user = req.user;
 
   if(user.rol === 'Admin'){

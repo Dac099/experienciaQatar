@@ -150,6 +150,48 @@ main{
     @include button;
   }
 
+  a#btn-1{
+    padding: 20px;
+    text-align: center;
+    width: 120px;
+    height: 40px;
+    background-color: $white_color;
+    color: $red_color;
+    border: 2px solid $red_color;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 5px;
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+
+    &:hover{
+      background-color: $red_color;
+      color: $white_color;
+      font-weight: 600;
+    }
+  }
+
+  a.btn-pronosticos{
+    width: 120px;
+    height: 40px;
+    background-color: $white_color;
+    color: $red_color;
+    border: 2px solid $red_color;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+
+    &:hover{
+      background-color: $red_color;
+      color: $white_color;
+      font-weight: 600;
+    }
+  }
+
 }
 
 
@@ -197,15 +239,45 @@ main{
     }
 
     a.btn-pronosticos{
-      @include button;
       width: 120px;
       height: 40px;
+      background-color: $white_color;
+      color: $red_color;
+      border: 2px solid $red_color;
+      font-size: 20px;
+      font-weight: bold;
+      border-radius: 5px;
+      display: grid;
+      place-content: center;
+      cursor: pointer;
+
+      &:hover{
+        background-color: $red_color;
+        color: $white_color;
+        font-weight: 600;
+      }
     }
+
+    
   }
 }
 
-a.btn-pronosticos{
-  @include button;
+main section.info-premios a.btnstilosmalos{
   width: 120px;
   height: 40px;
+  background-color: $white_color;
+  color: $red_color;
+  border: 2px solid $red_color;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 5px;
+  display: grid;
+  place-content: center;
+  cursor: pointer;
+
+  &:hover{
+    background-color: $red_color;
+    color: $white_color;
+    font-weight: 600;
+  }
 }
