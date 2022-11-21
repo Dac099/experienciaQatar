@@ -13,7 +13,7 @@ partidos_container_title.innerHTML = "Partidos de grupos";
 getPositionValues();
 
 //20 de noviembre : grupos
-if(Date.parse(today) <= Date.parse(grupos_date)){
+if(Date.parse(today) < Date.parse(octavos_date)){
   getPartidos('getPartidos/?etapa=Grupos');
 }
 //3 de Diciembre: octavos
